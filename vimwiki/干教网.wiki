@@ -1,0 +1,26 @@
+= 项目结构 =
+CadreAdmin	后台管理中心
+UserCenter	前台个人中心
+WebSite		前台干教课堂
+
+= 正则表达式替换queryString函数 =
+Request.QueryString\[{.*}\]
+替换为
+ComString.GetSafetyString(Request.QueryString\[\1\])
+
+{Request.QueryString\["[a-z A-Z 0-9]+"\]}
+ComString.GetSafetyString(\1)
+
+= 上传图片流程修改 =
+ http://192.168.10.100:2007/MSGBorad/updateInfo.aspx?userid=T77956299eb694f8596681995737ff3d6
+ 
+ 1.点击修改按钮，调用D:\education\UserCenter\MSGBorad\updateInfo.aspx的openWin函数
+ 2.openWin函数调用基于jquery的finkyUI插件显示对话框
+ 3.finkyUI对话框显示/MSGBorad/selectImg.aspx页面
+ 4.添加文件后，点击开始上传按钮
+ 5.调用selectImg.aspx的upstart()js函数
+ 6.调用selectImg.aspx的UpImageFile()js函数
+ 7.调用D:\education\UserCenter\MSGBorad\UpImg.aspx.cs
+ 8.开始传递文件数据到PubConstant.GetConnectionString("webPath")指定目录
+ 
+F:\app\Administrator\product\11.2.0\client_1;F:\app\Administrator\product\11.2.0\client_1\bin;

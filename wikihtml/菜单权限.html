@@ -1,0 +1,232 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>Coder-cc - 菜单权限</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+<h1 id="toc_1">卖家多权限菜单解决方案</h1>
+<ol>
+<li>
+新建表new_menu
+
+<li>
+老表menu里新增一列，对应new_menu
+
+<li>
+将老表的卖家B2B的菜单信息导入到new_menu里
+
+<li>
+修改new_menu里的菜单跟新菜单一样
+
+<li>
+然后修改新增角色时获取的的权限内容
+
+<li>
+修改添加角色的功能，再添加角色时，根据new_menu的id写数据到role_menu
+
+<li>
+老站读取的时候，先去new_menu里获取数据，然后再到menu里获取数据
+
+<li>
+新站读取的时候，直接去new_menu里获取数据
+
+</ol>
+<p>
+<strong>另：对于订单发货等功能，写成无url的权限，特殊处理</strong>
+</p>
+
+
+<ol>
+<li>
+SKU管理（商品管理）
+
+<ul>
+<li>
+发布新品              √
+    ~* 已上架产品~
+    ~* 已下架产品~
+    + 商品管理
+
+<li>
+库存管理              √
+
+<li>
+库存预警              删除
+
+<li>
+产品改价               √
+
+<li>
+新品申请              漏掉了
+
+<li>
+赠品管理              √
+
+</ul>
+<li>
+订单管理
+
+<ul>
+<li>
+订单改价
+
+<li>
+订单操作(录串+取消订单)
+
+<li>
+订单发货
+
+<li>
+凭证确认
+
+<li>
+订单综合查询          √
+
+<li>
+退货/款订单           删除了
+
+<li>
+预售订单              √
+
+<li>
+订单中心              √
+
+</ul>
+<li>
+店铺管理
+    ~* 基本信息              
+    ~* 修改资料              
+    + 修改资料
+
+<ul>
+<li>
+物流管理              √
+
+<li>
+运费设置              √
+    ~ * 店铺信息              
+    ~ * 产品推荐              
+    ~ * 广告管理              
+    + 我的店铺
+
+</ul>
+<li>
+营销活动
+
+<ul>
+<li>
+活动列表              √
+
+<li>
+活动添加              √
+
+</ul>
+<li>
+客户管理
+
+<ul>
+<li>
+客户级别              √
+
+<li>
+客户管理              删除了
+
+<li>
+额度账期              √
+
+<li>
+额度使用记录          √
+
+</ul>
+<li>
+商务中心
+
+<ul>
+<li>
+评价管理              √
+
+<li>
+缺货登记              √
+
+<li>
+串号查询              √
+
+</ul>
+</ol>
+<p>
+~# 交易管理
+</p>
+<ol>
+<li>
+系统报表
+
+<ul>
+<li>
+销售明细
+
+<li>
+提货排名
+
+<li>
+销量排名
+
+</ul>
+<li>
+代金券管理
+
+<ul>
+<li>
+代金券活动              √
+
+<li>
+我的代金券              √
+
+</ul>
+</ol>
+     
+     
+<p>
+出库
+录串
+发货
+</p>
+
+        </div>
+    </body>
+</html>

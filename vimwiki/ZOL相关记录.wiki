@@ -1,0 +1,13 @@
+%toc
+
+= 新UAT相关账户密码 =
+* 新UAT的网站地址: http://10.23.3.24:2000/
+* webconfig数据库配置:
+    {{{
+        server=10.23.3.24;database=ZOL_UAT000B2b;uid=zol001user;pwd=zol001@)!^)#@*qj;
+        }}}
+
+= vpn =
+    b2b vpn连接域名是b2bconnect.zol.com.cn,其他设置和文档里一致
+    如果下面的链接无法访问，可以参照附件的文档
+    vpn登录用户名和邮箱帐号相同

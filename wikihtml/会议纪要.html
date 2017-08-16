@@ -1,0 +1,494 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>Coder-cc - 会议纪要</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+<h1 id="toc_1" class="justcenter">2016-10-21 17:22</h1>
+<p>
+会议主题：准上线环境相关问题确认会议
+主持人：    张垒
+参会人员：  齐杰、张垒、陈伟、晓佳、连富、达飞、赵刘斌、永江、姚宁
+会议纪要：
+</p>
+<h2 id="toc_1.1" class="justcenter">准上线环境相关讨论</h2>
+<ol>
+<li>
+服务器11月上旬到位
+
+<li>
+每天检查正式订单数据是否正常，目标不明确
+
+<ul>
+<li>
+尹科北京出差组织专项会议，和北京业务、网关的相关人员讨论，
+
+<ul>
+<li>
+协调Z买卖需要网关提供数据校验
+
+<li>
+协调沟通wap端接口的问题
+
+<li>
+PMS系统相关问题的解决
+
+</ul>
+<li>
+尹科需要提供每天看到哪些东西，具体的内容列出来
+
+<li>
+订单查看内容：支付缓存+状态流
+
+<ul>
+<li>
+如果状态流顺序不对，或者出现延时间隔较大，判定为异常订单
+
+<li>
+网关需要提供接口，回写每单支付金额信息，如果订单金额不对，判定为异常订单
+
+<li>
+随机抽单进行验证
+
+</ul>
+<li>
+支付查看内容：是否存在掉单的情况。
+
+<ul>
+<li>
+做工具监控支付后返回信息的时间，如果超过该时间，就及时报警。
+
+</ul>
+</ul>
+<li>
+稳定上线版本，需要wap端上线后才能进行
+
+<ul>
+<li>
+确定wap端大方向：
+
+<ul>
+<li>
+wap端要跟pc端统一接口
+
+<li>
+抓紧时间调整整体接口
+
+<li>
+姚宁给出统一接口的方法、方案和时间，给出中长期的方案（需要输出文档，周一完成）
+
+</ul>
+<li>
+目前wap端存在问题：
+
+<ul>
+<li>
+产品线路不清晰
+
+<li>
+接口不统一（app的需求可能会近期展开）
+
+</ul>
+<li>
+姚宁汇报wap端当前进度：
+
+<ul>
+<li>
+到付没有做
+
+<li>
+活动没有做
+
+</ul>
+</ul>
+<li>
+正式环境备份还原工具完成度90%，已经在使用
+
+<li>
+新UAT权限已经给尹科了，下周一开始由尹科发布新ＵＡＴ
+
+<li>
+哨兵系统可以暂缓，等待系统定义清晰后开始
+
+<ul>
+<li>
+由张垒牵头，给出具体方案 （需要文档输出）
+
+</ul>
+</ol>
+
+<h2 id="toc_1.2" class="justcenter">近期需求规划</h2>
+<ol>
+<li>
+现版ZMM
+
+<ul>
+<li>
+简化注册流程
+
+<li>
+支付通道可配置
+
+<li>
+物流到付、运费计算规则
+
+<li>
+第三方物流对接
+
+<li>
+POS收款
+
+<li>
+运单信息对接加强
+
+<li>
+商务报表
+
+</ul>
+<li>
+新卖家中心
+
+<ul>
+<li>
+活动加强
+
+<li>
+excel导出加强
+
+<ul>
+<li>
+丁连富负责
+
+<li>
+考虑是否能够单独做一个功能，是否需要单独服务器
+
+<li>
+目前速度较慢
+
+</ul>
+<li>
+窜货管理
+
+<li>
+数据分析
+
+</ul>
+<li>
+Saas 
+
+<ul>
+<li>
+多角色＋子账号
+
+</ul>
+<li>
+进销存
+
+<li>
+对接ERP
+
+</ol>
+
+<h2 id="toc_1.3" class="justcenter">项目管理及效率问题</h2>
+<ol>
+<li>
+ 如何保证效率输出
+
+<ul>
+<li>
+需求提出后如何第一时间响应
+
+<ul>
+<li>
+规划类需求：三个工作日内反馈开发时间和系统答疑
+
+<li>
+日常小需求：16点之前提出后2小时内反馈开发时间和解决方案
+
+<li>
+紧急需求：20分钟之内反馈开发时间和解决方案
+
+</ul>
+<li>
+日常技术支持通道
+
+<ul>
+<li>
+问题库
+
+<li>
+研发公众号
+
+<li>
+对外技术支持的公共邮箱
+
+</ul>
+<li>
+PMS系统管理办法
+
+<li>
+项目管理机制
+
+<ul>
+<li>
+立项前沟通
+
+<ul>
+<li>
+需求分类
+
+<li>
+业务模型
+
+<li>
+系统模型
+
+<li>
+实现标准
+
+</ul>
+<li>
+立项
+
+<ul>
+<li>
+人员指派
+
+<li>
+任务分配
+
+<li>
+时间计划
+
+<ul>
+<li>
+文档时间
+
+<li>
+开发时间
+
+<li>
+测试时间
+
+</ul>
+</ul>
+<li>
+项目总结会：大项目开总结会，eg：vue的重构
+
+</ul>
+</ul>
+<li>
+如何保证上线的严谨性和产品质量输出
+
+<ul>
+<li>
+上线申请
+
+<li>
+Mantis和TMS打通 
+
+<li>
+上线人考核标准
+
+<li>
+数据一致性检查
+
+<li>
+错误短信提醒机制
+
+</ul>
+<li>
+任务系统的深入使用+任务分配合理性
+
+<ul>
+<li>
+增加每个人的工时和完成进度条
+
+<li>
+修改报表导出格式：开发中、测试中、UAT测试中、上线跟踪期、已关闭
+
+<li>
+按人进行任务统计
+
+<li>
+哨兵模块
+
+</ul>
+<li>
+执行力 
+
+<ul>
+<li>
+技术等级
+
+<li>
+清晰产品结构
+
+<li>
+建模
+
+</ul>
+</ol>
+
+<h1 id="toc_2" class="justcenter">张垒上线规定方案演示和讨论</h1>
+<ol>
+<li>
+TMS和Mantis对接
+
+<li>
+
+    = 周一工作安排 =
+
+<li>
+配置支付方式、报表、达飞接口联调
+
+<li>
+新卖家后台重构测试
+
+<li>
+TMS和Mantis对接
+
+<li>
+项目规范及上线机制
+
+<li>
+wap联调+出统计接口的方案
+    = Saas（北京功能需求内容） =
+
+<li>
+平台权限
+
+<ul>
+<li>
+平台可设置省平台权限
+
+<li>
+省长有多个省平台管理
+
+</ul>
+<li>
+省平台权限
+
+<ul>
+<li>
+管理本省买家和卖家
+
+<li>
+设置本省的页面及广告
+
+<li>
+设置本省活动和代金卷
+
+<li>
+设置本省查看本省订单报表
+
+<li>
+省平台只管理本省数据，不看外省
+
+<li>
+省平台可以这只本省卖家权限
+
+</ul>
+<li>
+维度
+
+<ul>
+<li>
+平台--省平台--卖家--买家及子账号
+
+<li>
+可按照地区+品类分权限
+    = Saas（讨论） =
+
+</ul>
+<li>
+尹科：双平台、漏洞、脱离库表
+
+<li>
+尹科：采用权限树无限递归
+
+<li>
+连富：省包开放资源和通道
+
+<li>
+姚宁：进销存相当于B2B的模块
+
+<li>
+姚宁：B2B与模块统一权限管理（PSI/SAAS)
+
+<li>
+张垒：区域+品类
+
+<li>
+张垒：分数据权限和操作权限
+
+<li>
+张垒：权限绑定角色
+
+<li>
+陈伟：接口实现业务层的隔离
+
+<li>
+达飞：角色+职位+用户的权限结构
+    = Saas（草版） =
+
+<li>
+操作权限
+
+<ul>
+<li>
+菜单编码 
+
+</ul>
+<li>
+数据权限
+
+<ul>
+<li>
+多端业务识别＋区域识别码 + 品类识别码 + 身份识别码……
+
+</ul>
+</ol>
+<blockquote>
+　
+</blockquote>
+
+        </div>
+    </body>
+</html>

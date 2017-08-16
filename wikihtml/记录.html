@@ -1,0 +1,322 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>tt记录</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+
+<h1 id="toc_1">hosts文件位置</h1>
+<blockquote>
+c:\windows\system32\drivers\etc
+</blockquote>
+<h1 id="toc_2">vss用户名密码</h1>
+<blockquote>
+cc    cc123
+</blockquote>
+<h1 id="toc_3">主站数据库用户名密码</h1>
+<blockquote>
+netchina2   csshd  
+</blockquote>
+<h1 id="toc_4">主站测试用户名</h1>
+<blockquote>
+show    123456
+</blockquote>
+<h1 id="toc_5">SSI服务器端指令</h1>
+<p>
+SSI是英文Server Side Includes的缩写，翻译成中文就是服务器端包含的意思。从技术角度上说，SSI就是HTML文件中，可以通过注释行调用的命令或指针。SSI 具有强大的功能，只要使用一条简单的SSI 命令就可以实现整个网站的内容更新，动态显示时间和日期，以及执行shell和CGI脚本程序等复杂的功能。SSI 可以称得上是那些资金短缺、时间紧张、工作量大的网站开发人员的最佳帮手。
+</p>
+
+<h1 id="toc_6">position属性</h1>
+<p>
+position 属性规定元素的定位类型。
+</p>
+<ul>
+<li>
+absolute	
+
+</ul>
+<p>
+生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。
+元素的位置通过 "left", "top", "right" 以及 "bottom" 属性进行规定。
+</p>
+<ul>
+<li>
+fixed	
+
+</ul>
+<p>
+生成绝对定位的元素，相对于浏览器窗口进行定位。
+元素的位置通过 "left", "top", "right" 以及 "bottom" 属性进行规定。
+</p>
+<ul>
+<li>
+relative	
+
+</ul>
+<p>
+生成相对定位的元素，相对于其正常位置进行定位。
+因此，"left:20" 会向元素的 LEFT 位置添加 20 像素。
+</p>
+<ul>
+<li>
+static	
+
+</ul>
+<p>
+默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。
+</p>
+<ul>
+<li>
+inherit	
+
+</ul>
+<p>
+规定应该从父元素继承 position 属性的值。
+</p>
+
+<h1 id="toc_7">display属性</h1>
+<ul>
+<li>
+display 属性规定元素应该生成的框的类型。
+
+<li>
+none	此元素不会被显示。
+
+<li>
+block	此元素将显示为块级元素，此元素前后会带有换行符。
+
+<li>
+inline	默认。此元素会被显示为内联元素，元素前后没有换行符。
+
+<li>
+inline-block	行内块元素。（CSS2.1 新增的值）
+
+<li>
+list-item	此元素会作为列表显示。
+
+<li>
+run-in	此元素会根据上下文作为块级元素或内联元素显示。
+
+<li>
+compact	CSS 中有值 compact，不过由于缺乏广泛支持，已经从 CSS2.1 中删除。
+
+<li>
+marker	CSS 中有值 marker，不过由于缺乏广泛支持，已经从 CSS2.1 中删除。
+
+<li>
+table	此元素会作为块级表格来显示（类似 &lt;table&gt;），表格前后带有换行符。
+
+<li>
+inline-table	此元素会作为内联表格来显示（类似 &lt;table&gt;），表格前后没有换行符。
+
+<li>
+table-row-group	此元素会作为一个或多个行的分组来显示（类似 &lt;tbody&gt;）。
+
+<li>
+table-header-group	此元素会作为一个或多个行的分组来显示（类似 &lt;thead&gt;）。
+
+<li>
+table-footer-group	此元素会作为一个或多个行的分组来显示（类似 &lt;tfoot&gt;）。
+
+<li>
+table-row	此元素会作为一个表格行显示（类似 &lt;tr&gt;）。
+
+<li>
+table-column-group	此元素会作为一个或多个列的分组来显示（类似 &lt;colgroup&gt;）。
+
+<li>
+table-column	此元素会作为一个单元格列显示（类似 &lt;col&gt;）
+
+<li>
+table-cell	此元素会作为一个表格单元格显示（类似 &lt;td&gt; 和 &lt;th&gt;）
+
+<li>
+table-caption	此元素会作为一个表格标题显示（类似 &lt;caption&gt;）
+
+<li>
+inherit	规定应该从父元素继承 display 属性的值。
+
+</ul>
+
+<h1 id="toc_8">页面填充满</h1>
+<ul>
+<li>
+body设置margin：0；
+
+</ul>
+
+<h1 id="toc_9">项目生成</h1>
+<ul>
+<li>
+生成common项目，其它项目需要用到做为虚拟目录
+
+<li>
+
+
+</ul>
+<h1 id="toc_10">主站架构</h1>
+<ul>
+<li>
+NetChina.Model 
+
+<li>
+NetChina.DalCom
+
+<li>
+NetChina.Dal 
+
+<ul>
+<li>
+引用model和dalcom库
+
+</ul>
+<li>
+NetChina.BllCom
+
+<ul>
+<li>
+引用DAL和model
+
+</ul>
+<li>
+NetChina.BllE
+
+<ul>
+<li>
+引用BBLCom、DAL、Model、CSSHD.BLL、CSSHD.BLLTRAD、CSSHD.Common、CSSHD.DALOracle
+
+</ul>
+</ul>
+
+<h1 id="toc_11">manage.chinaook.com 结构</h1>
+<ul>
+<li>
+登录后打开首页Frame/FrameIndex.apsx
+
+<ul>
+<li>
+打开页面自动获取上方的菜单项目
+
+<ul>
+<li>
+SQL语句：
+            select t.columnid,t.columncaption 
+            from ADMINSPACE.COLUMNS t 
+            where t.parendid is null 
+            order by  ORDERS ASC
+
+<li>
+生成HTML语句
+            <div class='column'>
+                &lt;a href='javascript:void(0);' 
+                    onclick="getColumnHTML('COL7ed366af68414bb3bfc01b356eb631ab')"&gt;总站
+                &lt;/a&gt;
+            </div>
+
+</ul>
+</ul>
+<li>
+点击上方的菜单，调用Res/Js/Iframe_Main.js里的getColumnHTML()函数加载子菜单
+
+<ul>
+<li>
+Ajax调用/GetDetailColumn.aspx页面获取左侧菜单数据
+
+<ul>
+<li>
+例如：家庭主站：<a href="http://localhost:2509/Frame/GetDetailColumn.aspx?columnid=COL2894e8e675b8449ebfe15f92caa849be">http://localhost:2509/Frame/GetDetailColumn.aspx?columnid=COL2894e8e675b8449ebfe15f92caa849be</a>
+
+</ul>
+</ul>
+<li>
+点击左侧生成的树形菜单的主页生成
+
+<ul>
+<li>
+调用/System/CreateHtmlFile.aspx生成静态页面
+
+<ul>
+<li>
+例如：家庭主站：<a href="http://localhost:2509/System/CreateHtmlFile.aspx?spid=4&amp;columnid=COLaaccbe483851490fbae3f86cd4447b90">http://localhost:2509/System/CreateHtmlFile.aspx?spid=4&amp;columnid=COLaaccbe483851490fbae3f86cd4447b90</a>
+
+</ul>
+</ul>
+<li>
+所有manage生成的首页，静态页面模版存放在/IndexTPL/..里
+
+</ul>
+
+ 
+<h1 id="toc_12">家庭主站</h1>
+<ul>
+<li>
+首页快乐家庭排行榜数据
+
+<ul>
+<li>
+&lt;!--ooklmsign-8-快乐家庭排行榜-4-1-11-1-20--&gt;
+
+</ul>
+</ul>
+<p>
+*
+</p>
+
+<h1 id="toc_13">所有子站板块信息</h1>
+<ul>
+<li>
+select * 
+    from ADMINSPACE.COLUMNS 
+    where PARENDID is null order by ORDERS ASC
+
+</ul>
+
+<h1 id="toc_14">板块栏目信息</h1>
+<p>
+/* 老乡会子栏目 */
+select COLUMNID,PARENDID,PATHID,COLUMNCAPTION,PAGEURL
+  from ADMINSPACE.COLUMNS t
+ where PATHID LIKE '%COLba91f90ba579430cb1fd52e509874567%'
+   AND PARENDID is not null and PARENDID = 'COLbaa019ecd1aa4ea398de93d8b36809ff'
+ order by ORDERS ASC;
+</p>
+
+        </div>
+    </body>
+</html>

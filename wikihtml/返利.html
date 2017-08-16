@@ -1,0 +1,235 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>Coder-cc - 返利</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+<h1 id="toc_1">返利</h1>
+
+<h2 id="toc_1.1">卖家后台</h2>
+<ol>
+<li>
+短信验证功能
+
+<ul>
+<li>
+用户输入手机号后，传递到后台
+
+<li>
+后台验证手机号是否是该卖家管理员所保留的手机号
+
+<li>
+手机号正确，生成6位随机码，发送短信手机号
+
+<li>
+用户填写验证码，并传递到后台
+
+<li>
+后台验证验证码+时间
+
+</ul>
+<li>
+返利管理
+
+<ul>
+<li>
+返利表结构创建
+
+<li>
+返利状态字典表脚本
+
+<li>
+卖家新增返利信息
+
+<li>
+卖家发送返利到买家功能（单个+多个+平台消息提醒）
+
+<li>
+导出excel表
+
+<li>
+导入excel表
+
+<li>
+获取该卖家能够返利的买家信息功能（一次新增多个买家）
+
+<li>
+单笔订单返利使用比例设置功能
+
+<li>
+30分钟失效的处理
+
+</ul>
+<li>
+订单修改
+
+<ul>
+<li>
+订单表新增返利使用数额字段
+
+</ul>
+<li>
+订单预览修改
+
+<ul>
+<li>
+订单预览按照卖家返回：该卖家返利总额 和 本单能够使用的金额
+
+<ul>
+<li>
+？？？？计算规则是啥？按照实际支付金额？代金卷？
+
+</ul>
+<li>
+
+
+</ul>
+<li>
+订单生成修改
+
+<ul>
+<li>
+前端生成订单多传给后台一个返利使用金额数据
+
+<li>
+订单生成前，判断使用返利金额是否符合要求
+
+<li>
+生成订单并记录返利使用金额
+
+</ul>
+<li>
+订单综合查询页面
+
+<ul>
+<li>
+修改卖家统计数据
+
+<li>
+修改卖家导出数据 
+
+<li>
+修改平台统计数据
+
+<li>
+修改平台导出数据 
+
+</ul>
+</ol>
+
+<h1 id="toc_2">卖家前端</h1>
+<ol>
+<li>
+卖家返利管理页面
+
+<li>
+卖家新增返利页面
+
+<li>
+卖家订单使用设置页面
+
+<li>
+卖家订单综合查询页面
+
+<li>
+平台订单综合查询页面
+
+</ol>
+
+<h1 id="toc_3">买家后台</h1>
+<ol>
+<li>
+获取买家详细返利信息功能（可以根据卖家名称进行查询+分页）
+
+<li>
+获取买家按照店铺的汇总信息功能
+
+<li>
+？？买家订单是否显示使用了多少返利金额？？
+
+<li>
+wap订单预览接口修改
+
+<li>
+wap订单生成接口修改
+
+</ol>
+
+<h1 id="toc_4">买家前端</h1>
+<ol>
+<li>
+pc买家返利管理页面
+
+<li>
+pc买家订单预览页面
+
+<li>
+wap买家返利管理页面
+
+<li>
+wap买家订单预览页面
+
+</ol>
+<p>
+à= 疑问 =
+</p>
+<ol>
+<li>
+买家是否需要返利使用记录页面
+
+<li>
+卖家第一次返利是，订单使用比例是50%，第二次修改成30%，这个数据是否需要记录，如果不记录，卖家修改了，买家已经下单的返利金额无法跟卖家核对 
+
+<li>
+短信队列是否需要优先级，目前短信队列是1分钟写一次，写完再发，如果用来做短信验证，可能需要做优先级处理
+
+<li>
+30分钟失效怎么处理？
+
+<li>
+订单退换货
+
+<li>
+订单改价
+
+</ol>
+
+        </div>
+    </body>
+</html>

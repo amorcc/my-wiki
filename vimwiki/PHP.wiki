@@ -1,0 +1,8 @@
+
+[[PHP相对路径和绝对路径]]
+
+[[PHP的require()和requeire_once()]]
+
+[[$_ENV]]
+
+[[PDO获取数据的方法fetch]]()、fetchAll()、setFetchMode()、bindColumn()

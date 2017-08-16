@@ -1,0 +1,318 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>vim快捷键</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<h1 id="toc_1">常用</h1>
+<p>
+   50gg，跳转到50行代码处
+</p>
+<h1 id="toc_2">Vundle常用指令</h1>
+<p>
+   :BundleList 列出已经安装的插件
+   :BundleInstall 安装所有配置文件中的插件
+   :BundleInstall! 更新所有插件
+   :BundleSearch 搜索插件
+   :BundleClean! 根据配置文件删除插件
+</p>
+
+<h1 id="toc_3">窗口跳转</h1>
+<p>
+   按住Ctrl + W，然后再加上h, j, k, l，分别表示向左、下、上、右移动窗口
+   Ctrl + w + h：向左移动窗口
+   Ctrl + w + j： 向下移动窗口
+   Ctrl + w + j： 向上移动窗口
+   Ctrl + w + l： 向右移动窗口
+</p>
+   
+<p>
+   Ctrl + w + w：这个命令会在所有窗口中循环移动
+   Ctrl + w + t：移动到最左上角的窗口
+   Ctrl + w + b：移动到最右下角的窗口
+   Ctrl + w + p：移动到前一个访问的窗口
+</p>
+
+<h1 id="toc_4">.php中对html语法进行高显</h1>
+<p>
+   :set syntax=php
+   :set syntax=html
+</p>
+
+<h1 id="toc_5">折叠</h1>
+<p>
+   za，打开或关闭当前折叠；
+   zM，关闭所有折叠；
+   zR，打开所有折叠
+   zf，选择多行，然后可以折叠
+</p>
+   
+<p>
+   1. 折叠方式 可用选项 'foldmethod' 来设定折叠方式：set fdm=*****。
+   有 6 种方法来选定折叠：
+   manual           手工定义折叠
+   indent             更多的缩进表示更高级别的折叠
+   expr                用表达式来定义折叠
+   syntax             用语法高亮来定义折叠
+   diff                  对没有更改的文本进行折叠
+   marker            对文中的标志折叠
+   注意，每一种折叠方式不兼容，如不能即用expr又用marker方式，我主要轮流使用indent和marker方式进行折叠。
+   使用时，用：set fdm=marker 命令来设置成marker折叠方式（fdm是foldmethod的缩写）。
+   要使每次打开vim时折叠都生效，则在.vimrc文件中添加设置，如添加：set fdm=syntax，就像添加其它的初始化设置一样。
+</p>
+
+<h1 id="toc_6">标签页</h1>
+<ul>
+<li>
+:tabnew     增加一个标签
+
+<li>
+:tabc       关闭当前的tab
+
+<li>
+:tabo       关闭所有其他的tab
+
+<li>
+:tabs       查看所有打开的tab
+
+<li>
+:tabp 或gT  前一个
+
+<li>
+:tabn 或gt  后一个
+
+</ul>
+
+<h1 id="toc_7">NERD_tree</h1>
+<ul>
+<li>
+增加Bookmarks:
+
+<ul>
+<li>
+选择要添加的书签文件夹
+
+<li>
+键入  :Bookmark &lt;bookmarkname&gt;
+
+</ul>
+<li>
+ctrl + w + w    光标自动在左右侧窗口切换
+
+<li>
+o       展开左侧某个目录，再按一下就是合并目录 
+
+<li>
+t       在新 Tab 中打开选中文件/书签，并跳到新 Tab
+
+<li>
+T       在新 Tab 中打开选中文件/书签，但不跳到新 Tab
+
+<li>
+P       跳到根结点
+
+<li>
+p       跳到父结点
+
+<li>
+q       关闭 NerdTree 窗口
+
+<li>
+r       刷新文件夹
+
+<li>
+ma      新建文件或者文件夹
+
+<li>
+其它快捷键
+      切换工作台和目录
+      ctrl + w + h 光标 focus 左侧树形目录
+      ctrl + w + l 光标 focus 右侧文件显示窗口
+      ctrl + w + w 光标自动在左右侧窗口切换
+      ctrl + w + r 移动当前窗口的布局位置
+      o 在已有窗口中打开文件、目录或书签，并跳到该窗口
+      go 在已有窗口 中打开文件、目录或书签，但不跳到该窗口
+      t 在新 Tab 中打开选中文件/书签，并跳到新 Tab
+      T 在新 Tab 中打开选中文件/书签，但不跳到新 Tab
+      i split 一个新窗口打开选中文件，并跳到该窗口
+      gi split 一个新窗口打开选中文件，但不跳到该窗口
+      s vsplit 一个新窗口打开选中文件，并跳到该窗口
+      gs vsplit 一个新 窗口打开选中文件，但不跳到该窗口
+      ! 执行当前文件
+      O 递归打开选中 结点下的所有目录
+      x 合拢选中结点的父目录
+      X 递归 合拢选中结点下的所有目录
+      e Edit the current dif
+      双击 相当于 NERDTree-o
+      中键 对文件相当于 NERDTree-i，对目录相当于 NERDTree-e
+      D 删除当前书签
+      P 跳到根结点
+      p 跳到父结点
+      K 跳到当前目录下同级的第一个结点
+      J 跳到当前目录下同级的最后一个结点
+      k 跳到当前目录下同级的前一个结点
+      j 跳到当前目录下同级的后一个结点
+      C 将选中目录或选中文件的父目录设为根结点
+      u 将当前根结点的父目录设为根目录，并变成合拢原根结点
+      U 将当前根结点的父目录设为根目录，但保持展开原根结点
+      r 递归刷新选中目录
+      R 递归刷新根结点
+      m 显示文件系统菜单
+      cd 将 CWD 设为选中目录
+      I 切换是否显示隐藏文件
+      f 切换是否使用文件过滤器
+      F 切换是否显示文件
+      B 切换是否显示书签
+      q 关闭 NerdTree 窗口
+      ? 切换是否显示 Quick Help
+      " 将 NERDTree 的窗口设置在 vim 窗口的右侧（默认为左侧）
+      let NERDTreeWinPos="right"
+
+</ul>
+
+<h1 id="toc_8">代码注释</h1>
+<p>
+   安装<a href="https://github.com/scrooloose/nerdcommenter.git">https://github.com/scrooloose/nerdcommenter.git</a>
+   &lt;leader&gt;cc，注释当前选中文本，如果选中的是整行则在每行首添加 //，如果选中一行的部分内容则在选中部分前后添加分别 / 、 /；
+   &lt;leader&gt;cu，取消选中文本块的注释。
+</p>
+
+<h1 id="toc_9">tagslist</h1>
+<p>
+   ;l  :  TlistToggle   显示和隐藏Tlist窗体 
+</p>
+   
+<p>
+   命令：
+   :TlistOpen  打开Tlist窗体
+   :TlistToggle    显示和隐藏Tlist窗体
+</p>
+ 
+<h2 id="toc_9.1" class="justcenter">设置tags文件位置</h2>
+<p>
+set tags+=E:\www\tags    可以添加到启动项目里
+</p>
+
+<h2 id="toc_9.2">生成tags索引文件</h2>
+<p>
+   将ctags文件拷贝到程序代码目录，然后cd到该目录，再ctags -R命令
+</p>
+   
+<p>
+   TagList插件，是一款基于ctags，在vim代码窗口旁以分隔窗口形式显示当前文件的代码结构
+</p>
+<blockquote>
+概览，增加代码浏览的便利程度的Vim插件。官方网址：Tag List，当前最新可用版本为v4.5.
+1. 安装
+①下载taglist_45.zip
+②解压
+将taglist.zip文件解压至~/.vim文件夹下(压缩包中包含有插件文件plugin/taglist.vim和帮助文件doc/taglist.txt)。
+③生成帮助
+命令行中切换当前路径至~/.vim/doc文件夹，进入vim后执行命令
+:helptags .
+也可以在任意文件夹下，进入vim后执行命令
+:helptags ~/.vim/doc
+④环境检查
+taglist插件依赖于ctags及其所生成的标签文件，如果用户路径设置中未包含ctags命令所在路径，可以在vim设置文件中配置Tlist_Ctags_Cmd变量，指向ctags命令（而非ctags命令所在路径)。
+检查Vim是否打开了filetype on选项。
+如Vim所在终端/控制台不支持改变窗口宽度，在Vim配置文件中配置变量Tlist_Inc_Winwidth为0.
+⑤重启Vim
+2. 标签列表窗口
+标签列表窗口中以目录树的形式组织各级标签：文档作为第一级，类别组标签(如宏标签组/函数标签组/变量标签组等)作为第二级，而具体的对象标签则为第三级（叶子结点)。
+</blockquote>
+<blockquote>
+3. 基本使用
+在Vim中加载代码文件后，可以使用以下命令控制taglist
+:TlistOpen 打开并将输入焦点至于标签列表窗口
+:TlistClose 关闭标签列表窗口
+:TlistToggle 切换标签列表窗口状态(打开←→关闭)，标签列表窗口是否获得焦点取决于其他配置
+ctl-w ＋ w 或ctl-w ＋ 方向键 窗口切换（taglist本质上是一个vim分隔窗口，因此可以使用ctl-w系列快捷键对窗口进行切换操作)
+使用鼠标单击切换当前窗口，或在标签列表窗口某标签上双击使代码窗口内窗跳转至标签定义
+标签列表窗口内，当光标停留在某个标签之上时，回车键可切换代码窗口内容至标签定义; 'o',在分隔窗口中显示;'t',在vim新标签窗口中显示
+4. 选项控制变量
+在Vim配置文件中，可通过"let"语句设定以下变量控制taglist：
+Tlist_GainFocus_On_ToggleOpen : 为1则使用TlistToggle打开标签列表窗口后会获焦点至于标签列表窗口；为0则taglist打开后焦点仍保持在代码窗口
+Tlist_Auto_Open : 为1则Vim启动后自动打开标签列表窗口
+Tlist_Close_On_Select : 选择标签或文件后是否自动关闭标签列表窗口
+Tlist_Exit_OnlyWindow : Vim当前仅打开标签列表窗口时，是否自动退出Vim
+Tlist_Use_SingleClick : 是否将默认双击标答打开定义的方式更改为单击后打开标签
+Tlist_Auto_Highlight_Tag : 是否高亮显示当前标签。命令":TlistHighlightTag"也可达到同样效果
+Tlist_Highlight_Tag_On_BufEnter : 默认情况下，Vim打开/切换至一个新的缓冲区/文件后，标签列表窗口会自动将当前代码窗口对应的标签高亮显示。TlistHighlight_Tag_On_BufEnter置为0可禁止以上行为
+Tlist_Process_File_Always : 为1则即使标签列表窗口未打开，taglist仍然会在后台处理vim所打开文件的标签
+Tlist_Auto_Update : 打开/禁止taglist在打开新文件或修改文件后自动更新标签。禁止自动更新后，taglist仅在使用:TlistUpdate,:TlistAddFiles，或:TlistAddFilesRecursive命令后更新标签
+Tlist_File_Fold_Auto_Close : 自动关闭标签列表窗口中非激活文件/缓冲区所在文档标签树，仅显示当前缓冲区标签树
+Tlist_Sort_Type : 标签排序依据，可以为"name"（按标签名排序）或"order"（按标签在文件中出现的顺序，默认值）
+Tlist_Use_Horiz_Window : 标签列表窗口使用水平分割样式
+Tlist_Use_Right_Window : 标签列表窗口显示在右侧（使用垂直分割样式时）
+Tlist_WinWidth : 设定水平分割时标签列表窗口的宽度
+Tlist_WinHeight : 设定垂直分割时标签列表窗口的高度
+Tlist_Inc_Winwidth : 显示标签列表窗口时允许/禁止扩展Vim窗口宽度
+Tlist_Compact_Format : 减少标签列表窗口中的空白行
+Tlist_Enable_Fold_Column : 是否不显示Vim目录列
+Tlist_Display_Prototype : 是否在标签列表窗口用标签原型替代标签名
+Tlist_Display_Tag_Scope : 在标签名后是否显示标签有效范围
+Tlist_Show_Menu : 在图型界面Vim中，是否以下拉菜单方式显示当前文件中的标签
+Tlist_Max_Submenu_Item : 子菜单项上限值。如子菜单项超出此上限将会被分隔到多个子菜单中。缺省值为25
+Tlist_Max_Tag_Length : 标签菜单中标签长度上限
+5. 标签列表窗口快捷键
+taglist快捷键：
+&lt;CR&gt; : 代码窗口跳转到标签列表窗口中光标所在标签定义处
+o : 在新建代码窗口中跳转到标签列表窗口中光标所在标签定义处
+P : 跳转至上一个窗口的标签处
+p : 代码窗口中内容跳转至标签定义处，光标保持在标签列表窗口中
+t : 在Vim新标签窗口中跳转至标签定义处。如文件已经在Vim标签窗口中打开，则跳转至此标签窗口
+Ctrl-t : 在Vim新标签窗口处跳转至标签定义处
+: 显示光标当前所在标签原型。对文件标签，显示文件的全路径名，文件类型和标签数量。对标签类型(指如variable/function等类别)，显示标签类型和拥有标签的数量;对函数/变量等普通标签，显示其定义的原型
+u : 更新标签列表窗口中的标签信息
+s : 切换标签排序类型(按名称序或出现顺序)
+d : 移除当前标签所在文件的所有标签
+x : 扩展/收缩标签列表窗口
++ : 展开折叠节点*
+</blockquote>
+<ul>
+<li>
+: 折叠结点*
+
+<li>
+: 展开所有结点
+      = : 折叠所有节点
+      [[ : 跳转至上一个文件标签的头部
+      &lt;Backspace&gt; : 跳转至上一个文件标签头部
+      ]] : 跳转至下一个文件标签头部
+      &lt;Tab&gt; : 跳转至下一个文件标签头部
+      q : 关闭标签列表窗口
+      F1 : 显示帮助**
+      *ubuntu10.10+Vim7.2+Taglist4.5环境下，'+'似乎也是将节点折叠起来，而非展开。左右方向键'←'和'→'可以展开节点。
+      **同上环境中，F1给出的是Gnome帮助手册而非Taglist帮助。
+      6. taglist命令
+      taglist在Vim中提供了以下扩展命令:
+      :TlistAddFiles {files(s)} [file(s)...] 添加一或多个指定文件(的标签项)到标签列表窗口中。文件名表达式中可使用通配符(*);如文件名中带有空格，需要使用反斜杠对空格进行转义("\ ")
+      :TlistAddFilesRecursive {directory} [{pattern}] 遍历指定路径{directory}，将与模式{pattern}相匹配的文件加入标签列表窗口。如未指定pattern，则使用缺省值'*'。如路径中包含空格，需使用反斜杠'\'转义("\ ")
+      :TlistClose 关闭标签列表窗口
+      :TlistDebug [filename] 记录taglist插件的调试信息。如指定了filename，则调试信息将被写入此指定文件（如文件已存在，内容将被覆盖)；如未指定filename，则调试信息写入脚本的局部变量中
+      :TlistLock 锁定标签列表，并且不处理新打开的文件
+      :TlistMessage 仅当调试信息写入脚本局部变量时有效，显示记录的调试信息
+      :TlistOpen 打开并跳转至标签列表窗口
+      :TlistSessionSave {filename} 将当前打开文件及其标签信息写入指定文件
+      :TlistSessionLoad {filename} 从指定文件载入所保存的会话信息
+      :TlistShowPrototype [filename] [linenumber] 显示指定文件中指定代码行或之前的标签的原型。如未指定文件名/行号，则使用当前文件名/当前行号
+      :TlistShowTag [filename] [linenumber] 显示指定文件中指定代码行或之前标签名称。如未指定文件名/行号，则使用当前文件名/当前行号
+      :TlistHighlightTag 加亮显示标签窗口中的当前标签
+      :TlistToggle 在打开和关闭状态间切换标签窗口的状态。标签窗口切换至打开状态后仍然光标保持在代码窗口中
+      :TlistUndebug 停止记录taglist插件调试信息
+      :TlistUnlock 解锁标签列表，并处理新打开的文件
+      :TlistUpdate 更新当前缓冲区的标签信息
+      7. 全局函数
+      taglist插件为Vim提供了一些全局函数，可供其他插件使用:
+      Tlist_Update_File_Tags({filename}, {filetype}) 以指定文件类型更新指定文件的标签信息。如taglist插件此前未处理过指定文件，则会调用ctags对文件进行分析
+      Tlist_Get_Tag_Prototype_By_Line([{filename}, {linenumber}]) 获取指定文件中指定行号或之前标签的原型信息。如未指定文件名/行号，则使用当前缓冲区对应文件/当前行号
+      Tlist_Get_Tagname_By_Line ([{filename}, {linenumber}]) 获取指定文件中指定行号或之前标签的名称信息。如未指定文件名/行号，则使用当前缓冲区对应文件/当前行号
+      Tlist_Set_App({appname}) 设置正在控制taglist的插件名称
+
+</ul>
+
+</body>
+</html>

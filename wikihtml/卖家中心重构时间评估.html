@@ -1,0 +1,121 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>tt卖家中心重构时间评估</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+
+<p>
+卖家中心重构任务方式：
+</p>
+
+<h1 id="toc_1">第一种方案：</h1>
+<blockquote>
+按照现有的页面模式，使用jquery+动态css实现页面，部分页面可以简单使用vue的数据绑定进行。
+</blockquote>
+
+<h2 id="toc_1.1" class="justcenter">优点：</h2>
+<blockquote>
+1、重构任务可控，有现成例子去实现，使用老框架，大家比较熟悉
+2、采用asp.net的母版形式实现页面
+3、强大的jquery库可以给重构工作做强力支撑
+4、部分页面代码完全可以复制，修改量较少。
+</blockquote>
+
+<h2 id="toc_1.2" class="justcenter">缺点：</h2>
+<blockquote>
+1、无法新增url路由机制，继续使用.aspx的页面模式
+2、页面安全性低，部分功能用户可以进行猜测，或者直接F12调试本地浏览器，直接打开隐藏功能
+3、频繁操作DOM树，采用面向过程式开发，代码维护工作较难，前端代码无法体现业务逻辑
+</blockquote>
+        
+<h2 id="toc_1.3" class="justcenter">重构时间：</h2>
+<blockquote>
+大概150个页面，按照2前端+2后台+1测试的人员配比，预计每人每天平均可以实现3个页面.
+具体工作安排如下：
+1、3个工作日的准备工作，由前端处理，主要工作任务是
+a、新css样式的标准化处理
+b、新框架页面的母版页实现
+c、前端技术标准的约定
+2、重构页面：
+按照4人每天3个页面的方式实现，计划13个工作日可以完成重构计划
+3、测试：
+重构页面与测试工作同步进行，最后预留3个工作日进行整体测试
+预留2个工作日UAT测试
+</blockquote>
+<blockquote>
+最终重构时间： 21个工作日 = 3（准备工作）+13（重构页面）+ 3（整体测试） + 2（UAT测试）
+</blockquote>
+        
+<h1 id="toc_2">第二种方案：</h1>
+<blockquote>
+按照新vue框架实现，使用vue+动态css+jquery插件来实现页面，
+对于分页、时间选择器、弹框、获取和提交数据、tree控件、edit的编辑控件等，采用jquery的插件直接使用
+</blockquote>
+    
+<h2 id="toc_2.1" class="justcenter">优点：</h2>
+<blockquote>
+1、新增vue的url路由机制，url更加优雅
+2、采用vue的数据绑定模式，写前端代码时，更关注业务数据流程，通过数据驱动dom，无需操作dom树
+3、页面的逻辑相对jquery更清晰
+</blockquote>
+
+<h2 id="toc_2.2" class="justcenter">缺点：</h2>
+<blockquote>
+1、因团队对vue的技术积累不高，部分功能无法像jquery一样实现。例如：弹框显示时，将弹框内容放到单独页面
+2、存在未预见性的技术难题，可能影响开发进度
+3、vue使用的是最新数据驱动的编程思想，页面无法想jquery一样进行封装，单个页面的代码量会更多
+</blockquote>
+
+<h2 id="toc_2.3" class="justcenter">重构时间：</h2>
+<blockquote>
+大概150个页面，按照2前端+2后台+1测试的人员配比，预计每人每天平均3个页面
+具体工作安排如下：
+1、5个工作日的准备工作，同第一套方案
+2、13个工作日重构
+3、3个工作日整体测试，2个工作日上UAT测试
+4、不可预见的工作，预留3个工作日处理
+</blockquote>
+<blockquote>
+最终重构时间： 26个工作日(30%的风险) 
+</blockquote>
+
+        </div>
+    </body>
+</html>

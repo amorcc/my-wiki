@@ -1,0 +1,129 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>ttvue测试页面</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+
+<p>
+log4net日志读取页面
+</p>
+
+<p>
+页面使用vue开发前端，要求：
+1、js代码不处理dom树，使用数据驱动模式实现
+2、select和table的绑定使用v-for实现
+3、用户选择及输入内容，直接双向绑定到data里的指定数据
+4、用户选择后，通过watch监听数据变化，更新dom树
+5、实现页面数据源的排序和检索，使用vue的filterBy和orderBy
+6、因vue的ajax尚未封装，继续使用myObj.cmd获取数据和提交数据
+</p>
+
+
+<p>
+数据源：
+</p>
+
+<p>
+1、获取所有日志文件内容--数组
+  myObj.cmd({
+</p>
+<blockquote>
+cmd: "ReadLog4netTxtLog.GetLogFileList",
+para: { "Items": "sdsd" },
+callback: function (data) {
+if (data != null &amp;&amp; data.length &gt; 0) {
+me.dataIn.files = data;
+}
+}
+});
+</blockquote>
+<blockquote>
+示例数据：
+[
+{
+"FileName": "t20160809.txt",
+"SitePath": "2016\201608\20160809.txt"
+},
+{
+"FileName": "t20160808.txt",
+"SitePath": "2016\201608\20160808.txt"
+},
+],
+</blockquote>
+                    
+<p>
+2、获取指定日志文件--数组
+</p>
+<blockquote>
+myObj.cmd({
+cmd: "ReadLog4netTxtLog.GetLogFileInfo",
+para: { "FilePathName": me.dataOut.ReadLog4netTxtLog_GetLogFileInfo },
+callback: function (data) {
+if (data != null &amp;&amp; data.length &gt; 0) {
+me.dataIn.logList = data;
+me.dataIn.logList.sort();
+}
+}
+});
+</blockquote>
+<blockquote>
+示例数据：
+</blockquote>
+<blockquote>
+[
+{
+"date": "2016-08-29T12:09:32",
+"loggerType": "DEBUG",
+"loggerClass": "log4net_init",
+"siteName": "ZMM(200站)",
+"businessCode": "1|调试",
+"info": "***********************************************",
+"userId": "无",
+"clientIp": "无",
+"paraIn": "无",
+"paraOut": "无",
+"tableCode": "无"
+},
+]
+</blockquote>
+
+        </div>
+    </body>
+</html>

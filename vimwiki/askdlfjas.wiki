@@ -1,0 +1,17 @@
+
+1.node
+2.node_moduel
+
+
+1.vs  写后台
+2、cmd   编译  dist
+3.ide   编辑vue
+
+
+asp.net  母版
+
+1.node
+2.cnpm
+3.webpack
+
+

@@ -1,0 +1,136 @@
+= 涉及表结构 =
+论坛版块表  BBSSPACE.FORUMPLATE
+    中华社区的主要板块
+        select t.*, t.rowid 
+        from BBSSPACE.FORUMPLATE t 
+        where t.spid=9 and  t.parentid is null and t.orders<>0
+        order by t.orders
+主题表      BBSSPACE.FORUMTHEME
+= 中华社区的所有栏目信息 =
+    select COLUMNID,PARENDID,PATHID,COLUMNCAPTION,PAGEURL
+    from ADMINSPACE.COLUMNS a
+    where  PATHID LIKE '%COL7da50b85d3d14271ba0cf9b927f7e21a%' AND PARENDID is not null 
+           and a.columncaption like '%主题管理%'
+    order by  ORDERS ASC;
+    
+    select  COLUMNID,PARENDID,PATHID,COLUMNCAPTION,PAGEURL
+    from ADMINSPACE.COLUMNS a
+    where  a.parendid ='COL0798b0dfa18d41518a246d21666d7ab7' AND PARENDID is not null 
+    order by  ORDERS ASC;
+    
+= 同行方舟论坛 =
+1. 首页论坛：       
+    对应同行方舟站点的同行论坛
+    通过后台添加贴子标题和贴子路径获取
+2. 首页沙龙论坛：   
+    对应同行方舟站点的沙龙论坛
+    通过后台添加贴子标题和贴子路径获取
+3. 主站论坛：       
+    中华社区 同行 显示
+4. 沙龙论坛：
+5. 子站论坛：
+
+= 热帖推荐 =
+
+= 社区公告 =
+spid=9 lmid=2
+= 24小时排行 =
+    E:\mobileweb\csshdweb\web\NcWeb\NetChina.BllE\Bbs\BLLForumMain.cs
+        /// <summary>
+        /// 获取排行榜数据
+        /// </summary>
+        /// <param name="category">排行榜分类，日排行，周排行，月排行</param>
+        /// <param name="spid">版块id</param>
+        /// <param name="number">显示条数</param>
+        /// <param name="titleLength">标题截取字数</param>
+        /// <returns>返回显示的内容</returns>
+        public string GetBillBoard(string category, int spid, string number, int titleLength)
+        {
+            BD_FORUMMAIN dao = new BD_FORUMMAIN();
+            DataTable dt = new DataTable();
+            string sql = "";   // 执行的sql语句
+            string str = "";    // 拼接返回的字符串  
+            switch (category)
+            {
+                case "today":
+                    sql = "select * from (select t.forumthemeid,t.caption,t.todayclick click from bbsspace.forumtheme t where t.isdelete!=1 and spid=" + spid + " and t.today=to_char(sysdate,'yyyy-mm-dd') order by t.todayclick desc,t.pubtime desc) where rownum>=0 and rownum<=" + number + "";
+                    break;
+                case "week":
+                    sql = "select * from (select t.forumthemeid,t.caption,t.currentweekclick click from bbsspace.forumtheme t where t.isdelete!=1 and spid=" + spid + " and t.currentweek=to_char(sysdate,'yyyy')||'-'||to_char(sysdate,'IW') order by t.currentweekclick desc,t.pubtime desc) where rownum>=0 and rownum<=" + number + "";
+                    break;
+                case "month":
+                    sql = "select * from (select t.forumthemeid,t.caption,t.currentmonthclick click from bbsspace.forumtheme t where t.isdelete!=1 and spid=" + spid + " and t.currentmonth=to_char(sysdate,'yyyy-mm') order by t.currentmonthclick desc,t.pubtime desc) where rownum>=0 and rownum<=" + number + "";
+                    break;
+                case "hot":
+                    sql = "select * from (select t.spid,t.forumthemeid,t.issite,t.caption,t.sitelevel from bbsspace.forumtheme t where t.isdelete!=1 order by t.accesscount desc,t.pubtime desc) where issite=0 and rownum>=0 and rownum<=" + number + "";
+                    break;
+                default:
+                    sql = "select * from (select t.forumthemeid,t.issite,t.caption,t.sitelevel from bbsspace.forumtheme t where t.isdelete!=1 and spid=" + spid + " and t.forumplateid='" + category + "' order by t.accesscount desc,t.pubtime desc) where rownum>=0 and rownum<=" + number + "";
+                    break;
+            }
+            dt = dao.Query(sql);
+        }
+
+= 一周排行 =
+同上
+= 一月排行 =
+同上
+= 精彩贴图 =
+    select * from bbsspace.view_theme_main where types=4 and rownum<=16
+= 社会 =
+    select * from 
+    (
+        select parentid,forumplateid,platecaption,forumthemeid,caption 
+        from userspace.view_theme 
+        where parentid='PLATE51338c775c184d42a6019a146ff6d0d6' and spid=9 
+        order by istop desc,pubtime desc
+    ) where rownum>=0 and rownum<=7
+= 财经 =
+    PLATEbdc3cfef0c0d440dad8d323016582056
+= 房产 =
+    PLATEff51885d61b44aeebc8de3b8dfa76cd6
+= 汽车 =
+    PLATE8d2c689e86d643718f4d8c3e928e1b65
+= 军体 =
+    PLATE82b579fab5a14b2daef7d543010c9948
+= 娱乐 =
+    PLATE10a31a7fea0b41768bc26a73c297ea33
+= 时尚 =
+    PLATE027c37a6af984c73a5916f5a656be055
+= 女人 =
+    PLATEf56da81498224b7a9e00b5eac2ae25a6
+= 情感 =
+    PLATEc5436f3b45674968aeab41accac6eccd
+= 健康 =
+    PLATE17245660ec8f44feafcb364d5f138cb7
+= 饮食 =
+    PLATE6d0c13b77fa04dc0b335934f111f0cd3
+= 教育  =
+    PLATEf90b24fb0ee04a44ad8decda224d563d
+= 科技 =
+    PLATEc567d2757b7040caa7addeb03ce94087
+= 职场 =
+    PLATE858aa17cd8ce43728a4c2e3fbc0ad56f
+= 旅游 =
+    PLATE896750e32a4f4a3eb27772af508de3d3
+= 杂谈 =
+    PLATE42ec68782c68423fb568fefa1a64c853
+= 恋爱 =
+    forumplateid = ComEnum.GetEnumValue(EnuForumPlateTypes.恋爱主站论坛)
+    spid = ComEnum.GetEnumValue(EnuSPID.恋爱之家)
+    select * from 
+    (
+        select forumthemeid,caption 
+        from userspace.view_main_theme 
+        where forumplateid='5' and spid=3 
+        order by istop desc,pubtime desc
+    ) 
+    where rownum>=0 and rownum<=7;
+= 交友 =
+= 家庭 =
+= 校友 =
+= 老乡 =
+= 圈友 =
+= 同行 =
+= 沙龙 =
+= 时代 =

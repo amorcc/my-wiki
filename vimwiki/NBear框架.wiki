@@ -1,0 +1,36 @@
+= 项目中使用NBear框架生成model类 =
+1.安装NBear框架的vs插件：SetupNBearVsPlugin.exe
+2.配置EntityDesignToEntityConfig.xml
+3.生成CSSHD.Modle.Desgin项目，将会自动更新CSSHD.Modle项目
+
+注意：NBearVsPlugin插件只支持vs2005
+
+= 调用存储过程 =
+
+//调用存储过程
+DataSet dsCustHits = gateway.FromStoredProcedure("CustOrderHist").AddInputParameter("CustomerID", DbType.String, "ALFKI").ToDataSet();
+SQL:
+CustOrderHist 
+Parameters:
+@CustomerID[String] = ALFKI
+
+= 执行sql语句 =
+
+DataSet ds = dao.SelectDataSet("select * from VIEW_ARTICLEMANAGE where DGID='" + goodsid + "'", null);
+return ds.Tables[0];
+
+= 带参数的自定义SQL查询 =
+Category[] cats = gateway.FromCustomSql("select [CategoryID], [CategoryName], [Description], [Picture] from [Categories] where [CategoryID] > @p1 and [CategoryID] < @p2").AddInputParameter("p1", DbType.Int32, 100).AddInputParameter("p2", DbType.Int32, 2000).ToDataSet();
+SQL:
+select [CategoryID], [CategoryName], [Description], [Picture] from [Categories] where [CategoryID] > @p1 and [CategoryID] < @p2 
+Parameters:
+@p1[Int32] = 100
+@p2[Int32] = 2000
+
+
+= 显式的自定义join查询 =
+Product[] testExplicitJoinsOfProducts = gateway.From<Product>().Join<Category>(Product._.CategoryID == Category._.CategoryID).Where(Category._.CategoryName.ToUpper() == "TEST").ToArray<Product>();
+SQL:
+SELECT [Products].[ProductID],[Products].[ProductName],[Products].[SupplierID],[Products].[CategoryID],[Products].[QuantityPerUnit],[Products].[UnitPrice],[Products].[UnitsInStock],[Products].[UnitsOnOrder],[Products].[ReorderLevel],[Products].[Discontinued] FROM [Products] INNER JOIN [Categories] ON ([Products].[CategoryID] = [Categories].[CategoryID]) WHERE (UPPER([Categories].[CategoryName]) = @pau7vfnemtpxcwj) 
+Parameters:
+@pau7vfnemtpxcwj[String] = TEST

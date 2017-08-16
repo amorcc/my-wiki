@@ -1,0 +1,94 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>ttNBear框架</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+<h1 id="toc_1">项目中使用NBear框架生成model类</h1>
+<p>
+1.安装NBear框架的vs插件：SetupNBearVsPlugin.exe
+2.配置EntityDesignToEntityConfig.xml
+3.生成CSSHD.Modle.Desgin项目，将会自动更新CSSHD.Modle项目
+</p>
+
+<p>
+注意：NBearVsPlugin插件只支持vs2005
+</p>
+
+<h1 id="toc_2">调用存储过程</h1>
+
+<p>
+//调用存储过程
+DataSet dsCustHits = gateway.FromStoredProcedure("CustOrderHist").AddInputParameter("CustomerID", DbType.String, "ALFKI").ToDataSet();
+SQL:
+CustOrderHist 
+Parameters:
+@CustomerID[String] = ALFKI
+</p>
+
+<h1 id="toc_3">执行sql语句</h1>
+
+<p>
+DataSet ds = dao.SelectDataSet("select * from VIEW_ARTICLEMANAGE where DGID='" + goodsid + "'", null);
+return ds.Tables[0];
+</p>
+
+<h1 id="toc_4">带参数的自定义SQL查询</h1>
+<p>
+Category[] cats = gateway.FromCustomSql("select [CategoryID], [CategoryName], [Description], [Picture] from [Categories] where [CategoryID] &gt; @p1 and [CategoryID] &lt; @p2").AddInputParameter("p1", DbType.Int32, 100).AddInputParameter("p2", DbType.Int32, 2000).ToDataSet();
+SQL:
+select [CategoryID], [CategoryName], [Description], [Picture] from [Categories] where [CategoryID] &gt; @p1 and [CategoryID] &lt; @p2 
+Parameters:
+@p1[Int32] = 100
+@p2[Int32] = 2000
+</p>
+
+
+<h1 id="toc_5">显式的自定义join查询</h1>
+<p>
+Product[] testExplicitJoinsOfProducts = gateway.From&lt;Product&gt;().Join&lt;Category&gt;(Product.<em>.CategoryID == Category.</em>.CategoryID).Where(Category._.CategoryName.ToUpper() == "TEST").ToArray&lt;Product&gt;();
+SQL:
+SELECT [Products].[ProductID],[Products].[ProductName],[Products].[SupplierID],[Products].[CategoryID],[Products].[QuantityPerUnit],[Products].[UnitPrice],[Products].[UnitsInStock],[Products].[UnitsOnOrder],[Products].[ReorderLevel],[Products].[Discontinued] FROM [Products] INNER JOIN [Categories] ON ([Products].[CategoryID] = [Categories].[CategoryID]) WHERE (UPPER([Categories].[CategoryName]) = @pau7vfnemtpxcwj) 
+Parameters:
+@pau7vfnemtpxcwj[String] = TEST
+</p>
+
+        </div>
+    </body>
+</html>

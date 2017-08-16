@@ -1,0 +1,172 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>Coder-cc - 重构内容</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+<h1 id="toc_1">重构功能列表</h1>
+<ol>
+<li>
+功能                              wap是否存在该功能           wap是否已同步
+
+</ol>
+<hr />
+<ol>
+<li>
+商品搜索                          是                          是
+
+<li>
+商品价格                          是                          是
+
+<li>
+产品终端页                        是                          正在进行
+
+<li>
+购物车                            
+
+<ul>
+<li>
+加入购物车                    是                          否
+
+<li>
+更改购物车数量                是                          否
+
+<li>
+购物车列表                    是                          否
+
+</ul>
+<li>
+订单
+
+<ul>
+<li>
+订单预览                      是                          正在进行
+
+<li>
+订单写入                      是                          正在进行                 
+
+<li>
+订单支付                      是                          正在进行
+
+<li>
+预付款订单                    否
+
+</ul>
+<li>
+支付报文                          是                          是
+
+<li>
+分货                              否 
+
+<li>
+改价                              否
+
+<li>
+预售
+
+<ul>
+<li>
+预售订单预览                  否
+
+<li>
+预售订单生成                  否
+
+</ul>
+<li>
+退换货                            否
+
+<li>
+活动
+
+<ul>
+<li>
+活动添加                      否
+
+<li>
+活动修改                      否
+
+<li>
+活动列表                      否
+
+<li>
+活动删除                      否
+
+<li>
+活动状态改变                  否
+
+<li>
+活动平台审核                  否
+
+<li>
+活动预览                      否                         
+
+<li>
+买家促销活动栏目              否                          
+
+</ul>
+</ol>
+
+<h1 id="toc_2">wap需要新增功能</h1>
+<ol>
+<li>
+订单详情需要加活动信息，例如：满200减100，商品价格2000，显示"优惠200"
+
+</ol>
+
+<h1 id="toc_3">service需要修改的内容</h1>
+<ol>
+<li>
+订单预览需要活动信息
+
+<ul>
+<li>
+捆绑商品的原价+是否主商品
+
+<li>
+其他活动的活动规则
+
+</ul>
+<li>
+订单详情需要活动信息
+
+</ol>
+
+        </div>
+    </body>
+</html>

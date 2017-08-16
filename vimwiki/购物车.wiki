@@ -1,0 +1,29 @@
+
+http://localhost:200/js/ui.js
+ $(".addcart").live("click", function () {//加入购物车按钮
+ 
+
+ ZOL.B2b.DAL.MyCart.Insert()
+
+存储过程：proc_Cart_Insert 
+        @proId      ：  100057
+        @proCount   ：  3
+        @activityID ：  0
+        @sysUserID  ：  3
+        @msg
+
+ 表：dbo.Cart
+ id
+ UserID     :   
+ ProId
+ ProCount   :   数量
+ ProPrice   :   购物车里产品当前的价格
+ OldProPrice:   原始单价
+ SupplierID :   供应商编号
+ C1
+ DateAdded
+ ActivityID :   加入购物车时候的活动ID,可以没有
+ Status     :   1:上架状态0下架状态
+ UserSN
+
+

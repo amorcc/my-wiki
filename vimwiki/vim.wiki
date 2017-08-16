@@ -1,0 +1,10 @@
+
+= [[VimScript]] =
+
+[[vim打造成IDE]]
+
+# [[vim-jsbeautify安装]]
+* [[vim NerdTree插件]]
+* [[vim Vimwiki插件]]
+* 
+* [[vimwiki文档]]

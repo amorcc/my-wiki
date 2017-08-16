@@ -1,0 +1,52 @@
+
+= 全局配置 =
+Vue.config 是一个对象，包含 Vue 的全局配置。可以在启动应用之前修改下面属性：
+
+
+== debug ==
+    Vue.config.debug = true
+    在调试模式中，Vue 会：
+        为所有的警告打印栈追踪。
+        把所有的锚节点以注释节点显示在 DOM 中，更易于检查渲染结果的结构。
+        只有开发版本可以使用调试模式
+
+== silent ==
+    Vue.config.silent = true;
+    取消 Vue.js 所有的日志与警告。
+    
+== async ==
+    Vue.config.async = false;
+    如果关闭了异步模式，Vue 在检测到数据变化时同步更新 DOM。
+    在有些情况下这有助于调试，但是也可能导致性能下降，
+    并且影响 watcher 回调的调用顺序。
+    async: false不推荐用在生产环境中。
+    
+== devtools == 
+    Vue.config.devtools = true;
+    配置是否允许 vue-devtools 检查代码。开发版默认为 true， 生产版默认为 false。
+     生产版设为 true 可以启用检查。
+     
+= 全局API =
+
+== Vue.extend(options) ==
+    用法：
+        创建基础 Vue 构造器的“子类”。参数是一个对象，包含组件选项。
+        这里要注意的特例是 el 和 data 选项—— 在 Vue.extend() 中它们必须是函数。
+        
+== Vue.filter(id,[definition]) ==
+    用法：
+        注册或者获取全局过滤器
+    eg：
+        // 注册
+        Vue.filter('my-filter', function (value) {
+          // 返回处理后的值
+        })
+        
+        // 双向过滤器
+        Vue.filter('my-filter', {
+          read: function () {},
+          write: function () {}
+        })
+        
+        // getter，返回已注册的指令
+        var myFilter = Vue.filter('my-filter')

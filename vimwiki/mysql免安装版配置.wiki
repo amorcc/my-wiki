@@ -1,0 +1,19 @@
+
+1、解压到指定位置
+2、复制my-default.ini ,改名为my.ini
+3、修改my.ini
+    [client]
+    port=3306
+    default-character-set=utf8
+    [mysqld]
+    port=3306
+    character_set_server=utf8
+    basedir=D:\Program Files\MySQL\mysql-5.6.13-win32
+    #解压目录
+    datadir=D:\Program Files\MySQL\mysql-5.6.13-win32\data
+    #解压目录下data目录
+    sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+    [WinMySQLAdmin]
+    D:\Program Files\MySQL\mysql-5.6.13-win32\bin\mysqld.exe
+4、添加环境变量   (mysqlhome)/bin
+5、管理员cmd到bin目录

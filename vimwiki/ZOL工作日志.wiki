@@ -1,0 +1,105 @@
+= [[帮助中心]] =
+
+= [[重构内容]] =
+
+= [[soa架构分析]] =
+
+= 2016-10-17 wap端接口 =
+# 立即购买
+   {
+       "proIds":"100056|1|193,100058|1|193,100142|2|193", //产品编号|购买数量|活动id  ：  其中如果是捆绑购买，活动id传递的是PromotionProduct表的id
+       "calcType":"1",   //1-立即购买，2-购物车，3-捆绑，4-分货单购买
+       "rn":"1550925218916"
+   }
+# 购物车
+  {
+      "proIds":"100056|1|193,100058|1|193,100142|2|193", //产品编号|购买数量|活动id  
+      "calcType":"2",   //1-立即购买，2-购物车，3-捆绑，4-分货单购买
+      "rn":"1550925218916"
+  }
+# 捆绑  
+   {
+       "proIds":"100056|1|193,100058|1|193,100142|2|193", //产品编号|购买数量|活动id  ：  其中如果是捆绑购买，活动id传递的是PromotionProduct表的id
+       "calcType":"3",   //1-立即购买，2-购物车，3-捆绑，4-分货单购买
+       "rn":"1550925218916"
+   }
+# 分货
+    wap无
+
+# 预售 
+    wap无
+    
+# 满减
+# 满赠
+# 直降
+    如果活动id不穿值，则按照不参加活动购买
+   {
+       "proIds":"100056|1|193,100058|1|193,100142|2|193", //产品编号|购买数量|活动id 
+       "calcType":"1",   //1-立即购买，2-购物车，3-捆绑，4-分货单购买
+       "rn":"1550925218916"
+   }
+
+= 2016-10-13 =
+# 修改GDList.aspx
+# 修改添加分货单页面
+# 修改分货单列表
+
+= 卖家重构剩余工作 =
+*优先级由高到低*
+# 第一轮测试问题修改        刘斌负责CSS方面，其他功能找各负责人,(2个测试文档未改，26个测试文档已改)
+# 我的店铺                  UI未出设计
+# 买家活动信息漏出          需要UI设计，前端修改
+# 买家促销活动信息展示      需要UI设计，前端修改
+# 卖家中心首页              永江，消息模块需要跟UI沟通
+# 订单中心缺少2个功能       永江
+# 菜单权限                  连富+陈伟,新老菜单对照
+# 测试vue代码压缩           永江+刘斌，可以暂缓
+# 上传文件有问题(先选择一个错误格式的文件，然后就无法正常上传文件了)
+# 帮助中心                  暂缓
+
+= [[分货]] =
+
+= [[卖家重构统计需求确认]] =
+
+= 2016-9-29 修改内容 =
+* 修改proc_ProductOrder_PreSell_SupplierQuery，支持只开始或者只结束时间的搜索
+
+= 2016-9-28 串号14位15位可选 =
+* siteB2b/Center/S/Order/InputOrderImei.aspx
+* siteDALs/DAL_B2b/Imei.cs
+
+= 2016-9-28 退换货修改 =
+* 修改取消退换货存储过程 proc_ProductOrder_Refund_Cancel
+* 新增退换货申请存储过程 proc_ProductOrder_RefundInsert
+* 修改v_ProductOrder视图
+* 修改\Center\R\Refund\ApplyRefund1.aspx
+* 修改/Center/R/OrderList.aspx
+* 修改/Center/S/Order/SellerCenter.aspx
+* 修改/Center/S/Order/Operate.aspx
+* 修改/Center/S/Order/OrderExpressList.aspx
+* 修改卖家订单中心 +　买家订单中心
+
+= 活动 =
+100直降，102|满减，103|买赠，104|捆绑
+* 产品搜索
+    * 修改ProductService.GetProductActivity,除了直降，其他活动直接出结果就行
+    * 需要修改：捆绑的标变成返利了
+* 订单详情页
+* 订单预览
+    * 修改捆绑信息获取存储过程[proc_Product_GetBindSale]
+    * 修改OrderService.BindGoodsPreview
+    * 修改OrderService.GetBindSaleInfo
+
+= 2016-9-20 =
+1、新增获取共享/不共享客户数量的存储过程proc_SupplierLevel_CustomerCount
+2、修改存储过程proc_SupplierLevel_CustomerSelect
+3、除非省包，否则不显示是否共享客户资源按钮
+4、省包时，漏出共享/不共享客户数量的提示
+5、修改E:\ZOL\ZOL-Beta\siteB2b\Mng\Supplier\SetArea.aspx页面
+6、修改E:\ZOL\ZOL-Beta\siteDALs\DAL_B2b\SupplierCustLevel.cs页面，新增GetShareOrNotCustomerCount函数
+
+= 2016-9-18 =
+1、卖家中心重构商品管理--商品列表页面
+2、赠品管理获取数据的后台方法新增
+3、新vue框架代码规范约定的制定
+4、补充新vue框架的帮助文件

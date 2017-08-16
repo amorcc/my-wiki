@@ -1,0 +1,208 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>tt订单一览表</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+
+<h2 id="toc_0.1">订单一览表</h2>
+
+<h3 id="toc_0.1.1">页面主要实现功能描述</h3>
+<ul>
+<li>
+1、显示所有订单基础信息
+
+<ul>
+<li>
+序号
+
+<li>
+订单编号
+
+<li>
+状态
+
+<ul>
+<li>
+未处理：只新增了订单，但是尚未转为制作单
+
+<li>
+已下单：下单的意思是该订单已经转为制作单，但是尚未分配到员工进行制作
+
+<li>
+制作中：该订单已经转为制作单，正在进行制作处理流程
+
+<li>
+完工：  已经完工，未通知客户取货
+
+<li>
+外协：  正在外协制作
+
+<li>
+待取:   已通知客户取件，但尚未取件
+
+<li>
+待送：  正在等待送单
+
+<li>
+送单中：正在送单，客户尚未签收
+
+<li>
+已结算：客户取货或者签收后，已经结算，结算分为：现金结算、记账结算、预付款结算
+
+<li>
+暂停:    该订单暂停处理，不立即开始制作。
+                说明：一般这种情况是由于客户未决定是否开始制作，
+                或价格未协商好，或客户尚未提供全资料等原因而暂停，但还有希望成交，应指定员工进行跟单，避免漏单情况。
+
+<li>
+作废：该订单因其他原因，已经无法成交，直接作废
+
+<li>
+转出：该订单转出到其他分店进行制作
+
+</ul>
+<li>
+下单时间
+
+<li>
+交货时间
+
+<li>
+客户名称
+
+<li>
+客户电话
+
+<li>
+金额
+
+<li>
+订金
+
+<li>
+开单员
+
+<li>
+业务员
+
+</ul>
+<li>
+2、每行上有处理操作功能：根据订单状态显示不同的操作功能
+
+<ul>
+<li>
+未处理：        制作、修改、暂停、作废、转出
+
+<li>
+已下单：        强制派工        
+
+<li>
+制作中：        催单
+
+<li>
+完工：          通知取送 
+
+<li>
+外协：          催单 
+
+<li>
+待取:           结算、通知取送 
+
+<li>
+待送：          结算、通知取送 
+
+<li>
+送单中：        结算、查看送货单
+
+<li>
+已结算：        查看结算单
+
+<li>
+暂停:           制作、恢复、转出
+
+<li>
+作废：          制作、恢复、转出
+
+<li>
+转出：          进度查看
+
+</ul>
+<li>
+3、双击某一行的订单可以查看该订单的详细信息
+
+<li>
+4、查询、排序、过滤功能
+
+<ul>
+<li>
+按订单状态过滤
+
+<li>
+排序
+
+<li>
+复杂查询:可复选查询
+
+<ul>
+<li>
+客户名称模糊查询
+
+<li>
+下单时间段查询
+
+<li>
+完工时间段查询
+
+<li>
+开单员模糊查询
+
+<li>
+业务员模糊查询
+
+</ul>
+</ul>
+<li>
+5、显示查询条件
+
+</ul>
+
+        </div>
+    </body>
+</html>

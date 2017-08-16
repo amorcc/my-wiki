@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>制作单一览表</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+
+
+<h2 id="toc_0.1">待处理制作单</h2>
+
+<h3 id="toc_0.1.1">页面主要实现功能描述</h3>
+<ul>
+<li>
+表格显示所有待处理制作单信息
+
+<ul>
+<li>
+序号
+
+<li>
+制作单号
+
+<li>
+客户名称
+
+<li>
+交货时间
+
+<li>
+剩余时间
+
+<li>
+开单员
+
+<li>
+业务员
+
+<li>
+跟单员
+
+<li>
+优先级
+
+<li>
+任务进度      ：2/3  2是已经完成的子任务数，3是任务数
+
+<li>
+状态
+
+<ul>
+<li>
+未派工：        删除
+
+<li>
+制作中：        催单
+
+<li>
+完工：          通知取送 
+
+<li>
+外协：          催单 
+
+<li>
+待取:           结算、通知取送 
+
+<li>
+待送：          结算、通知取送 
+
+<li>
+送单中：        结算、查看送货单
+
+<li>
+已结算：        查看结算单
+
+<li>
+暂停:           派单、恢复、转出
+
+<li>
+作废：          派单、恢复
+
+<li>
+转出：          进度查看
+
+</ul>
+<li>
+操作处理
+
+</ul>
+<li>
+2、双击某一行的制作单可以查看该制作单的详细信息
+
+<li>
+3、查询、排序、过滤功能
+
+<ul>
+<li>
+按订单状态过滤
+
+<li>
+排序
+
+<li>
+复杂查询:可复选查询
+
+<ul>
+<li>
+客户名称模糊查询
+
+<li>
+下单时间段查询
+
+<li>
+完工时间段查询
+
+<li>
+开单员模糊查询
+
+<li>
+业务员模糊查询
+
+</ul>
+</ul>
+<li>
+4、显示查询条件
+
+<li>
+5、可以选择某一行，在table的tfoot中显示可以进行的操作
+
+<ul>
+<li>
+打印制作单
+
+<li>
+打印合同单
+
+</ul>
+</ul>
+
+</body>
+</html>

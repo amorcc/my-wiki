@@ -1,0 +1,44 @@
+== ESFT设计 ==
+
+=== ESFT ===
+ESFT：一江socket文件传输 (ejiang socket file transfer)
+
+=== 支持的客户端 ===
+[[支持客户端]]
+
+=== 主要实现功能 ===
+* 文件传输
+* 断点续传
+* 传输前后客户端及服务端定制处理
+* 使用连接池
+* 使用缓冲池
+* 文件传输块验证及文件验证
+* 文件存在验证(实现极速妙传)
+* 文件块传输和客户端服务端通讯类型分离(便于以后修改为聊天程序)
+* 部分类继承IDisposable接口，实现Dispose功能
+* * 文件读写分开
+* * 实现双工通讯
+
+=== 类设计 ===
+* *ServerState   服务器状态*
+    # Initialing 正在初始化 
+    # Inited     初始化完成 
+    # Running    运行       
+    # Stoped     停止       
+* *ClientState  客户端状态类*
+    # Initialing 正在初始化 
+    # Inited     初始化完成 
+    # Running    运行       
+    # Stoped     停止       
+* *EFSTBufferManage 缓冲管理类*
+    # int _BufferSize               单个Buffer大小
+    # int _BufferMaxNum             缓冲区最大Buffer数目 
+    # Queue<Byte[]> _BufferPool     先进先出的Buffer队列
+    # func EnQueue                  往队列中压入一个buffer
+    # func DeQueue                  从队列中取出并移除一个buffer
+
+=== 传输流程 ===
+[[传输流程]]
+
+=== 参考资料 ===
+[[参考资料]]

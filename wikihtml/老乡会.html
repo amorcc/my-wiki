@@ -1,0 +1,163 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>tt老乡会</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+<h1 id="toc_1">sql语句</h1>
+<p>
+1、你创建了3个，参与了1个，被邀请了1个，被代注册3个,被共享了3个，共计3个
+select 
+from (
+select j.jointypes jointypes,count(*) oldladnum
+  from sitespace.sitejoinuser j
+  join sitespace.oldladsiteinfo o on j.siteid = o.siteid
+  join sitespace.category c on c.categoryid = o.categoryid
+ where  j.SPID=5 
+</p>
+<blockquote>
+and j.USERID='SUSER56c09860293e4393a00b5229d0a84e25' 
+</blockquote>
+<p>
+ group by jointypes ) tselect 
+</p>
+<blockquote>
+sum(decode(t.jointypes,0,t.oldladnum，0)) jointype0,
+sum(decode(t.jointypes,1,t.oldladnum，0)) jointype1,
+sum(decode(t.jointypes,2,t.oldladnum，0)) jointype2,
+sum(decode(t.jointypes,3,t.oldladnum，0)) jointype3,
+sum(decode(t.jointypes,4,t.oldladnum，0)) jointype4,
+sum(t.oldladnum) total
+</blockquote>
+<p>
+from (
+select j.jointypes jointypes,count(*) oldladnum
+  from sitespace.sitejoinuser j
+  join sitespace.oldladsiteinfo o on j.siteid = o.siteid
+  join sitespace.category c on c.categoryid = o.categoryid
+ where  j.SPID=5 
+</p>
+<blockquote>
+and j.USERID='SUSER56c09860293e4393a00b5229d0a84e25' 
+</blockquote>
+<p>
+ group by jointypes ) t
+</p>
+<h1 id="toc_2">手机站</h1>
+<p>
+热点播报 --
+GetArticleList(5,2) 
+热点话题 --
+GetArticleList(5,3)
+老乡情怀 --
+GetArticleList(5,57)
+乡音乡情 --
+GetArticleList(5,58)
+出门在外 --
+GetArticleList(5,59) 
+老乡互助 --
+GetArticleList(5,60) 
+老乡看吧 --
+GetArticleList(5,6)
+就业创业 --
+GetArticleList(5,7)
+老乡情深 --
+GetArticleList(5,63) 
+家乡父老 --
+GetArticleList(5,64)
+家乡动态 --
+GetArticleList(5,61)
+家乡建设 --
+GetArticleList(5,62)
+</p>
+
+<h1 id="toc_3">主站</h1>
+
+<ul>
+<li>
+热点播报
+
+<ul>
+<li>
+&lt;!--ooklmsign-0-热点播报-5-2-8-1-28--&gt;
+
+<li>
+获取数据
+
+<ul>
+<li>
+图片URL
+
+<li>
+标题
+
+</ul>
+<li>
+SQL语句
+        select *
+        from (select a.caption, a.htmlurl, a.imgurl, a.spid
+                from ARTICLESPACE.articlemain a
+                where a.STATUS = 3
+                    and a.spid = 5
+                    and a.articlecolumn = '1'
+                order by ORDERS desc, a.pubdate desc)
+        where rownum &lt;= 5
+
+</ul>
+<li>
+热图聚焦
+
+<ul>
+<li>
+&lt;!--ooklmsign-0-热图聚焦-5-1-4-1-50--&gt;
+
+</ul>
+<li>
+热点话题
+
+<ul>
+<li>
+&lt;!--ooklmsign-0-热点话题-5-3-9-1-38--&gt;
+
+</ul>
+</ul>
+
+        </div>
+    </body>
+</html>

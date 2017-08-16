@@ -1,0 +1,263 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>Coder-cc - ZOL工作日志</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+<h1 id="toc_1"><a href="帮助中心.html">帮助中心</a></h1>
+
+<h1 id="toc_2"><a href="重构内容.html">重构内容</a></h1>
+
+<h1 id="toc_3"><a href="soa架构分析.html">soa架构分析</a></h1>
+
+<h1 id="toc_4">2016-10-17 wap端接口</h1>
+<ol>
+<li>
+立即购买
+   {
+       "proIds":"100056|1|193,100058|1|193,100142|2|193", //产品编号|购买数量|活动id  ：  其中如果是捆绑购买，活动id传递的是PromotionProduct表的id
+       "calcType":"1",   //1-立即购买，2-购物车，3-捆绑，4-分货单购买
+       "rn":"1550925218916"
+   }
+
+<li>
+购物车
+  {
+      "proIds":"100056|1|193,100058|1|193,100142|2|193", //产品编号|购买数量|活动id  
+      "calcType":"2",   //1-立即购买，2-购物车，3-捆绑，4-分货单购买
+      "rn":"1550925218916"
+  }
+
+<li>
+捆绑  
+   {
+       "proIds":"100056|1|193,100058|1|193,100142|2|193", //产品编号|购买数量|活动id  ：  其中如果是捆绑购买，活动id传递的是PromotionProduct表的id
+       "calcType":"3",   //1-立即购买，2-购物车，3-捆绑，4-分货单购买
+       "rn":"1550925218916"
+   }
+
+<li>
+分货
+    wap无
+
+</ol>
+
+<ol>
+<li>
+预售 
+    wap无
+
+</ol>
+    
+<ol>
+<li>
+满减
+
+<li>
+满赠
+
+<li>
+直降
+    如果活动id不穿值，则按照不参加活动购买
+   {
+       "proIds":"100056|1|193,100058|1|193,100142|2|193", //产品编号|购买数量|活动id 
+       "calcType":"1",   //1-立即购买，2-购物车，3-捆绑，4-分货单购买
+       "rn":"1550925218916"
+   }
+
+</ol>
+
+<h1 id="toc_5">2016-10-13</h1>
+<ol>
+<li>
+修改GDList.aspx
+
+<li>
+修改添加分货单页面
+
+<li>
+修改分货单列表
+
+</ol>
+
+<h1 id="toc_6">卖家重构剩余工作</h1>
+<p>
+<strong>优先级由高到低</strong>
+</p>
+<ol>
+<li>
+第一轮测试问题修改        刘斌负责CSS方面，其他功能找各负责人,(2个测试文档未改，26个测试文档已改)
+
+<li>
+我的店铺                  UI未出设计
+
+<li>
+买家活动信息漏出          需要UI设计，前端修改
+
+<li>
+买家促销活动信息展示      需要UI设计，前端修改
+
+<li>
+卖家中心首页              永江，消息模块需要跟UI沟通
+
+<li>
+订单中心缺少2个功能       永江
+
+<li>
+菜单权限                  连富+陈伟,新老菜单对照
+
+<li>
+测试vue代码压缩           永江+刘斌，可以暂缓
+
+<li>
+上传文件有问题(先选择一个错误格式的文件，然后就无法正常上传文件了)
+
+<li>
+帮助中心                  暂缓
+
+</ol>
+
+<h1 id="toc_7"><a href="分货.html">分货</a></h1>
+
+<h1 id="toc_8"><a href="卖家重构统计需求确认.html">卖家重构统计需求确认</a></h1>
+
+<h1 id="toc_9">2016-9-29 修改内容</h1>
+<ul>
+<li>
+修改proc_ProductOrder_PreSell_SupplierQuery，支持只开始或者只结束时间的搜索
+
+</ul>
+
+<h1 id="toc_10">2016-9-28 串号14位15位可选</h1>
+<ul>
+<li>
+siteB2b/Center/S/Order/InputOrderImei.aspx
+
+<li>
+siteDALs/DAL_B2b/Imei.cs
+
+</ul>
+
+<h1 id="toc_11">2016-9-28 退换货修改</h1>
+<ul>
+<li>
+修改取消退换货存储过程 proc_ProductOrder_Refund_Cancel
+
+<li>
+新增退换货申请存储过程 proc_ProductOrder_RefundInsert
+
+<li>
+修改v_ProductOrder视图
+
+<li>
+修改\Center\R\Refund\ApplyRefund1.aspx
+
+<li>
+修改/Center/R/OrderList.aspx
+
+<li>
+修改/Center/S/Order/SellerCenter.aspx
+
+<li>
+修改/Center/S/Order/Operate.aspx
+
+<li>
+修改/Center/S/Order/OrderExpressList.aspx
+
+<li>
+修改卖家订单中心 +　买家订单中心
+
+</ul>
+
+<h1 id="toc_12">活动</h1>
+<p>
+100直降，102|满减，103|买赠，104|捆绑
+</p>
+<ul>
+<li>
+产品搜索
+
+<ul>
+<li>
+修改ProductService.GetProductActivity,除了直降，其他活动直接出结果就行
+
+<li>
+需要修改：捆绑的标变成返利了
+
+</ul>
+<li>
+订单详情页
+
+<li>
+订单预览
+
+<ul>
+<li>
+修改捆绑信息获取存储过程[proc_Product_GetBindSale]
+
+<li>
+修改OrderService.BindGoodsPreview
+
+<li>
+修改OrderService.GetBindSaleInfo
+
+</ul>
+</ul>
+
+<h1 id="toc_13">2016-9-20</h1>
+<p>
+1、新增获取共享/不共享客户数量的存储过程proc_SupplierLevel_CustomerCount
+2、修改存储过程proc_SupplierLevel_CustomerSelect
+3、除非省包，否则不显示是否共享客户资源按钮
+4、省包时，漏出共享/不共享客户数量的提示
+5、修改E:\ZOL\ZOL-Beta\siteB2b\Mng\Supplier\SetArea.aspx页面
+6、修改E:\ZOL\ZOL-Beta\siteDALs\DAL_B2b\SupplierCustLevel.cs页面，新增GetShareOrNotCustomerCount函数
+</p>
+
+<h1 id="toc_14">2016-9-18</h1>
+<p>
+1、卖家中心重构商品管理--商品列表页面
+2、赠品管理获取数据的后台方法新增
+3、新vue框架代码规范约定的制定
+4、补充新vue框架的帮助文件
+</p>
+
+        </div>
+    </body>
+</html>

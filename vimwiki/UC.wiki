@@ -1,0 +1,320 @@
+[[短信移动到UC]]
+
+
+[[修改内容]]
+
+= 测试帐号 =
+    # 卖家： 17777777777
+        # 新增卖家：17777777776  操作权限：商品管理  品类和区域全部
+    # 买家： 1788888888
+    # 河南省省长：13811111111
+    
+= 测试问题 =
+    # 卖家管理用户添加：isAdmin == 1 不显示到操作权限里面
+    # 卖家管理用户添加不显示用户名可用图片
+    # 卖家管理用户添加 vue 歪了
+    # 卖家管理用户添加 清空用户名和密码
+    # 卖家管理用户添加 第一次点击修改时，显示了用户名已经存在
+
+
+= 遗漏的存储过程 =
+# /mng/                 LoginUser.GetLastLoginIpAndDate
+# /Login.aspx           Advtisement.SelectAdvisement
+= 需要修改的前端内容汇总(随时新增未知内容) =
+      优先级    后台        前端        内容
+    #  1        ok          ok          登录
+    #  2        ok          ok          退出登录
+    #  3        ok          ok          注册流程
+    #  4        ok          ok          找回密码流程
+    #  5        ok          ok          修改密码流程
+    #  5.1      ok                      新卖家中心的菜单动态生成
+    #  6        ok                      卖家新增用户管理页面
+    #  7        ok          ok          老卖家中心菜单由UC传递
+    #  8        ok                      新卖家中心菜单由UC传递
+    #  9        ok                      卖家订单中心第三级操作权限的限制
+    #  10       ok                      平台新增用户管理页面：只管理平台管理员权限，eg：省长、省运营中心、运营等的帐号
+    #  11                               平台的菜单由UC传递
+    #  12                               买家新增用户管理页面
+    #  13                               买家的个人中心菜单由UC传递，生成动态菜单
+    #  14       ok                      登录页的广告后台设置页面+前端展示页面
+    #  15       ok                      登录后的所有页面广告根据登录人注册地分省市县显示  ？？？ 
+    #                                   ？？？？规则怎么定？现在买家都精确到县了，那么什么时候才能显示市和省的广告？
+    #  16       ok                      新老订单中心、订单操作、订单改价、订单发货、核销加操作权限
+    #  17                               黑白名单
+    #                                   邀请注册
+    
+= 200站去掉表后报错的内容 =
+    # ok        proc_Advtisement_GetList                    Advtisement.SelectAdvisement
+    # ok        proc_AdvContent_SelectTop                   
+    # ok        v_ProductSearch
+    # ok        proc_LoginUser_CompanyInfo                  UserAuth.Login
+    # ok        proc_System_MngIndex                        Supplier.MngMain
+    # ok        proc_Supplier_CustLevel_SelectAll           SupplierCustLevel.SelectWithRetailer
+    # no        v_product                                   VProduct.SelectAll
+    # ok        proc_ProductStore_AlarmList                 VProduct.StoreAlarmList
+    # no        proc_ProductBasic_TheSecond                 ZOL.B2b.DAL.DALFactory<ZOL.B2b.DAL.ProductBasic>.Instance.TheSecond()
+    # ok        V_Supplier_NewProApply                      VSupplierNewProApply.SelectAll
+    2016-11-29 
+    # ok        proc_ProductPrice_SelectForUpdate           VProduct.PriceForUpdate
+    # ok        proc_ProductPrice_Update                    VProduct.PriceUpdate
+    # ok        proc_ProductMatrixPrice_Insert              VProduct.PriceUpdate
+    # ok        proc_RetailerCenter_GetData                 Retailer.CenterIndex
+    # ok        proc_ProductOrder_List                      ProductOrder.List
+    # ok        proc_GoodsDistribution_SelectForRetailer    GoodsDistribution.ListForRetailer
+    # ok        proc_MyCredit_SelectAll                     MyCredit.SelectAll
+    # ok        proc_MyCredit_History_SelectAll             MyCredit_History.SelectAll
+    # ok        proc_MyCreditDetail_ReturnList              MyCredit_Detail.RetrunList
+    # ok        proc_VouchersList_SelectByCom               VouchersList.SelectByCompany
+    # ok        proc_MyFinance_Rebate_Retalier_GetList      MyFinance_Rebate.GetRetalierFinanceList 
+    # ok        proc_MyFinance_Rebate_Retalier_GetAmount    MyFinance_Rebate.GetRetalierFinanceAmountBySupplier
+    # no        V_Retailer_Interest_Supplier                VRetailerInterestSupplier.SelectAll
+    # ok        v_OOS_Sign                                  VOOS_Sign.RetailerSelectAll
+    # no        proc_Supplier_Promotion_GetTopN             Supplier.PromotionGetTopN
+    # no        proc_Supplier_MainPage_MyProducts           Supplier.GetSupplierPro
+    # ok        VProduct.Details1
+    # ok        ProductOrder.PreView
+    # ok        ProductOrder.PreView_GetMySecondaryPay
+    # no        proc_StoreOut_ExpressConfirm                StoreOut.ExpressConfirm
+    # ok        proc_PromotionActivity_SelectByPro          VProduct.Details1
+    # ok        ProductOrder.BeforPay_MorePayType_Details
+    # ok        ProductOrder.Detail
+    # ok        ProductOrder.Pay 线下支付确认支付时错误
+    # ok        proc_Finance_Proof_Search                   Proof.SelectAll
+    # ok        Proof.Insert
+    # ok        proc_LoginUserInfo_SelectByOrder 额度支付发短信出错
+    # no        ProductOrder.Cancel
+    # no        PromotionActivity.PromotionProductShowAll 促销活动
+= 卖家后台 =
+    # ok        proc_ProductOrder_StoreOut_Query            ProductOrder.OutputQuery 订单改价
+    # ok        proc_StoreOut_Insert                        StoreOut.Insert
+    # ok        ProductOrder.Query
+    # ok        ProductOrder.ChangePrice
+    # ok        StoreOut.Remind 提醒收货
+    # ok        proc_SupplierArea_Select                    SupplierArea.Select 基础信息
+    # ok        proc_SupplierExpress_SelectAll              ExpressCompany.SupplierExpress 基础信息--物流管理
+    # ok        ExpressCompany.SupplierExpressUpdate
+    # ok        SupplierArea.GetSupplierAreaNameByID
+    # ok        proc_MyFinance_Rebate_Supplier_MyRate       MyFinance_Rebate.MyRate
+    # ok        MyFinance_Rebate.AllRebate
+    # ok        proc_Supplier_SelectMyRetailer              Supplier.SelectMyRetailer
+    # ok        MyFinance_Rebate.AddRebate
+    # ok        MyFinance_Rebate.SendRebate
+    # ok        MyFinance_Rebate.RetalierExport 导出
+    # ok        proc_MyFinance_Rebate_Supplier_AddRebate 导入
+    # ok        proc_Supplier_SelectMyRetailer 导出
+    # ok        proc_MyFinance_Rebate_Auth_Insert           Authentication.GetAuthKey
+    # ok        proc_MyFinance_Rebate_Authentication        MyFinance_Rebate.Authentication
+    # ok        proc_PromotionActivity_SelectAll            PromotionActivity.List
+    # ok        PromotionActivity.Delete
+    # ok        PromotionActivity.Update
+    # ok        proc_MyCredit_Insert                        MyCredit.Insert
+    # ok        proc_MyCredit_Detail_SelectAll              MyCredit_Detail.SelectAll
+    # ok        V_SendMessage                               Sms.GetAll
+    # ok        SMSQueue.InsertSmsByCustomerLevel
+    # ok        proc_Rpt_SalesInfoAreaRetailer              Report.SalesInfoAreaRetailer
+    # ok        proc_Rpt_SalesInfo                          Report.SalesInfo
+    # ok        proc_Rpt_SalesInfoPro                       Report.SalesInfoPro
+    # ok        SelectForUpdate                             VProduct.SelectForUpdate
+    # ok        LoginUserB2B.FindByIdNew
+    # ok        Supplier.UpdateByUserSN
+    # ok        Supplier.MasterPage
+    # ok        VProductTemplate.WithOutMe  发布新品搜索
+    # ok        VProduct.NewInsert  发布新品
+    # no        GoodsDistribution.ListForSupplier    分货管理
+    # 
+    = 平台 =
+    # ok        proc_SupplierLevel_CustomerCount            SupplierCustLevel.GetShareOrNotCustomerCount
+    # ok        [proc_Supplier_DeleteById]                  Supplier.Delete     卖家管理删除功能
+    # ok        Retailer.Disabled 买家管理禁用
+    # ok        Retailer.Delete 买家删除
+    # ok        Retailer.Freeze 买家冻结
+    # ok        proc_Supplier_UpdateByUserSN                Supplier.UpdateByUserSN 卖家注册后提交审核资料
+    # ok        Retailer.Update     买家注册后提交审核资料
+    # ok        Retailer.ExaDisabled 买家管理审核
+    # no        [proc_LoginUser_SelectForSMS]               SmsQueue.UserSelect_ForSms 短信发送
+    # ok        MyCredit.Chk 平台审核额度
+    # no        ProductOrderRefund.ComplaintAll  平台售后投诉
+    # ok        proc_ProductBasicAtt_Select                 ProductBasicAtt.SelectAll 平台扫描设置
+    # ok        proc_ProductBasicAtt_Save                   ProductBasicAtt.Set 平台扫描设置
+    # ok        v_Code_Attribute                            VProductAttribute.SelectAll 属性设置
+    # ok        proc_CodeAttribute_UpdateWeight             平台属性设置
+    # ok        proc_CodeAttribute_Insert 
+    # no        VComplain.SelectAll 平台投诉管理
+    # no        proc_LoginUser_SelectForSMS                 SMSQueue.UserSelect_ForSms 短信发送
+    # no        proc_SMS_History                            Sms.GetSmsHistory  短信历史
+    # ok        proc_PromotionActivity_Insert               PromotionActivity.NewInsert  卖家新增活动
+    # no
+    # no
+    # no
+    # no
+    
+  var script = document.createElement('Script');
+     script.src=webConfig.ucapiurl.url + '/categoryinfo.js';
+     document.head.appendChild(script);
+     
+      v.BrandName = ucCategoryInfoGetValue(v.BrandCode).Item;
+            v.ColumnName = ucCategoryInfoGetValue(v.CodeLevel2).Item;
+
+= 200站需要删除的表 =
+    # ProductBasic
+    # Area
+    # LoginUser
+    # SMS
+    # SMS_Queue
+    # SupplierArea  ??
+    # SupplierCategory  ??
+    # SupplierUserArea
+    # User_Role
+    # 
+     
+= 用户管理接口 =
+    # 列表
+        * cmd   :   UserAuth.GetUserList
+        * paras :   username,pageindex,pagesize
+    # 新增用户页面初始化
+        * cmd   :   UserAuth.GetSupplierSysUserInfo
+        * paras :   
+    # 新增用户
+        * cmd   :   UserAuth.AddUser
+        * paras :   phonenum,password,email,tier,status,areacodes,categoryids,menuids
+    # 修改用户获取用户信息
+        * cmd   :   UserAuth.GetUserInfo
+        * paras :   userid
+    # 修改用户
+        * cmd   :   UserAuth.ModifyUser
+        * paras :   userid,phonenum,email,tier,status,areacodes,categoryids,menuids
+    # 克隆用户
+        * cmd   :   UserAuth.CloneUser
+        * paras :   cloneuserid,newphonenum,newpassword,newemail,status
+    # 删除用户
+        * cmd   :   UserAuth.DeleteUser
+        * paras :   userid
+
+= 广告 =
+    # 店铺的广告
+        * 店铺首页_轮播广告大图_1900*420
+    # 商品陈列
+        * 今日推荐
+        * 手机专区
+        * 电脑DIY
+        * WAP首页平板推荐
+        * 智能数码
+    # 平台设置的广告
+        * 平台首页
+        * 店铺首页
+        * 登录首页
+        * 平台首页-->首页-轮播广告大图
+        * 平台首页-->首页-中部广告
+        * 平台首页-->首页-推荐店铺-顶1
+        * 平台首页-->首页-推荐店铺-左下
+        * 平台首页-->首页-推荐店铺-右下
+        * 平台首页-->首页-热销品牌
+        * 平台首页-->首页-底部广告
+        * 平台首页-->WAP首页轮播图
+        * 平台首页-->WAP首页活动推荐大图
+        * 平台首页-->WAP首页横插1
+        * 平台首页-->WAP首页横插2
+        * 平台首页-->WAP首页横插3
+        * 平台首页-->WAP首页品牌推荐
+        * 平台首页-->WAP首页活动推荐小图
+        * 店铺首页-->店铺首页-轮播广告大图
+        * 店铺首页-->WAP端店铺首页广告
+        * 登录首页-->登录页-广告大图
+        * 登录首页-->登录底部广告3个
+
+= 进度 =
+    # 【已完成】UC数据库库表设计  达飞
+    # 【已完成】100站的登录和权限等信息数据同步到UC数据库 达飞
+    # 【已完成】UC数据库新增品类信息和区域信息 达飞
+    # 【已完成】UC解决方案架构 陈伟
+    # 【已完成】UC登录信息验证 陈伟代码   达飞存储过程
+    # 【已完成】UC权限信息获取  陈伟代码  达飞存储过程
+    # 【已完成】UC登录验证接口
+    # 【已完成】B2b新的到UC验证的登录接口  陈伟
+    # 【已完成】B2b新的登录试下   陈伟
+    # 【已完成】100站的广告接口重新搞 永江
+    # 【已完成】B2b新登录页面 永江
+    # 【已完成】注册流程重新做
+    # 【已完成】UC退出登录接口  陈伟
+    # 加区域和品类数据权限
+    	老版：订单中心+订单改价+订单操作+预售订单查询+订单综合查询+订单综合查询导出+订单发货+退货订单+
+    	【正在进行】新版：订单中心+预售订单查询+订单综合查询+订单综合查询导出+退换货  达飞
+    	【已完成】新版：统计数据4个+首页统计
+    # 遍历所有存储过程，找出roleId的，改成新的权限
+    # 遍历所有存储过程直接读取loginuser,menu,role,品类,区域表这些全部使用传入数据
+    # 新菜单动态加载 ： 永江
+    # 【已完成】老菜单动态对应
+    # UC用户管理：列表+新增+修改+删除  陈伟,永江
+        * 【已完成】B2b新增用户的列表接口   陈伟
+        * 【已完成】B2b获取某一个用户的基础信息、各类权限信息接口完成  陈伟
+        * 【已完成】B2b新增用户的接口 陈伟
+        * 【已完成】B2b用户管理页面重新做，从UC获取数据信息
+    # 重新设计所有站点的广告
+    # 【已完成】忘记密码
+    # 【已完成】修改密码
+    # 【已完成】注册的图片验证码
+    # 【已完成】修改现有的所有未登录跳转页面+去掉100站登录相关的代码  陈伟
+    # 【已完成】修改登录页的广告相关命令不判断登录信息  陈伟
+    # 【已完成】登录连续三次密码输入错误，出图片验证码 永江
+    # 统一发送短信到UC里面去实现
+        * 服务修改   达飞
+        * UC接口    陈伟
+    # 黑白名单
+    # 登录后回写User表的最后登录信息  达飞
+    # zol经销商登录
+    # 禁用用户时，需要禁用200站的supplier
+    # 订单表冗余area和category
+    # 订单表：公开价、客户价、下单价（生成订单时的价格）、成交价（改价后的价格）、下单运费、成交运费
+    # 录串后出库，只记录了userSN，没有记录userId，全算是店铺出库，没有记录操作人
+    # 提醒收货
+    # 站内信
+    # 新版和老版的客户级别要哪一个？
+    # 卖家修改资料时，给管理员发站内信
+    # 卖家修改资料时，需要更新用户状态
+    # 修改产品时定向区域UC读取
+    # ZOL经销商登录
+    # Retailer和supplier表冗余  用户名、手机号、userStatus
+    # 模拟登录
+    # logoff.aspx
+    # 平台管理--》系统管理--》短信历史
+    # 平台管理--》平台商务--》短信群发汇总
+    # 买家资料和卖家资料修改时，需要同步区域数据到UC
+
+
+= 问题 =
+    # 存不存在同一个用户，又是买家又是卖家？
+    # B2b怎么调用属于自己的UC用户管理页面
+
+
+= 计划 =
+    # UC的架构设计和完善
+    # UC的数据库库表结构设计
+    # 现有B2b的用户信息同步到UC的脚本
+    # UC的功能模块
+        * 用户管理
+            * 新增用户
+            * 删除用户
+            * 用户状态修改
+            * 密码重置
+            * 修改用户
+        * 业务模块注册
+            * 新增站点
+            * 新增菜单
+            * 新增操作权限（隶属菜单）
+        * 收费模块授权
+            * 
+        * 品类信息管理
+        * 区域信息管理
+        * 验证及授权（无需页面，只有接口）
+            * 登录
+            * 退出
+            * 指定userId和site，获取用户信息+权限信息
+    # B2b的修改
+        * 订单中心加上区域、菜单权限、操作权限、品类权限的过滤
+        * 数据分析加上区域、菜单权限、操作权限、品类权限的过滤
+        * 页面加菜单权限和操作权限的过滤（前端）
+    # PSI配合内容，由PSI主导，B2b配合，预计有如下接口
+        * 商品信息接口
+        * 订单信息接口
+        * 录串、发货操作的接口
+    

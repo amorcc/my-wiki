@@ -1,0 +1,204 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>Coder-cc - Three.js</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+
+<h1 id="toc_1">WebGl中文网初级教程</h1>
+
+<h2 id="toc_1.1">Three.js三大组件</h2>
+<ol>
+<li>
+在Three.js中，要渲染物体到网页中，需要３个组件：
+
+<ul>
+<li>
+场景(Scene)
+        场景是所有物体的容器，要显示什么东西，就将该东西加入到场景中。
+
+<li>
+相机(camera)
+        相机决定了场景中哪个角度的景色会显示出来，相当于人的眼睛。
+        场景只有一种，但是相机却可以有很多种，相机有很多种，比如有的相机适合人像，有的相机适合风景。
+
+<li>
+渲染器(renderer)
+        渲染器决定了渲染的结果应该画在页面的什么元素上面，并且以怎样的方式来绘制。
+
+</ul>
+</ol>
+
+<h2 id="toc_1.2">点和线</h2>
+<ol>
+<li>
+Three.js中使用一个向量来表示点
+<pre>
+        THREE.Vector3 = function(x,y,z){
+            this.x = x || 0; //当x=null或者undefine时，this.x的值应该取0
+            this.y = y || 0;
+            this.z = z || 0;
+        }
+</pre>
+
+<li>
+线条的材质使用THREE.LineBasicMaterial类型定义
+
+<ul>
+<li>
+LineBasicMaterial(parameters) 
+
+<li>
+parameters是一个定义材质外观的对象，主要属性如下
+
+<ol>
+<li>
+Color         :   线条的颜色
+
+<li>
+Linewidth     :   线条的宽度
+
+<li>
+Linecap       :   线条两端的外观
+
+<li>
+Linejoin      :   两个线条的连接点处的外观
+
+<li>
+VertexColors  :   定义线条材质是否使用顶点颜色，boolean
+
+<li>
+Fog           :   定义材质的颜色是否受全局雾效的影响
+
+</ol>
+</ul>
+<li>
+THREE.Line类定义线条
+<pre>
+        var line = new THREE.Line(geometry, material, THREE.LinePieces);
+</pre>
+
+<ul>
+<li>
+第一个参数是几何体geometry，包含2个订点和顶点的颜色
+
+<li>
+第二个参数是线条的材质，或者是线条的属性
+
+<li>
+第三个参数是一组点的连接方式
+
+</ul>
+</ol>
+
+<h2 id="toc_1.3">Three.js 光源</h2>
+<ol>
+<li>
+AmbientLight(环境光)
+    这是一种基础光源，它的颜色会添加到整个场景和所有对象的当前颜色上
+
+<li>
+PointLight(点光源)
+    空间中的一个点，朝所有的方向发射光线
+
+<li>
+SpotLight(聚光灯光源)
+    这种光源有聚光的效果，类似台灯、天花板上的吊灯，或者手电筒
+
+<li>
+DirectionalLight(方向光)
+    也称作是无线光，从这种光源发出的光线可以看作是平行的。例如：太阳光
+
+<li>
+HemisphereLight(半球光)
+    这是一个特殊光源，可以用来创建更加自然的室外光线，模拟反光面和光线微弱的天空
+
+<li>
+AreaLight(面光源)
+    使用这种光源可以指定散发光线的平面，而不是空间的一个点
+
+<li>
+LensFlare(镜头炫光)
+    这不是一种光源，但是通过LensFlare可以为场景中的光源添加眩光效果
+
+</ol>
+
+<h2 id="toc_1.4">Three.js 材质</h2>
+<ol>
+<li>
+MeshBasicMaterial 网格基础材质
+    基础材质，可以用它赋予几何体一种简单的颜色，或者显示几何体的线框
+
+<li>
+MeshDepthMaterial 网格深度材质
+    根据网格到相机的距离，这种材质决定如何给网格染色
+
+<li>
+MeshNormalMaterial 网格法向材质
+    这是一种简单的材质，根据物体表面的法向向量计算颜色
+
+<li>
+MeshFaceMaterial 网格面材质
+    这是一个容器，可以在这个容器里为物体的哥哥表面指定不同的颜色
+
+<li>
+MeshLambertMaterial 网格朗伯材质
+    这种材质会考虑光照的影响，可以用来创建颜色暗淡的、不光亮的物体
+
+<li>
+MeshPhongMaterial 网格Phong式材质
+    这种材质也会考虑光照的影响，而且可以用来创建光亮的物体
+
+<li>
+ShaderMaterial 着色器材质
+    这种材质允许使用自定义的着色器程序，直接控制顶点的放置方式，以及像素的着色方式
+
+<li>
+LineBasicMaterial 直线基础材质
+    这种材质可以用于直线几何体，从而创建着色的直线
+
+<li>
+LineDashedMaterial 虚线材质
+    这种材质跟直线基础材质一样，不过可以用来创建出一种虚线效果
+
+</ol>
+
+        </div>
+    </body>
+</html>

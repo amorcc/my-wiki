@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>新增订单</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+
+<h2 id="toc_0.1">新增订单</h2>
+
+<h3 id="toc_0.1.1">页面主要实现功能描述</h3>
+<ul>
+<li>
+今日订单数量、未完成制作单数量、
+
+<li>
+录入客户信息
+
+<li>
+录入客户制作内容
+
+<li>
+录入客户制作要求
+
+<li>
+协商交货时间
+
+<li>
+是否送货，确认送货信息
+
+<li>
+确认支付方式
+
+<li>
+保存或者上传客户文件
+
+</ul>
+
+<h3 id="toc_0.1.2">录入完成后的操作</h3>
+<ul>
+<li>
+直接保存订单：
+
+<ul>
+<li>
+此时该订单不进行制作，只是保存客户的意向，可能需要进一步确认后才能确认是否开始制作。
+
+</ul>
+<li>
+直接生成制作单：
+
+<ul>
+<li>
+此时该订单自动转为制作单，开始制作单流程，流程如下：
+        1、是否拆分制作单为多个子任务
+        2、如果不拆分子任务，那么整个制作单变成一个子任务，如果拆分，可以将制作单拆分成多个子任务
+        3、子任务发布，员工自觉领取子任务
+        4、将某一个子任务强制派单给某个员工
+
+</ul>
+<li>
+取消订单
+
+</ul>
+
+</body>
+</html>

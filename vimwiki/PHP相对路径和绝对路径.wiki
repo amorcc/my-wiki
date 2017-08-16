@@ -1,0 +1,29 @@
+
+= dirname(__FILE__) 当前目录
+= ../   表示上一层 =
+= ./    表示当前层 =
+= 根目录 $_SERVER['DOCUMENT_ROOT']=
+* $$RootDir = $_SERVER['DOCUMENT_ROOT']; 
+* $$fireDir = "$RootDir/bb/s2.txt";
+
+
+= http://blog.163.com/magicworldx@126/blog/static/88662653201012803228534/ =
+ 一、绝对路径和相对路径常见用法
+
+绝对路径示例：
+
+$droot="/var/www/html/";//网站根目录
+
+//$droot="D:/xampp/htdocs/";//网站根目录
+
+require_once($droot."include/cfg.php");
+
+使用上文第一种绝对路径方法，该方法虽然笨拙，不大好看，对于小WEB程序够用即可。
+
+相对路径示例：
+
+require_once("../include/cfg.php");
+
+require_once("../../../include/metsky/cfg.php");
+
+表示包含上一级目录include下的cfg.php文件。

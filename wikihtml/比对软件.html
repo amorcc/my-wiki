@@ -1,0 +1,205 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>tt比对软件</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+
+<p>
+比对软件
+</p>
+
+<p>
+0、名次解释
+0.1 数据来源：将要导入的excel数据表格，例如：新农合信息数据表
+0.2 winform程序：windows下的exe程序，特点：运行快
+</p>
+
+<p>
+一、软件功能介绍
+1.1 excel电子表格信息导入，导入要求必须有姓名和身份证号
+1.2 导入的excel表格按照不同的数据来源进行分类管理，实现数据清空和增量数据导入
+1.3 导入的excel表格数据来源最多8个
+1.4 数据比对功能，比对8个数据来源的身份证号，做如下统计
+</p>
+<blockquote>
+a、同一数据来源，同一身份证号信息重复
+b、不同数据来源，同一身份证号信息重复
+c、身份证号验证不正确
+</blockquote>
+<p>
+1.5 比对数据报表功能，做比对数据导出excel数据表格的功能
+1.6 各个数据来源数据检索，可以在软件中直接查询和修改任意数据来源的数据
+1.7 数据来源预留30个信息列
+1.8 实现单个身份证号的信息查询，查询出该身份证号在哪些数据源中有数据
+1.9 软件为单机版
+</p>
+
+<p>
+二、软件研发要求
+2.1 使用winform程序实现
+2.2 支持.net framework 2.0以上版本
+2.3 支持windows xp 以上操作系统
+2.4 使用mysql数据库，mysql数据库是现在小型应用较多的数据库，免费数据库，无需购买数据库版权。
+2.5 支持excel 2003及以上数据表格，推荐保存为2003工作簿（即：.xls）类型excel文件
+</p>
+
+<p>
+三、软件架构介绍
+</p>
+
+<hr />
+<p>
+报表统计   |   数据修改  |   身份证号数据源验证
+<hr />
+基础数据源数据导入    |  基础数据源数据维护
+<hr />
+数据分析核心模块   |   数据分析核心功能接口
+<hr />
+mysql数据库
+<hr />
+</p>
+
+<p>
+四、软件应用场景模拟
+4.1 不同数据源下的信息重复对比
+</p>
+<blockquote>
+例如： 张三的身份证号是：413025198808080055在新农合已投保，同时在居民医保中投保，系统可以将其信息对比出来
+</blockquote>
+<p>
+4.2 同一数据源下的信息重复对比
+</p>
+<blockquote>
+例如： 张三的身份证号是：413025198808080055,在新农合中信息重复，可能是录入错误或者历史数据问题，系统可以将其信息对比出来
+</blockquote>
+<p>
+4.3 数据信息验证
+</p>
+<blockquote>
+例如：新农合数据中，张三身份证号不足18位，或者身份证号录入错误，不符合公安部门制定的身份证号码计算规则，为错误信息，系统可以将齐信息对比出来进行预警
+</blockquote>
+
+
+<p>
+五、软件接口预留
+</p>
+
+<p>
+为后期升级网络版便利，同时避免对比软件的重复资金投入，本软件预留网络版的各类接口。
+</p>
+
+<p>
+升级网络版的2中方式：
+5.1、采用C/S模式升级网络版
+</p>
+
+<p>
+5.1.1 模式介绍
+</p>
+<blockquote>
+将mysql数据库存储于服务器中，服务器需要固定IP地址，其他客户端直接连接服务器访问数据。
+</blockquote>
+<p>
+5.1.2 优点
+</p>
+<blockquote>
+a、运行速度快
+b、投入小
+c、
+</blockquote>
+<p>
+5.1.3 缺点
+</p>
+<blockquote>
+a、只能运行于windows操作系统
+b、软件升级需要手动，无法自动升级
+c、报表内容显示单调
+d、数据无法共享使用
+</blockquote>
+
+<p>
+5.2 采用B/S模式升级网络版
+</p>
+
+<p>
+5.2.1 模式介绍
+</p>
+<blockquote>
+将应用程序部署到服务器中，服务器需要固定IP地址，使用时直接使用任意浏览器连接web服务器，就可以对数据进行操作，导出报表
+</blockquote>
+<p>
+5.2.2 优点
+</p>
+<blockquote>
+a、跨平台，支持任意能够运行http浏览器的操作系统，苹果手机，android手机也能够访问
+b、升级简单，只需要升级web服务器的应用程序，就可以对整个系统进行升级，客户端无需任何升级操作
+c、使用场景多样化，在任意有网络的地方，使用手机、平板电脑、笔记本电脑、台式机等设备就可以使用软件服务
+d、数据共享，管理员导入数据后，系统自动对比数据，产生结果，任意有权限的单位都可以查看数据并共享
+</blockquote>
+<p>
+5.2.3 缺点
+</p>
+<blockquote>
+a、相对C/S版费用稍贵
+b、导入数据时较慢，需要使用http协议提交数据
+</blockquote>
+
+ 
+
+<p>
+六、产品研发周期计划
+</p>
+
+<p>
+需求调研                0.5
+需求分析                2
+软件架构设计            3
+数据库设计              5
+数据优化及存储过程设计  4
+软件核心功能服务实现    5
+软件界面UI设计          7
+软件交互设计            3
+软件交互实现            5
+软件功能测试            15
+</p>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,10 @@
+
+vs
+oracle
+office 2010
+visio
+dev
+webstrom
+svn
+kiwisyslog
+

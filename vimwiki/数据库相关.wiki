@@ -1,0 +1,57 @@
+
+=获取有效订单信息=
+* OrderStatus 订单状态 : 
+    * 0|已取消,1|待付款,2|已付款,3|已出库,4|已发货,5|已完成,
+    * 11|已退货,13|部分出库,14|部分发货,15|部分完成,20|已评价
+
+    SELECT *
+    FROM dbo.ProductOrder
+    INNER JOIN dbo.retailer ON dbo.ProductOrder.UserSN_R=dbo.retailer.UserSN
+    WHERE CONVERT(varchar(20),dbo.productorder.DateAdded,23) = '2016-05-23'
+	    AND dbo.productorder.OrderStatus=5;
+	
+ =获取有效订单信息买家数量=
+    SELECT  COUNT(1)
+    FROM    ( SELECT DISTINCT
+                        dbo.ProductOrder.UserSN_R AS 买家
+              FROM      dbo.ProductOrder
+                        INNER JOIN dbo.retailer ON dbo.ProductOrder.UserSN_R = dbo.retailer.UserSN
+              WHERE     CONVERT(VARCHAR(20), dbo.productorder.DateAdded, 23) = '2016-05-23'
+                        AND dbo.productorder.OrderStatus = 5
+            ) AS a;
+            
+ =获取有效订单信息卖家数量=
+    SELECT  COUNT(1)
+    FROM    ( SELECT DISTINCT
+                        dbo.ProductOrder.UserSN_S AS 卖家
+              FROM      dbo.ProductOrder
+                        INNER JOIN dbo.retailer ON dbo.ProductOrder.UserSN_R = dbo.retailer.UserSN
+              WHERE     CONVERT(VARCHAR(20), dbo.productorder.DateAdded, 23) = '2016-05-23'
+                        AND dbo.productorder.OrderStatus = 5
+            ) AS a;
+        
+= 订单金额统计 =
+    SELECT  A.OrderCode ,
+            CASE WHEN a.Amount IS NULL THEN 0
+                 ELSE A.Amount
+            END AS 实付款 ,
+            CONVERT(VARCHAR(20), A.DateAdded, 23) AS CreateDate ,
+            B.TotalPrice AS 订单金额 ,
+            C.value AS 付款类型 ,
+            CASE WHEN B.BalanceAmount IS NULL THEN 0
+                 ELSE B.BalanceAmount
+            END AS 结算金额 ,
+            CASE WHEN b.FinalPrice IS NULL THEN 0
+                 ELSE b.FinalPrice
+            END AS 订单最终金额 ,
+            CASE WHEN b.TransFee IS NULL THEN 0
+                 ELSE b.TransFee
+            END AS 运费
+    FROM    dbo.ProductOrder_PayDetails AS A
+            LEFT JOIN dbo.v_ProductOrder AS B ON a.OrderCode = b.OrderCode
+            LEFT JOIN dbo.SystemDictionary AS C ON a.PayType = c.Code
+                                                   AND c.Name = 'PayType'
+    WHERE   PayType IN ( 1, 2, 6, 7, 8 )
+            AND CONVERT(VARCHAR(20), A.DateAdded, 23) BETWEEN '2016-01-05'
+                                                      AND     '2016-05-26'
+            AND A.Amount > 0 

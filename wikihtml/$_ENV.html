@@ -1,0 +1,68 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>tt$_ENV</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+
+<p>
+$_ENV数组中的内容是在php解析器运行时，从php所在服务器中的环境变量转变为php全局
+变量的。它们中的许多都是由php所运行的系统决定，完整的列表是不可能的，需要查看
+php所在服务器的系统文档以确定其特定的环境变量。和$_SERVER一样，这也是自动全局
+变量，在所有的脚本中都有效，在函数或对象的方法中不需要使用global关键词访问它。
+在下面的示例中用foreach语句，将php中能使用的php所在服务器的环境相关信息全部输出
+，以供用户查看。
+</p>
+
+<h1 id="toc_1">php中$_ENV为空的解决方法</h1>
+<p>
+ php中的$_ENV存储了一些系统的环境变量,因环境不同而值不同.
+</p>
+<blockquote>
+但有时候$_ENV是空的,可能有以下原因:
+在php.ini中的variables_order值为“GPCS”,也就是说系统在定义PHP预定义变量时的
+顺序是GET,POST,COOKIES,SERVER,没有定义Environment(E),你可以修改php.ini文件
+的variables_order值为你想要的顺序,如:“EGPCS”.这时,$_ENV的值就可以取得了
+EGPCS值(EGPCS是Environment、Get、Post、Cookies、Server的缩写 -- 这是PHP中
+外部变量来源的全部范围).
+</blockquote>
+
+        </div>
+    </body>
+</html>

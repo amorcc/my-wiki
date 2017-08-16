@@ -1,0 +1,4 @@
+
+* :Vimwiki2HTML     将当前页面生成为html页 
+* :VimwikiAll2HTML  快速将所有页面生成html页
+* <leader>wr        重命名wiki

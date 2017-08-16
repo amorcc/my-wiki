@@ -1,0 +1,103 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>ttPHP相对路径和绝对路径</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+
+<p>
+= dirname(_<em>FILE</em>_) 当前目录
+</p>
+<h1 id="toc_1">../   表示上一层</h1>
+<h1 id="toc_2">./    表示当前层</h1>
+<h1 id="toc_3">根目录 $_SERVER['DOCUMENT_ROOT']</h1>
+<ul>
+<li>
+$\(RootDir = \)_SERVER['DOCUMENT_ROOT']; 
+
+<li>
+$\(fireDir = "\)RootDir/bb/s2.txt";
+
+</ul>
+
+
+<h1 id="toc_4"><a href="http://blog.163.com/magicworldx@126/blog/static/88662653201012803228534/</h1>">http://blog.163.com/magicworldx@126/blog/static/88662653201012803228534/</h1></a>
+<p>
+ 一、绝对路径和相对路径常见用法
+</p>
+
+<p>
+绝对路径示例：
+</p>
+
+<p>
+$droot="/var/www/html/";//网站根目录
+</p>
+
+<p>
+//$droot="D:/xampp/htdocs/";//网站根目录
+</p>
+
+<p>
+require_once($droot."include/cfg.php");
+</p>
+
+<p>
+使用上文第一种绝对路径方法，该方法虽然笨拙，不大好看，对于小WEB程序够用即可。
+</p>
+
+<p>
+相对路径示例：
+</p>
+
+<p>
+require_once("../include/cfg.php");
+</p>
+
+<p>
+require_once("../../../include/metsky/cfg.php");
+</p>
+
+<p>
+表示包含上一级目录include下的cfg.php文件。
+</p>
+
+        </div>
+    </body>
+</html>

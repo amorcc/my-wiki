@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>前端迁移VUE的内容</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+
+<h1 id="toc_1">生成目录问题</h1>
+<ul>
+<li>
+生成的目录dist建议不要太深，
+
+<li>
+src:vue组件的那个目录，建议按照现有的目录结构进行划分，eg：/center/s   /center/r  /mng
+
+</ul>
+
+<h1 id="toc_2">代码的调试问题</h1>
+
+<h1 id="toc_3">弹出层的封装</h1>
+<ul>
+<li>
+弹窗体直接写成单独的vue文件
+
+<li>
+调用时直接传参数，用弹出层的方式弹出窗体，提交后自动关闭
+
+</ul>
+
+<h1 id="toc_4">新增vue的路由机制</h1>
+<blockquote>
+例如：
+</blockquote>
+<ul>
+<li>
+老页面地址： <a href="http:///Center/S/User/UserMng.aspx?id=100239">http:///Center/S/User/UserMng.aspx?id=100239</a>
+
+<li>
+单页模式的地址： <a href="http://Center/s/index.html/uermng/id/100239">http://Center/s/index.html/uermng/id/100239</a>
+
+</ul>
+
+<h1 id="toc_5">myObj.getQueryStr().id</h1>
+<blockquote>
+vue前端获取url的参数值
+</blockquote>
+
+<h1 id="toc_6">myObj.cmd 函数迁移</h1>
+<blockquote>
+迁移目标：
+1、重新封装myObj.cmd函数
+2、在后台修改成webapi后，可以不进行任何修改，自动迁移到webapi调用数据方式
+3、分为  获取数据  和 提交数据两大类
+4、错误信息自动弹框
+5、点击按钮后，先让按钮禁用，等待cmd获取数据后，再启用按钮。（可以延后）
+</blockquote>
+        
+<h1 id="toc_7">字典表的迁移</h1>
+<blockquote>
+目前前端使用的字典表保存\jsconfig\cselectorValues.js里，是否需要修改
+迁移目标：
+1、select自动绑定字典表的内容
+2、传入value的值，传入所在的字典表名称，自动转换为text内容
+3、checkbox组绑定字典表内容(可以延后)
+4、radioButton组绑定字典表内容(可以延后)
+</blockquote>
+        
+<h1 id="toc_8">vue各种数据类型的验证</h1>
+<ul>
+<li>
+手机号
+
+<li>
+Email
+
+<li>
+非空字符串
+
+<li>
+int数据
+
+<li>
+float数据
+
+<li>
+金额数据
+
+</ul>
+
+<h1 id="toc_9">封装统一的各类信息提示</h1>
+<blockquote>
+最好可以配置（可以延后）
+</blockquote>
+<ul>
+<li>
+alert
+
+<li>
+comfirm
+
+<li>
+tip （N秒自动消失）
+
+<li>
+添加页面里，信息不全的页内提示
+
+<ul>
+<li>
+右边直接提示
+
+<li>
+提示位置不足时，放到页面顶部
+
+</ul>
+</ul>
+
+<h1 id="toc_10">加载等待框</h1>
+<ul>
+<li>
+显示加载框
+
+<li>
+加载完成移除加载框
+
+<li>
+实现2个，第一个，显示加载框后，获取数据会自动隐藏加载框，第二个，需要手动隐藏加载框
+
+</ul>
+
+</body>
+</html>

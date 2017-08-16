@@ -1,0 +1,126 @@
+%toc
+
+= 序 =
+    本学习笔记是http://learnvimscriptthehardway.onefloweroneworld.com/chapters/04.html
+
+= 快捷键 =
+    * viw   :   高亮选择单词
+    * b     :   光标移动到单词头部
+= vim四种模式 =
+    * 正常模式(normal-mode) 
+        进入：其他模式都可以直接转换到正常模式，按Esc即可。如果一次不行就多按几次。
+        主要用来浏览和操作文件，可以使用相关的快捷键，例如：
+        gg：跳到文件首
+    * 命令模式(command-mode)
+        进入：按Esc进入正常模式，然后按：（shitf + ；）
+        在命令模式下，你可以输入各种命令，如果要这行shell命令，就要在命令前面加上“！”（去掉双引号）
+    * 插入模式(insert-mode)
+        进入：按Esc进入正常模式，然后：
+            按 i   在光标前插入     
+            按 I   在行首插入
+            按 a   在光标后插入
+            按 s   删除光标所在的字符再插入
+            按 A 在行末插入    
+            按 o   在当前行之下新建行  
+            按 O 在当前行之上新建行
+            按 S   删除光标所在行再插入
+        插入模式就是用来修改文件内容的。
+    * 可视模式(visual-mode) 
+        进入：按Esc进入正常模式，然后：
+            按 v 可以移动光标选择内容进入可视模式
+            按 ctrl + v 可以移动光标可以进入可视块模式
+            按 shitf + v 可以移动光标可以进入可视行模式选择
+
+= 打印信息 =
+    * echo
+        echo 信息后，使用:message信息不会被打印出来
+        {{{
+            :echo "hello, world!"
+        }}}
+    * echom
+        echom 信息后，使用:message信息会被打印出来
+        {{{
+            :echo "hello, world!"
+        }}}
+    
+= 布尔选项 =
+    * 布尔选项可以off，可以on，例如:set number
+    * 所有布尔选项都可以使用:set <name>打开选项，使用:set no<name>关闭选项
+        {{{
+            :set number     "打开行号
+            :set nonumber   "关闭行号 
+        }}}
+    * 切换布尔选项
+        {{{
+            :set number! "取反 
+        }}}
+    * 查看选项当前值,不仅对布尔类型有效，其他类型也有效
+        {{{
+            : set number?   "查看当前number是否打开
+        }}}
+        
+= 基本映射 =
+    * 特殊字符映射
+        {{{
+            :map <space> viw
+            :map <c-d> dd
+        }}}
+    * map normal模式的键盘映射
+        {{{
+            "将-键映射为dd，在normal模式按下-键时删除一行
+            :nmap - dd 
+        }}}
+    * map做键盘映射时，后面无法使用注释，注释会被同时映射
+
+= 模式映射 =
+    * 可以使用nmap、vmap、imap分别在normal、visual、insert模式的映射
+    * vmap 在visual模式下的键盘映射
+        {{{
+            "在visual模式下将\键映射成删除行
+            :vmap \ dd
+        }}}
+        
+= 精确映射 =
+    * map、nmap、vmap、imap的缺点
+        {{{
+            :nmap - dd
+            :nmap \ -
+        }}}
+        上面的键盘映射时，按下\键，会先映射成-，然后在把-映射成dd
+        属于递归冒泡形式 
+    * 非递归映射，没有个*map系列的命令都有一个对应的*noremap命令
+      包括noremap/nnoremap/vnoremap/inoremap
+    
+= Leader = 
+    * let mapleader = "`";
+    * vim有另外一个"local leader"，这个leader用于只对某一类文件（如Python文件、html文件）而设置的映射
+        {{{
+            :let maplocalleader = "ww"
+        }}}
+
+= 自动命令 =
+    * :autocmd BufNewFile *.txt :write
+        # BufNewFile : 要监听的事件
+        # *.txt      : 用于事件过滤
+        # :write     : 要执行的命令
+        {{{
+        eg:
+            :autocmd BufWritePre *.html :normal gg=G
+            "在:w之前，所有的.html文件执行gg=G的缩进命令，进行保存前的自动缩进
+        }}}
+
+= FileType事件=
+    * 针对不同的文件类型设置不同的映射
+        {{{
+            :autocmd FileType javascript nnoremap <buffer> <leader>c I//<esc>
+            :autocmd FileType python nnoremap <buffer> <leader>c I#<esc>
+        }}}
+        在.js文件里，将光标移动到某一行，敲击<leader>c,光标所在行会被//注释掉
+        在.py文件里，将光标移动到某一行，敲击<leader>c,光标所在行会被#注释掉
+
+
+
+
+
+
+

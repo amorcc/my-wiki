@@ -1,0 +1,39 @@
+<!-- 页头 -->
+<!--#include virtual="/Common/Buluo/var2/page_head_nav.html" -->
+
+<section class="Buluo_ListPage_Main">
+</section>
+
+<!-- 页尾 -->
+<!--#include virtual="/Common/base/ver2/footer.htm" -->
+
+
+= 部落人生主菜单 =
+* 机票  /ListPage/Jipiao/Default.aspx
+    * 首页导航
+    * 搜索列表页
+* 火车票 
+    * 首页导航
+    * 搜索列表页
+* 旅游
+    * 首页导航
+    * 周边当地游
+    * 推荐旅游热线
+    * 国内旅游
+    * 出境旅游 /ListPage/Lvyou/ListCjlv.aspx
+    * 旅行社  /ListPage/Lvyou/ListLxs.aspx
+    * 旅游热图热讯 \ListPage\Lvyou\ListLxrtrx.aspx
+*
+*
+*
+*
+*
+*
+*
+*
+
+
+
+
+
+

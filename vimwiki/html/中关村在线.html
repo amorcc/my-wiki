@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>中关村在线</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<p>
+<a href="http://mail.zol.com.cn/mailbox.php">http://mail.zol.com.cn/mailbox.php</a>
+chen.wei@zol.com.cn
+amorcc2564130@
+</p>
+
+<h1 id="toc_1">Log <a href="工作日志.html">工作日志</a></h1>
+
+<h1 id="toc_2"><a href="页面框架.html">页面框架</a></h1>
+
+<h1 id="toc_3"><a href="数据库相关.html">数据库相关</a></h1>
+
+<p>
+<a href="=ZOL_PRE000B2b表结构=.html">=ZOL_PRE000B2b表结构=</a>
+</p>
+
+<h1 id="toc_4">SQL SERVER <a href="数据库相关函数.html">数据库相关函数</a></h1>
+
+<h1 id="toc_5"><a href="流程.html">流程</a></h1>
+
+<p>
+1、无线zolhahaha    密码：buzhidao
+</p>
+
+<p>
+2、测试系统
+</p>
+<blockquote>
+<a href="http://218.28.139.68:100/Login.aspx">http://218.28.139.68:100/Login.aspx</a>
+卖家：13721435577
+买家：13700888185
+管理员：admin
+</blockquote>
+<blockquote>
+密码：111111
+</blockquote>
+    
+    
+<p>
+3、测试数据库地址及用户
+4、svn账户
+5、代码
+6、架构了解 
+</p>
+
+<h1 id="toc_6">json to datetime</h1>
+<p>
+json to datetime :  var start = DateTime.Parse(Common.GetJsonValue(jsonPara, "StartDate"));
+</p>
+
+<h1 id="toc_7">sql server 参数</h1>
+<p>
+var paras = new[]
+</p>
+<blockquote>
+{
+new SqlParameter("@StartDate", start),
+new SqlParameter("@sysUserID", UserInfo.LoginUser.Id)
+};
+</blockquote>
+
+<h1 id="toc_8">返回dateset存储过程</h1>
+
+<p>
+DataSet ds = SqlHelper.ExecuteDataset(this.sqlCon, CommandType.StoredProcedure, "proc_Rpt_ProductOrderAmount", paras);
+</p>
+
+<h1 id="toc_9">执行存储过程带时间参数</h1>
+<p>
+return_value = [dbo].[proc_OrderAnalysis]
+		@BeginDate = N'2016-01-01',
+		@EndDate = N'2016-06-01'
+</p>
+
+<p>
+SELECT	'Return Value' = @return_value
+</p>
+
+<p>
+GO
+</p>
+
+<h1 id="toc_10">DataTable to json</h1>
+<blockquote>
+DataTable dt = ds.Tables[0];
+var lst = new JArray();
+</blockquote>
+<blockquote>
+foreach (DataRow dr in ds.Tables[0].Rows)
+{
+lst.Add(new JObject(){
+{"Title",dr["Title"].ToString()},
+{"OrderCount",dr["OrderCount"].ToString()},
+{"CustCount",dr["CustCount"].ToString()}
+});
+</blockquote>
+<blockquote>
+}
+var tmpJObject = JObject.Parse("{}");
+tmpJObject.SetProperty("Data", lst);
+Payload.Data = tmpJObject;
+return JsonConvert.SerializeObject(Payload);
+</blockquote>
+
+<h1 id="toc_11">合并单元格</h1>
+<p>
+   $(document).ready(function () {
+</p>
+<blockquote>
+ReSearch();
+</blockquote>
+<blockquote>
+});
+function ReSearch() {
+$("#lst tr.uls").remove();
+myObj.cmd({
+"cmd": "cctest.GetPickUpGoodsReport",
+"para": { "StartDate": $("#StartDate").val() + "-01" },
+"callback": function (data) {
+$("#lst").append(myObj.render(data.Data, "&lt;tr class=\"uls\"&gt;&lt;td class=\"time\"&gt;#OrderTime#&lt;/td&gt;&lt;td&gt;#SellerCount#&lt;/td&gt;&lt;td&gt;#BuyerCount#&lt;/td&gt;&lt;td&gt;#OrderCount#&lt;/td&gt;&lt;td&gt;#OrderAmount#&lt;/td&gt;&lt;td&gt;#SettlementAmount#&lt;/td&gt;&lt;/tr&gt;"));
+}
+});
+}
+</blockquote>
+<blockquote>
+function hebing() {
+var rowlength = $('#lst tbody tr').length - 1;
+var rowspanArray = new Array(rowlength);
+</blockquote>
+<blockquote>
+for (var i = 0; i &lt; rowlength; i++) {
+rowspanArray[i] = 1;
+}
+</blockquote>
+<blockquote>
+var lastTime = '';
+var lastIndex = 0;
+</blockquote>
+<blockquote>
+//alert(rowlength);
+\(.each(\)('#lst tbody tr'), function (n, value) {
+if (n == 0) {
+lastTime = '';
+}
+else if (n == 1) {
+var time = $(this).find('.time').html();
+lastTime = time;
+}
+else {
+var time = $(this).find('.time').html();
+</blockquote>
+<blockquote>
+if (lastTime == time) {
+rowspanArray[lastIndex]++;
+rowspanArray[n - 1] = 0;
+}
+else {
+lastIndex = n - 1;
+</blockquote>
+<blockquote>
+lastTime = time;
+}
+}
+</blockquote>
+<blockquote>
+});
+</blockquote>
+<blockquote>
+//alert(rowspanArray);
+</blockquote>
+<blockquote>
+\(.each(\)('#lst tbody tr'), function (n, value) {
+if (n &gt; 0) {
+if (rowspanArray[n - 1] == 0) {
+$(this).find('.time').remove();
+}
+else if (rowspanArray[n - 1] &gt; 1) {
+$(this).find('.time').attr('rowspan', rowspanArray[n - 1]);
+}
+}
+});
+}
+</blockquote>
+
+</body>
+</html>

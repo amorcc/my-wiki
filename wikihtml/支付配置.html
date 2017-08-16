@@ -1,0 +1,151 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>Coder-cc - 支付配置</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+<h1 id="toc_1">修改思路</h1>
+<ol>
+<li>
+新增支付方式表
+
+<li>
+新增卖家支付设置页面
+
+<li>
+默认所有卖家开通所有支付方式
+
+<li>
+支付类型修改功能
+
+<li>
+订单预览的时候，新增返回卖家支持的支付方式
+
+<li>
+支付时通知网关支持的支付方式
+
+<li>
+网关返回时记录本次支付的方式
+
+<li>
+订单详情页面显示支付方式
+
+<li>
+订单综合查询新增支付方式列
+
+<li>
+wap同步改
+
+<li>
+历史数据维护
+
+<ul>
+<li>
+所有卖家默认全部支付方式
+
+<li>
+历史订单支付方式的数据维护
+
+</ul>
+</ol>
+<h1 id="toc_2">需要网关技术支持内容</h1>
+<ol>
+<li>
+订单支付时，zmm向网关提供本订单可用的支付方式:已经支持，默认的那个咋办
+
+<li>
+用户支付成功后，网关向zmm返回用户的具体支付方式：没有区分个人和企业
+
+</ol>
+<h1 id="toc_3">工作安排</h1>
+<p>
+人员：
+</p>
+<blockquote>
+丁连富：2天
+</blockquote>
+<ol>
+<li>
+数据库结构修改：订单表新增1列，新增一个可选支付方式表
+
+<li>
+卖家支付方式修改的后台方法
+
+<li>
+订单支付时，给网关传报文
+
+<li>
+网关支付成功通知后，记录支付方式到订单表
+
+<li>
+老数据维护脚本
+    陈伟：2天
+
+<li>
+卖家中心--卖家管理--支付设置  页面的前端实现
+
+<li>
+订单预览的卖家支付方式的读取
+    尹科：1天
+
+<li>
+订单综合查询统计的前端新增一列
+
+<li>
+订单综合查询导出数据新增一列
+    永江：1天
+
+<li>
+订单详情页修改支付方式列
+
+<li>
+订单预览显示线上支持的方式
+    姚宁：2天
+
+<li>
+支付报文调用重构service
+
+<li>
+支付成功回写调用重构的service
+
+</ol>
+
+        </div>
+    </body>
+</html>

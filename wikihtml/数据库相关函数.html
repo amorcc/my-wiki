@@ -1,0 +1,111 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>tt数据库相关函数</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+
+<h1 id="toc_1">CONVERT()</h1>
+<ul>
+<li>
+函数是把日期转换为新数据类型的通用函数 
+
+<li>
+20    :   2016-05-27 09:34:27
+
+<li>
+23    :   2016-05-27
+
+</ul>
+
+<h1 id="toc_2">GETDATE()</h1>
+<ul>
+<li>
+获取当前系统时间
+
+</ul>
+    
+<h1 id="toc_3">DATEDIFF()</h1>
+<ul>
+<li>
+函数返回两个日期之间的天数
+
+</ul>
+    
+<h1 id="toc_4">DATEADD()</h1>
+<ul>
+<li>
+函数在日期中添加或减去指定的时间间隔
+
+<li>
+DATEADD(datepart,number,date)
+
+<li>
+datepart : 日：d,dd; 月：m,mm; 年：yy,yyyy;
+
+<li>
+SELECT OrderId,DATEADD(day,2,OrderDate) AS OrderPayDate FROM Orders
+
+<li>
+
+
+</ul>
+
+<h1 id="toc_5">STUFF()</h1>
+<ul>
+<li>
+STUFF ( character_expression , start , length ,character_expression ) 
+
+<li>
+start     :       一个整数值，指定删除和插入的开始位置。
+
+<li>
+length    :       一个整数，指定要删除的字符数。
+
+<li>
+eg:   SELECT STUFF('abcdef', 2, 3, 'ijklmn');
+
+<li>
+      结果：aijklmnef
+
+</ul>
+
+        </div>
+    </body>
+</html>

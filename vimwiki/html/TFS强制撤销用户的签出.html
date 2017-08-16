@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>TFS强制撤销用户的签出</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<p>
+VSS地址：192.168.10.8/DefaultCollection
+用户名：administrator
+密码：csshd123456
+</p>
+
+<p>
+C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\IDE
+</p>
+
+<h1 id="toc_1">查看工作区</h1>
+<p>
+tf workspaces /owner:用户名
+</p>
+
+<h1 id="toc_2">撤销命令</h1>
+<p>
+tf undo /workspa
+ce:USER-20141214MT;ylbin:5 $\csshdweb\web\NcWeb\NetChina\MobileWeb\web.config /r
+ecursive
+</p>
+
+<h1 id="toc_3">查看某个帐号（用户名：lisy)挂起的修改：</h1>
+<p>
+所有工作区：tf+status+/server:<a href="http://10.3.15.68:8080/tfs/rcsit+/workspace:*+/user:lisy">http://10.3.15.68:8080/tfs/rcsit+/workspace:*+/user:lisy</a>
+查看某个具体的工作区在workspace:后面输出工作区。
+</p>
+
+<h1 id="toc_4">网上资料</h1>
+
+<p>
+<a href="http://www.cnblogs.com/wuzhipeng/archive/2011/09/13/TFS.html">http://www.cnblogs.com/wuzhipeng/archive/2011/09/13/TFS.html</a>
+</p>
+
+<p>
+1.TF.EXE的安装目录，
+cd C:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE
+</p>
+
+ 
+
+<p>
+2.查看WUZHIPENG用户的工作区
+tf workspaces /owner:WUZHIPENG，打完命令按回车，会显示TF30063错误，
+显示你没有权限，紧跟着会弹出TFS的用户登陆框，用你的用户名、密码登陆即可，
+之前的错误消息后会紧跟着此用户的所有工作区。
+（网上有些人写用tf workspaces *这个命令，实践后发现这个命令显示出来的
+是本地的工作区，建议用我前面写那个，可以显示出某用户的所有工作区）
+</p>
+
+<p>
+3.撤销wuzhipeng的QINGLIANG_HE-PC工作区的签出
+tf undo /workspace:QINGLIANG_HE-PC;wuzhipeng \(\XXX\XXXX /recursive，打完命令按回车，同上面一样弹出TFS登陆框，登陆，确定，OK（\)\XXX\XXXX，是指TFS源码管理器上项目的路径。同样网上有人说要在加/server:<a href="http://XXX.XXX.XXX.XXX:8080服务器地址的参数，实践后发现每次加这个参数都会报：基础连接已关闭，接收时发生错误）">http://XXX.XXX.XXX.XXX:8080服务器地址的参数，实践后发现每次加这个参数都会报：基础连接已关闭，接收时发生错误）</a>
+</p>
+
+</body>
+</html>

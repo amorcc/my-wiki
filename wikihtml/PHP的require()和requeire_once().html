@@ -1,0 +1,63 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>ttPHP的require()和requeire_once()</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+<p>
+1.require()语句 
+require()语句用于指定的文件代替语句本身，就象C语言中的include()语句一样。如果php
+配置文件php.ini中的URL fopen wrappers 是打开的(默认情况下是打开的)，就可以使用
+URL来指定文件的位置从而实现远程文件的调用。 
+有一点就是使用require()和include()语句时要特别的注意。那就是在被包含的文件中，
+处理器是按照html模式来解释其中的内容的，处理完被包含的内容后又恢复到php模式。
+所以如果需要在被包含文件中使用php语法，就要使用正确的php开始和结束标记来把这些
+语句包含进去。 
+</p>
+
+<p>
+3.require_once()和include_once()语句 
+require_once()和include_once()语句分别对应于require()和include()语句。
+require_once()和include_once()语句主要用于需要包含多个文件时，可以有效地避免
+把同一段代码包含进去而出现函数或变量重复定义的错误。
+</p>
+
+        </div>
+    </body>
+</html>

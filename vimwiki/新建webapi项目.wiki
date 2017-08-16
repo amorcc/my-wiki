@@ -1,0 +1,5 @@
+
+# 新建项目
+# 选择'模板'->'Visual C#' -> 'Web' -> 'Visual Studio 2012'
+# 选择'asp.net mvc 4 web 应用程序'
+# 然后根据实际情况选择即可

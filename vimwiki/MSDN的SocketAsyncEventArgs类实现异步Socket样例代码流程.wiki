@@ -1,0 +1,22 @@
+=== MSDN的SocketAsyncEventArgs类实现异步Socket样例代码流程 ===
+
+# 构造函数
+    * 初始化缓冲区BufferManage
+    * 设置最大并发量（通过Semaphore类实现）
+    * 初始化ScoketAsyncEventArgs的缓冲池
+# Init函数
+    * 创建缓冲池，在内存中创建指定大小的内存空间用于缓冲
+    * 创建一个预先用来处理客户端连接的SocketAsyncEvnetArgs
+    * 将创建的预先SocketAsyncEnentArgs放入到pool中
+# Start函数
+    * 创建主Socket侦听
+# StartAccept函数
+    * 创建一个接收SocketAsyncEventArgs,并初始化
+
+若有客户端连接
+# 触发Completed事件
+# 调用ProcessAccept函数
+    * 从线程池中pop一个SocketAsyncEventArgs
+    * 调用StartAccept函数
+#
+

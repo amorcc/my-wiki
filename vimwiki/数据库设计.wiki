@@ -1,0 +1,500 @@
+
+= 客户关系 =
+    == 客户表 ==
+        * 表名： Customer
+        * 列：
+            * ID        ：  CustomerID
+            * 客户名称  ：  CustomerName
+            * 客户简称  ：  CustomerAbbreviation
+            * 拼音检索  ：  PinYin
+            * 发票名称  ：  InvoiceName
+            * 公司网址  ：  CompanyWebSite
+            * 公司简介  ：  CompanyIntroduction
+            * 客户级别  ：  CustomerLevelID
+            * 客户级别  ：  CustomerLevelName
+            * 支付方式  ：  PaymentMethodID
+            * 支付方式  ：  PaymentMethodName
+            * 信用级别  ：  CreditRatingID
+            * 信用级别  ：  CreditRatingName
+            * 结算周期  ：  SettlementCycleID
+            * 结算周期  ：  SettlementCycleName
+            * 信用限额  ：  CreditLimitID
+            * 信用限额  ：  CreditLimitName
+            * 客户类别  ：  CustomerCategoryID
+            * 客户类别  ：  CustomerCategoryName
+            * 客户来源  ：  CustomerSourceID
+            * 客户来源  ：  CustomerSourceName
+            * 添加员工ID：  AddEmployeeID
+            * 添加人姓名：  AddEmployeeName
+            * 业务员ID  ：  SalesmanID 
+            * 业务员姓名：  SalesmanName
+            * 所属公司ID：  CompanyID
+            * 备注      ：  Memo
+            * IsDelete
+        * SQL语句 
+            DROP TABLE IF EXISTS `Customer`;
+            
+            CREATE TABLE `Customer` (
+              `CustomerID` varchar(40) NOT NULL COMMENT '客户表ID',
+              `CustomerName` varchar(200) default NULL COMMENT '客户名称',
+              `CustomerAbbreviation` varchar(200) default NULL COMMENT '客户简称',
+              `PinYin` varchar(40) default NULL COMMENT '拼音检索',
+              `InvoiceName` varchar(200) default NULL COMMENT '发票名称',
+              `CompanyWebSite` varchar(200) default NULL COMMENT '公司网址',
+              `CompanyIntroduction` varchar(500) default NULL COMMENT '公司简介',
+              `CustomerLevelID` varchar(40) default NULL COMMENT '客户级别ID',
+              `CustomerLevelName` varchar(40) default NULL COMMENT '客户级别Name',
+              `PaymentMethodID` varchar(40) default NULL COMMENT '支付方式ID',
+              `PaymentMethodName` varchar(40) default NULL COMMENT '支付方式Name',
+              `CreditRatingID` varchar(40) default NULL COMMENT '信用级别ID',
+              `CreditRatingName` varchar(40) default NULL COMMENT '信用级别Name',
+              `SettlementCycleID` varchar(40) default NULL COMMENT '结算周期ID',
+              `SettlementCycleName` varchar(40) default NULL COMMENT '结算周期name',
+              `CreditLimitID` varchar(40) default NULL COMMENT '信用限额ID',
+              `CreditLimitName` varchar(40) default NULL COMMENT '信用限额Name',
+              `CustomerCategoryID` varchar(40) default NULL COMMENT '客户类别ID',
+              `CustomerCategoryName` varchar(40) default NULL COMMENT '客户类别Name',
+              `CustomerSourceID` varchar(40) default NULL COMMENT '客户来源ID',
+              `CustomerSourceName` varchar(40) default NULL COMMENT '客户来源Name',
+              `AddEmployeeID` varchar(40) default NULL COMMENT '添加人ID',
+              `AddEmployeeName` varchar(40) default NULL COMMENT '添加人姓名',
+              `SalesmanID` varchar(40) default NULL COMMENT '业务员ID',
+              `SalesmanName` varchar(40) default NULL COMMENT '业务员姓名',
+              `CompanyID` varchar(40) default NULL COMMENT '所属客户公司ID',
+              `IsDelete` int default 0 COMMENT '是否删除',
+              `Memo` varchar(1000) default NULL COMMENT '备注'
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+    
+    == 客户联系人表 ==
+        * 表名：CustomerContact 
+        * 列：
+            * ID        ：  CustomerContactID
+            * 联系人姓名：  ContactPersonName
+            * 部门名称  ：  DepartmentName
+            * 职务      ：  Post
+            * 固定电话  ：  FixedTelephone
+            * 移动电话  ：  MobilePhone
+            * 电子邮箱  ：  Email
+            * QQ        ：  QQ
+            * 所属客户  ：  CustonerID
+            * 备注      ：  Memo
+            * IsDelete
+        * SQL语句 
+            DROP TABLE IF EXISTS `CustomerContact`;
+            
+            CREATE TABLE `CustomerContact` (
+              `CustomerContactID` varchar(40) NOT NULL COMMENT '客户联系人表ID',
+              `ContactPersonName` varchar(50) default NULL COMMENT '联系人姓名',
+              `DepartmentName` varchar(200) default NULL COMMENT '部门名称',
+              `Post` varchar(40) default NULL COMMENT '职务',
+              `FixedTelephone` varchar(100) default NULL COMMENT '固定电话',
+              `MobilePhone` varchar(40) default NULL COMMENT '移动电话',
+              `Email` varchar(100) default NULL COMMENT 'Email',
+              `QQ` varchar(40) default NULL COMMENT 'QQ',
+              `CustomerID` varchar(40) default NULL COMMENT '所属客户',
+              `IsDelete` int default 0 COMMENT '是否删除',
+              `Memo` varchar(1000) default NULL COMMENT '备注'
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+    
+            
+    == 公司表 ==
+        * 表 名：Company
+        * 列：
+            * ID         ：  CompanyID
+            * 公司名称  ：  CompanyName
+            * 公司简称  ：  CompanyAbbreviation
+            * 所在省ID  ：  ProvinceID
+            * 所在省名称：  ProviceName
+            * 所在市ID  ：  CityID
+            * 所在市名称：  CityName
+            * 所在县ID  ：  CountyID
+            * 所在县名称：  CountyName
+            * 具体地点  ：  Address
+            * 公司介绍  ：  CompanyIntroduction
+            * 所属公司  ：  ParentCompanyID
+            * 分店数    ：  BranchNumber
+            * 联系电话  ：  ContactPhone
+            * 备注      ：  memo
+            * IsDelete
+        * SQL语句 
+            DROP TABLE IF EXISTS `Company`;
+            
+            CREATE TABLE `Company` (
+              `CompanyID` varchar(40) NOT NULL COMMENT '公司表ID',
+              `CompanyName` varchar(200) default NULL COMMENT '公司名称',
+              `CompanyAbbreviation` varchar(200) default NULL COMMENT '公司简称',
+              `ProvinceID` varchar(40) default NULL COMMENT '所在省ID',
+              `ProductName` varchar(100) default NULL COMMENT '所在省名称',
+              `CityID` varchar(40) default NULL COMMENT '所在市ID',
+              `CityName` varchar(100) default NULL COMMENT '所在市名称',
+              `CountyID` varchar(40) default NULL COMMENT '所在县ID',
+              `CountyName` varchar(100) default NULL COMMENT '所在县名称',
+              `Address` varchar(500) default NULL COMMENT '具体地址',
+              `CompanyIntroduction` varchar(1000) default NULL COMMENT '公司介绍',
+              `ParentCompanyID` varchar(40) default NULL COMMENT '所属公司ID',
+              `BranchNumber` int default 0 COMMENT '分店数',
+              `ContactPhone` varchar(100) default NULL COMMENT '联系电话',
+              `IsDelete` int default 0 COMMENT '是否删除',
+              `Memo` varchar(1000) default NULL COMMENT '备注'
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+   
+    == 公司员工表 ==
+        * 表名：CompanyEmployee
+        * 列：
+            * ID        ：  CompanyEmployeeID
+            * 员工姓名  ：  CompanyEmployeeName
+            * 拼音缩写  ：  PinYin
+            * 性别      ：  Sex
+            * 出生年月  ：  Birthday
+            * 籍贯      ：  PlaceOfOrigin
+            * 现居住地  ：  Residence
+            * 联系电话  ：  Phone
+            * 紧急电话  ：  EmergencyPhone
+            * Email     ：  Email
+            * QQ        ：  QQ
+            * 入职时间  ：  EntryTime
+            * 是否离职  ：  IsQuit
+            * 职位      ：  PostID
+            * 所属公司  ：  CompanyID
+            * 登录表ID  ：  UserID
+            * 备注      ：  Memo
+            * IsDelete
+        * SQL语句 
+            DROP TABLE IF EXISTS `CompanyEmployee`;
+            
+            CREATE TABLE `CompanyEmployee` (
+              `CompanyEmployeeID` varchar(40) NOT NULL COMMENT '公司员工表ID',
+              `CompanyEmployeeName` varchar(50) default NULL COMMENT '员工姓名',
+              `PinYin` varchar(200) default NULL COMMENT '拼音缩写',
+              `Sex` int default 0 COMMENT '性别：0-男，1-女',
+              `Birthday` datetime default NULL COMMENT '出生年月',
+              `PlaceOfOrigin` varchar(40) default NULL COMMENT '籍贯',
+              `Residence` varchar(100) default NULL COMMENT '现居住地',
+              `Phone` varchar(40) default NULL COMMENT '联系电话',
+              `EmergencyPhone` varchar(40) default NULL COMMENT '紧急联系电话',
+              `Email` varchar(100) default NULL COMMENT 'Email',
+              `QQ` varchar(40) default NULL COMMENT 'QQ',
+              `EntryTime` datetime default NULL COMMENT '入职时间',
+              `IsQuit` int default 0 COMMENT '是否离职',
+              `PostID` varchar(40) default NULL COMMENT '职位ID',
+              `PostName` varchar(40) default NULL COMMENT '职位名称',
+              `CompanyID` varchar(40) default NULL COMMENT '所属公司ID',
+              `UserID` varchar(40) default NULL COMMENT '登录表ID',
+              `IsDelete` int default 0 COMMENT '是否删除',
+              `Memo` varchar(1000) default NULL COMMENT '备注',
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+    
+
+= 新增订单的10个订单详细要求的列表内容 =
+    == 设计制作 ==
+    * 成品名称
+        * 设计修改
+        * 名片设计
+        * 广告设计
+        * 彩页/画册
+        * CAD绘图
+        * CAD改图
+        * 标志设计
+        * 3D设计
+    * 类别
+        * 简单
+        * 一般
+        * 复杂
+        * 创意
+    * 计量单位(通用)
+        * 本
+        * 图纸张
+        * 套
+        * 份
+        * 个
+        * 平方米
+        * 盒
+        * 条
+        * 枚
+        * P
+        * 页
+        * 米
+        * 块
+        * 平方厘米
+        * 厘米
+        * 公斤
+        * 雕刻
+        * 印
+        * 令
+        * 蝴蝶面
+        * 张
+
+    == 数码打印 ==
+    * 项目规格
+        * A3/A3+
+        * A4
+        * A3++
+        * (364mm*571mm)
+        * (364mm*660mm)
+        * 中标通知书
+        * 大宝效果图
+    * 机器型号
+        * 农业大宝
+        * 农业7500
+        * 经一大宝
+        * 经一6500
+        * 原盛大宝
+        * 原盛6500
+
+
+ = 新增订单的10个订单详细要求 =
+    = 数码打印 =
+        * 表名：  OR_Digital_Print
+        * 列：
+            * 项目名称
+            * 机器型号
+            * 规格
+            * 纸品	
+            * 单位	
+            * P数	
+            * 份数	
+            * 拼版数	
+            * 计价数量	
+            * 单位	
+            * 金额	
+            * 折扣	
+            * 折扣价
+        * SQL语句 
+            DROP TABLE IF EXISTS `OR_Digital_Print`;
+            
+            CREATE TABLE `OR_Digital_Print` (
+              `DigitalPrintingID` varchar(40) NOT NULL COMMENT '订单要求-数码打印ID',
+              `ProjectSpecification` varchar(100) default NULL COMMENT '项目规格',
+              `MachineModel` varchar(100) default NULL COMMENT '机器型号',
+              `PaperProduct` varchar(100) default NULL COMMENT '纸品名称',
+              `MeasurementUnit` varchar(100) default NULL COMMENT '计量单位',
+              `EachNumber` varchar(100) default NULL COMMENT '每份数',
+              `CopiesNumber` varchar(100) default NULL COMMENT '份数',
+              `ValuationQuantity` varchar(100) default NULL COMMENT '计价数量',
+              `UnitPrice` varchar(100) default NULL COMMENT '单价',
+              `Discount` varchar(100) default NULL COMMENT '折扣',
+              `CustomerRequirements` varchar(1000) default NULL COMMENT '客户要求备注',
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+    
+    = 胶板印刷 =
+        * 表名：  OR_Offset_Printing
+        * 列：
+            * 项目名称	
+            * 规格	
+            * 印数	
+            * 纸品名称	
+            * 计量单位	
+            * 计价数量	
+            * 单价	
+            * 折扣	
+        * SQL语句
+        DROP TABLE IF EXISTS `OR_Offset_Printing`;
+        
+        CREATE TABLE `OR_Offset_Printing` (
+          `OffsetPrintingID` varchar(40) NOT NULL COMMENT '订单要求-胶板印刷ID',
+          `ProjectName` varchar(100) default NULL COMMENT '项目名称',
+          `Specification` varchar(100) default NULL COMMENT '规格',
+          `PrintNumber` varchar(100) default NULL COMMENT '印数',
+          `PaperName` varchar(100) default NULL COMMENT '纸品名称',
+          `MeasurementUnit` varchar(100) default NULL COMMENT '计量单位',
+          `ValuationQuantity` varchar(100) default NULL COMMENT '计价数量',
+          `UnitPrice` varchar(100) default NULL COMMENT '单价',
+          `Discount` varchar(100) default NULL COMMENT '折扣',
+          `CustomerRequirements` varchar(1000) default NULL COMMENT '客户要求备注',
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+        
+        
+    = 办公文印 =
+        * 表名：  OR_Office_Paper_Printing
+        * 列：
+            * 项目名称	
+            * 机器型号	
+            * 规格	
+            * 纸张名称	
+            * 计量单位	 
+            * 每份数 	 
+            * 份 数 	
+            * 计价数量	
+            * 单价	
+            * 折扣	
+        * SQL语句 
+            DROP TABLE IF EXISTS `OR_Office_Paper_Printing`;
+            
+            CREATE TABLE `OR_Office_Paper_Printing` (
+              `OfficePaperPrintingID` varchar(40) NOT NULL COMMENT '订单要求-办公文印ID',
+              `ProjectName` varchar(100) default NULL COMMENT '项目名称',
+              `MachineModel` varchar(100) default NULL COMMENT '机器型号',
+              `Specification`varchar(100) default NULL COMMENT '规格',
+              `PaperProduct` varchar(100) default NULL COMMENT '纸品名称',
+              `MeasurementUnit` varchar(100) default NULL COMMENT '计量单位',
+              `EachNumber` varchar(100) default NULL COMMENT '每份数',
+              `CopiesNumber` varchar(100) default NULL COMMENT '份数',
+              `ValuationQuantity` varchar(100) default NULL COMMENT '计价数量',
+              `UnitPrice` varchar(100) default NULL COMMENT '单价',
+              `Discount` varchar(100) default NULL COMMENT '折扣',
+              `CustomerRequirements` varchar(1000) default NULL COMMENT '客户要求备注'
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+    
+    = 写真喷绘 =
+        * 表名：  OR_Photo_Printing
+        * 列：
+            * 项目名称	
+            * 规格	
+            * 计量单位	 
+            * 每份数 	 
+            * 份 数 	 
+            * 倍 数 	
+            * 计价数量	
+            * 倍前单价	
+            * 单价	
+            * 折扣
+        * SQL语句 
+            DROP TABLE IF EXISTS `OR_Photo_Printing`;
+            
+            CREATE TABLE `OR_Photo_Printing` (
+              `PhotoPrintingID` varchar(40) NOT NULL COMMENT '订单要求-写真喷绘ID',
+              `ProjectName` varchar(100) default NULL COMMENT '项目名称',
+              `Specification`varchar(100) default NULL COMMENT '规格',
+              `MeasurementUnit` varchar(100) default NULL COMMENT '计量单位',
+              `EachNumber` varchar(100) default NULL COMMENT '每份数',
+              `CopiesNumber` varchar(100) default NULL COMMENT '份数',
+              `TimesNumber` varchar(100) default NULL COMMENT '倍数',
+              `ValuationQuantity` varchar(100) default NULL COMMENT '计价数量',
+              `TimesBeforeUnitPrice` varchar(100) default NULL COMMENT '倍前单价',
+              `UnitPrice` varchar(100) default NULL COMMENT '单价',
+              `Discount` varchar(100) default NULL COMMENT '折扣',
+              `CustomerRequirements` varchar(1000) default NULL COMMENT '客户要求备注'
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+    
+    = 工程图文 =
+        * 表名：  OR_Engineering_Graphics
+        * 列：
+            * 项目名称	
+            * 规格尺寸	
+            * 机器型号	
+            * 计量单位	 
+            * 每份数 	 
+            * 份 数 	 
+            * 倍 数 	
+            * 计价数量	
+            * 倍后单价	
+            * 单价	
+            * 折扣	
+        * SQL语句 
+            DROP TABLE IF EXISTS `OR_Engineering_Graphics`;
+            
+            CREATE TABLE `OR_Engineering_Graphics` (
+              `EngineeringGraphicsID` varchar(40) NOT NULL COMMENT '订单要求-工程图文ID',
+              `ProjectName` varchar(100) default NULL COMMENT '项目名称',
+              `Specification`varchar(100) default NULL COMMENT '规格尺寸',
+              `MachineModel` varchar(100) default NULL COMMENT '机器型号',
+              `MeasurementUnit` varchar(100) default NULL COMMENT '计量单位',
+              `EachNumber` varchar(100) default NULL COMMENT '每份数',
+              `CopiesNumber` varchar(100) default NULL COMMENT '份数',
+              `TimesNumber` varchar(100) default NULL COMMENT '倍数',
+              `ValuationQuantity` varchar(100) default NULL COMMENT '计价数量',
+              `TimesBeforeUnitPrice` varchar(100) default NULL COMMENT '倍前单价',
+              `UnitPrice` varchar(100) default NULL COMMENT '单价',
+              `Discount` varchar(100) default NULL COMMENT '折扣',
+              `CustomerRequirements` varchar(1000) default NULL COMMENT '客户要求备注'
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+            
+    
+    = 后期加工 =
+        * 表名：  OR_Post_Processing
+        * 列：
+            * 项目名称	
+            * 种类	
+            * 规格	
+            * 封面归属	
+            * 计量单位	
+            * 计价数量	
+            * 单价	
+            * 折扣
+        * SQL语句 
+            DROP TABLE IF EXISTS `OR_Post_Processing`;
+            
+            CREATE TABLE `OR_Post_Processing` (
+              `EngineeringGraphicsID` varchar(40) NOT NULL COMMENT '订单要求-后期加工ID',
+              `ProjectName` varchar(100) default NULL COMMENT '项目名称',
+              `Type` varchar(100) default NULL COMMENT '种类',
+              `Specification`varchar(100) default NULL COMMENT '规格',
+              `MeasurementUnit` varchar(100) default NULL COMMENT '计量单位',
+              `ValuationQuantity` varchar(100) default NULL COMMENT '计价数量',
+              `UnitPrice` varchar(100) default NULL COMMENT '单价',
+              `Discount` varchar(100) default NULL COMMENT '折扣',
+              `CustomerRequirements` varchar(1000) default NULL COMMENT '客户要求备注'
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+    
+    = 零售 =
+        * 表名：  OR_Retail
+        * 列：
+            * 品名	
+            * 规格	
+            * 计量单位	
+            * 计价数量	
+            * 单价
+            * 折扣
+        * SQL语句 
+            DROP TABLE IF EXISTS `OR_Retail`;
+            
+            CREATE TABLE `OR_Retail` (
+              `RetailID` varchar(40) NOT NULL COMMENT '订单要求-零售ID',
+              `ProductName` varchar(100) default NULL COMMENT '品名',
+              `Specification`varchar(100) default NULL COMMENT '规格',
+              `MeasurementUnit` varchar(100) default NULL COMMENT '计量单位',
+              `ValuationQuantity` varchar(100) default NULL COMMENT '计价数量',
+              `UnitPrice` varchar(100) default NULL COMMENT '单价',
+              `Discount` varchar(100) default NULL COMMENT '折扣',
+              `CustomerRequirements` varchar(1000) default NULL COMMENT '客户要求备注'
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+    
+    = 加工 =
+        * 表名：  OR_Processing
+        * 列：
+            * 项目名称	
+            * 类别	
+            * 规格	
+            * 计量单位	
+            * 计价数量	
+            * 单价
+            * 折扣	
+        * SQL语句 
+            DROP TABLE IF EXISTS `OR_Processing`;
+            
+            CREATE TABLE `OR_Processing` (
+              `ProcessingID` varchar(40) NOT NULL COMMENT '订单要求-加工ID',
+              `ProjectName` varchar(100) default NULL COMMENT '项目名称',
+              `Type` varchar(100) default NULL COMMENT '类别',
+              `Specification`varchar(100) default NULL COMMENT '规格',
+              `MeasurementUnit` varchar(100) default NULL COMMENT '计量单位',
+              `ValuationQuantity` varchar(100) default NULL COMMENT '计价数量',
+              `UnitPrice` varchar(100) default NULL COMMENT '单价',
+              `Discount` varchar(100) default NULL COMMENT '折扣',
+              `CustomerRequirements` varchar(1000) default NULL COMMENT '客户要求备注'
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+    
+    = 其它 =
+        * 表名：  OR_Other
+        * 列：
+            * 项目名称	
+            * 机器名称	
+            * 规格	
+            * 计量单位	
+            * 计价数量	
+            * 单价	
+            * 折扣
+        * SQL语句 
+            DROP TABLE IF EXISTS `OR_Other`;
+            
+            CREATE TABLE `OR_Other` (
+              `OtherID` varchar(40) NOT NULL COMMENT '订单要求-其它ID',
+              `ProjectName` varchar(100) default NULL COMMENT '项目名称',
+              `MachineModel` varchar(100) default NULL COMMENT '机器型号',
+              `Specification`varchar(100) default NULL COMMENT '规格',
+              `MeasurementUnit` varchar(100) default NULL COMMENT '计量单位',
+              `ValuationQuantity` varchar(100) default NULL COMMENT '计价数量',
+              `UnitPrice` varchar(100) default NULL COMMENT '单价',
+              `Discount` varchar(100) default NULL COMMENT '折扣',
+              `CustomerRequirements` varchar(1000) default NULL COMMENT '客户要求备注'
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8;

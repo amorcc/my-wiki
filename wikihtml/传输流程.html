@@ -1,0 +1,203 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>tt传输流程</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+<h3 id="toc_0.0.1">文件传输流程</h3>
+
+<h4 id="toc_0.0.1.1">上传流程</h4>
+<ol>
+<li>
+客户端上传前的外部处理。 
+  eg：压缩视频，转换格式
+
+<li>
+客户端获取文件的大小等信息 
+
+<li>
+客户端生成文件的hash值，生成guid文件名
+
+<li>
+客户端与服务器通讯，查询该hash值是否已经存在 
+
+<li>
+服务器端判断文件是否存在，若服务器不存在该文件，服务器端与客户端通讯，告诉客户端可以开始传输，转到6，若已经存在，转到15
+
+<li>
+客户端与服务器通讯，约定开始传输
+
+<ul>
+<li>
+一次传输文件块大小
+
+<li>
+开始传输的文件块位置
+
+<li>
+客户端生成的文件hash值
+
+<li>
+客户端生成的guid文件名
+
+</ul>
+<li>
+开始传输
+
+<li>
+将传输的内容块写入内存缓存
+
+<li>
+批量将缓存内容块写入文件(在此过程中如果服务器端或客户端无法连接，或出错，直接退出并尽可能记录传输进度)
+
+<li>
+直到传输完毕
+
+<li>
+服务器端生成传输文件的hash值，并对hash值进行验证查看文件是否出现错误
+
+<li>
+若hash值出现错误，转入13，否则，转入15
+
+<li>
+服务器端与客户端通讯，告诉客户端文件传输错误
+
+<li>
+客户端文件出错处理
+
+<li>
+服务器端与客户端通讯，告诉客户端文件传输成功
+
+<li>
+客户端调用传输完成的外部处理
+
+<li>
+结束传输，断开连接
+
+<li>
+若传输过程中，客户端主动断开，客户端告诉服务器端保存本次传输进度，客户端同样保存进度，下次续传
+
+</ol>
+
+<h4 id="toc_0.0.1.2">断点续传</h4>
+<ol>
+<li>
+客户端获取文件的大小等信息 
+
+<li>
+客户端生成文件的hash值，生成guid文件名
+
+<li>
+服务器端判断文件是否已经存在，若不存在(指传输完成且成功的文件)，转入下一步，否则
+
+<li>
+服务器端查找上次传输的文件块,若不存在，转入下一步
+
+<li>
+服务器端告诉客户端上次传输文件丢失
+
+<li>
+客户端设定文件重新上传，开始传输位置为0
+
+<li>
+客户端与服务器通讯，约定开始传输
+
+<ul>
+<li>
+一次传输的文件块位置
+
+<li>
+开始传输的文件块位置
+
+<li>
+客户端生成的文件hash值 
+
+<li>
+客户端生成的guid文件名
+
+</ul>
+<li>
+开始传输 
+
+<li>
+将传输的内容块写入内存缓存
+
+<li>
+批量将缓存内容块写入文件(在此过程中如果服务器端或客户端无法连接，或出错，直接退出并尽可能记录传输进度)
+
+<li>
+直到传输完毕
+
+<li>
+服务器端生成传输文件的hash值，并对hash值进行验证查看文件是否出现错误
+
+<li>
+若hash值出现错误，转入14，否则，转入16
+
+<li>
+服务器端与客户端通讯，告诉客户端文件传输错误
+
+<li>
+客户端文件出错处理
+
+<li>
+服务器端与客户端通讯，告诉客户端文件传输成功
+
+<li>
+客户端调用传输完成的外部处理
+
+<li>
+结束传输，断开连接
+
+<li>
+若传输过程中，客户端主动断开，客户端告诉服务器端保存本次传输进度，客户端同样保存进度，下次续传
+
+</ol>
+
+<ol>
+<li>
+
+
+<li>
+
+</ol>
+
+        </div>
+    </body>
+</html>

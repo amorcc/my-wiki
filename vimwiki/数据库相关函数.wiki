@@ -1,0 +1,30 @@
+
+= CONVERT() =
+    * 函数是把日期转换为新数据类型的通用函数 
+    * 20    :   2016-05-27 09:34:27
+    * 23    :   2016-05-27
+
+= GETDATE() =
+    * 获取当前系统时间
+    
+= DATEDIFF() =
+    * 函数返回两个日期之间的天数
+    
+= DATEADD() =
+    * 函数在日期中添加或减去指定的时间间隔
+    * DATEADD(datepart,number,date)
+    * datepart : 日：d,dd; 月：m,mm; 年：yy,yyyy;
+    * SELECT OrderId,DATEADD(day,2,OrderDate) AS OrderPayDate FROM Orders
+    * 
+
+= STUFF() =
+    * STUFF ( character_expression , start , length ,character_expression ) 
+    * start     :       一个整数值，指定删除和插入的开始位置。
+    * length    :       一个整数，指定要删除的字符数。
+    * eg:   SELECT STUFF('abcdef', 2, 3, 'ijklmn');
+    *       结果：aijklmnef
+    
+    
+
+
+    

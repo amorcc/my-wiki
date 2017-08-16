@@ -1,0 +1,438 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>Coder-cc - TODO</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+
+<h1 id="toc_1">2016-11-7</h1>
+<ol>
+<li>
+支付配置保存到数据库
+
+<ol>
+<li>
+线下支付 ---暂时不加，但是可以配置
+
+<li>
+额度支付
+
+<li>
+线上支付
+
+<ul>
+<li>
+微信
+
+<li>
+支付宝
+
+<li>
+慧付宝（个人）
+
+<li>
+慧付宝（企业）
+
+<li>
+网银（个人）
+
+<li>
+网银（企业）
+
+<li>
+快捷
+
+</ul>
+</ol>
+<li>
+订单表原来的"支付方式"改成"支付通道"，然后新增"支付方式"列保存上面用户支付的方式
+
+<li>
+订单表的支付通道跟支付方式的对应需要检查
+
+<li>
+修改订单中心+订单综合查询
+
+<li>
+修改订单终端页
+
+<li>
+默认全选所有支付方式
+
+<li>
+平台"卖家管理"新增"支付设置页面"，线上支付最低选择一个
+
+<li>
+修改所有支付报文
+
+<li>
+维护老订单表的数据的脚本
+
+<li>
+读取某个卖家的支付方式信息
+
+<li>
+保存某个卖家的支付方式信息
+
+<li>
+修改订单预览页面，返回卖家的支付方式
+
+</ol>
+
+<p>
+返回支付方式说明：
+<hr />
+北京支付方式					                 支付方式           支付通道
+<hr />
+ALALIPAY-PC://支付宝PC				             支付宝             支付宝
+ALALIPAY-QR2://支付宝扫码				         支付宝             支付宝
+ALALIPAY-WAP://支付宝wap				         支付宝             支付宝
+ALALIPAY-BANK://支付宝网银（储蓄卡）		     支付宝	            支付宝	
+ALALIPAY-CREDIT://支付宝网银（信用卡）	         支付宝             支付宝
+ALALIPAY-ENTERPRISE://支付宝网银（企业网银）  	 支付宝             支付宝
+WXWXPAY-WAP://微信支付（H5支付）			     微信               微信
+WXWXPAY-GZ://微信支付（公众号）			         微信               微信
+WXWXPAY-QR://微信支付（扫码）			         微信               微信
+HFHFBPAY://慧付宝（个人网银）			         慧付宝（个人）     慧付宝
+HFHFBPAY-ENTERPRISE://慧付宝（企业网银）	     慧付宝（企业）     慧付宝
+YEYEEPAY://易宝支付(企业网银)			         网银（企业）       网银（企业）？？
+YEYEEPAY-QUICK://易宝支付（快捷）			     快捷               快捷
+YEYEEPAY-BANK://易宝（个人网银）			     网银（个人）       网银（个人）？？
+</p>
+
+<h1 id="toc_2">2016-10-31</h1>
+<ol>
+<li>
+<a href="返利.html">返利</a>
+
+<li>
+<a href="返利工作记录.html">返利工作记录</a>
+
+<li>
+<a href="改价修改.html">改价修改</a>
+
+<ul>
+<li>
+修改存储过程 proc_ProductOrder_ChangePrice_GetOrderInfo
+
+</ul>
+</ol>
+<p>
+#
+</p>
+
+<h1 id="toc_3">2016-10-26</h1>
+<ol>
+<li>
+商品预览时的fullcut按照客单价计算（达飞、连富、张垒要求)
+
+<li>
+tms根据tid获取mantis上的bug信息
+
+<li>
+修改新重构vue错误
+
+<li>
+新活动的直降商品预览错误问题
+
+<li>
+调试wap端的支付导向到慧付宝页面的问题
+
+</ol>
+
+<h1 id="toc_4">2016-10-24尹科新转过来的需求</h1>
+<ol>
+<li>
+<a href="支付配置.html">支付配置</a> 目前无法进行 网关确认后，2天时间完成
+
+<li>
+[已上正式]网关接口  达飞2016-10-24完成
+
+<ul>
+<li>
+TID_201600094_战略卖家ZMM接口_ldf_10212016
+
+<li>
+TID_201600095_漏单检查ZMM接口_ldf_10212016
+
+</ul>
+<li>
+报表 达飞 2016-10-25开发完成   2016-10-26上老UAT测试内部测试  2016-10-27老UAT北京测试
+
+<li>
+[已上老UAT-TID:201600097]买家审核周期修改   2016-10-24 15:20   
+
+<ul>
+<li>
+修改人：尹科、姚宁、陈伟
+
+<li>
+Retailer表新增LastModifiedDate
+
+<li>
+修改存储过程proc_Retailer_UpdateBasicMsg
+
+<li>
+修改存储过程[proc_Retailer_ZOLUpdateByID]
+
+<li>
+修改RetailerInfo.cs 75-86行
+
+<li>
+修稿RetailerMng.aspx 106-107 80-84行
+
+<li>
+wap端同步修改已完成
+
+</ul>
+</ol>
+
+    
+<h1 id="toc_5">2016-10-21</h1>
+<ol>
+<li>
+(已上老UAT)订单出错时发短信功能【连富】
+
+<li>
+(已上正式-张垒测试完成-老UAT-TID：201600096)预付款订单尾款时间是否限制（张垒）
+
+<ul>
+<li>
+ProductOrder_Details_PreSell里新增一列PreSellId
+
+<li>
+生成子订单的时候，获取当前未转正常销售的Product_Presell的prosellId并写入ProductOrder_Details_PreSell
+
+<li>
+买家预售订单过尾款时间，禁止付尾款
+
+<ul>
+<li>
+修改[proc_ProductOrder_PreSell_RetailerQuery]存储过程
+
+<li>
+修改页面/center/r/PreSellOrderlist.aspx 
+
+</ul>
+<li>
+支付页面判断付尾款时间是否已经过期
+
+<ul>
+<li>
+修改页面/Center/pay/zolpay/default_pre.aspx
+
+<li>
+修改存储过程proc_ProductOrder_PreSell_Message4PayGate
+
+</ul>
+<li>
+修改预售订单生成的存储过程[proc_ProductOrder_Create_PreSellOrderDetail]
+
+<li>
+修改B2B的接口ProductOrder.GetRetailerPreSellOrderInfo
+
+</ul>
+<li>
+(待测试-新UAT)新活动，测试内容如下
+
+<ul>
+<li>
+活动添加（新老卖家中心）
+
+<li>
+卖家活动管理（新老卖家中心）
+
+<li>
+平台活动审核（新老卖家中心）
+
+<li>
+买家搜索列表漏出活动信息
+
+<li>
+买家商品详情页显示活动信息
+
+<li>
+买家立即购买活动商品的购买全流程
+
+</ul>
+<li>
+(待测试-新UAT)修改预览的存储过程，活动订单预览时，如果活动过期，无法按照活动规则购买
+
+</ol>
+
+<h1 id="toc_6">2016-10-20修改</h1>
+<ol>
+<li>
+(已上正式)<del>修改投诉漏出规则</del>
+
+<ul>
+<li>
+<del>center/r/orderlist.aspx</del>
+
+</ul>
+</ol>
+ 
+<h1 id="toc_7">2016-10-19修改</h1>
+<ol>
+<li>
+(已上正式)<del>修改退换货改文字及状态位置</del>
+
+<ul>
+<li>
+<del>product+order的service的dll</del>
+
+<li>
+<del>center/r/orderlist.aspx</del>
+
+<li>
+<del>center/r/Refund/ApplyRefund1.aspx</del>   
+
+</ul>
+<li>
+(已上正式)<del>修改订单预览的支付时非分货订单也不能线下支付了</del>
+
+<ul>
+<li>
+<del>Center/R/OrderPreview.aspx</del>
+
+</ul>
+<li>
+(已上正式，等北京测试确认)确认预售订单的邮件问题（尹科转发），UAT已正常，但是尹科说没有上到正式系统上
+
+</ol>
+
+<h1 id="toc_8">新接需求</h1>
+<ol>
+<li>
+支付方式的改变（尹科邮件）
+
+</ol>
+
+<h1 id="toc_9"><a href="已完成.html">已完成</a></h1>
+
+<h1 id="toc_10">卖家重构剩余工作</h1>
+<ol>
+<li>
+<strong>(进行中)新BUG系统错误修改                     全员</strong>
+
+<li>
+(进行中)新品申请                  刘斌
+
+<li>
+帮助中心                              
+
+<li>
+测试vue代码压缩                       永江+刘斌，可以暂缓
+
+<li>
+弹框消息( 类似QQ)     永江+刘斌
+
+<li>
+串号录入的浮动问题
+
+<li>
+*(暂缓)<a href="菜单权限.html">菜单权限</a>               连富+陈伟,新老菜单对照*
+
+<li>
+<del>(已完成)卖家信息读取当前登录人的信息</del>
+
+<li>
+<del>(已完成)我的店铺                              刘斌正在进行中</del>
+
+<li>
+<del>(已完成)浏览器支持</del>
+
+<li>
+<del>(已完成)发货单打印错误</del>
+
+<li>
+<del>(已完成)订单综合查询页面鼠标放表格上，会出选择框</del>
+
+<li>
+<del>(已完成)卖家店铺禁用和受限问题</del>
+
+<li>
+<del>(已完成)订单中心已付款等状态后台函数错误</del>
+
+<li>
+<del>(已完成)上分货功能到新UAT</del>
+
+<li>
+<del>(已完成)卖家中心首页                  永江，消息模块需要跟UI沟通</del>
+
+<li>
+<del>(已完成)订单中心缺少2个功能           永江</del>
+
+<li>
+<del>(已完成)第一轮测试问题修改            刘斌负责CSS方面，其他功能找各负责人,(2个测试文档未改，26个测试文档已改)</del>
+
+<li>
+<del>(已完成)上传文件有问题(先选择一个错误格式的文件，然后就无法正常上传文件了)</del>
+
+<li>
+<del>(已完成)百度编辑器有问题              刘斌提出的</del>
+
+<li>
+<del>(已完成)首页链接错误</del>
+
+<li>
+<del>(已完成)买家活动信息漏出                      永江</del>
+
+<ul>
+<li>
+<del>(已完成)直降                      永江</del>
+
+<li>
+<del>(已完成)满减                      永江</del>                             
+
+<li>
+<del>(已完成)满赠                      永江</del>                             
+
+<li>
+<del>(已完成)捆绑                     永江</del>
+
+</ul>
+<li>
+<del>(已完成)买家促销活动信息展示                  永江</del>
+
+</ol>
+
+        </div>
+    </body>
+</html>

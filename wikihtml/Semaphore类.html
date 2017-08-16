@@ -1,0 +1,92 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>ttSemaphore类</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+<h3 id="toc_0.0.1">Semaphore类</h3>
+
+<p>
+Semaphore: 限制可同时访问某一资源或资源池的线程数 
+</p>
+
+<p>
+使用 Semaphore 类可控制对资源池的访问。
+线程通过调用 WaitOne 方法（从 WaitHandle 类继承）进入信号量，并通过调用 Release 方法释放信号量。
+</p>
+
+<p>
+信号量的计数在每次线程进入信号量时减小，在线程释放信号量时增加。
+当计数为零时，后面的请求将被阻塞，直到有其他线程释放信号量。
+当所有的线程都已释放信号量时，计数达到创建信号量时所指定的最大值。
+</p>
+
+<p>
+<strong>被阻止的线程并不一定按特定的顺序（如 FIFO 或 LIFO）进入信号量。</strong>
+</p>
+
+<p>
+线程可通过重复调用 WaitOne 方法多次进入信号量。
+为释放这些入口中的部分或全部，线程可多次调用无参数的 Release()()() 方法重载，也可以调用 Release(Int32) 方法重载来指定要释放的入口数。
+</p>
+
+<p>
+Semaphore 类不对 WaitOne 或 Release 调用强制线程标识。
+程序员负责确保线程释放信号量的次数不能太多。
+例如，假定信号量的最大计数为 2，并且线程 A 和线程 B 同时进入信号量。
+如果线程 B 中的编程错误导致它两次调用 Release，则两次调用都成功。
+这样，信号量的计数已满，当线程 A 最终调用 Release 时便会引发 SemaphoreFullException。
+</p>
+
+<p>
+信号量分为两种类型：局部信号量和已命名的系统信号量。
+如果您使用接受名称的构造函数创建 Semaphore对象，则该对象与具有该名称的操作系统信号量关联。
+已命名的系统信号量在整个操作系统中都可见，可用于同步进程活动。
+您可以创建多个 Semaphore 对象来表示同一个已命名的系统信号量，也可以使用 OpenExisting 方法打开现有的已命名系统信号量。
+</p>
+
+<p>
+局部信号量仅存在于您的进程内。
+您的进程中任何引用局部 Semaphore 对象的线程都可以使用它。
+每个 Semaphore 对象都是一个单独的局部信号量。
+</p>
+
+        </div>
+    </body>
+</html>

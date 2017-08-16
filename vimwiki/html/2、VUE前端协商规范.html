@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>2、VUE前端协商规范</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+
+<p>
+为了后台开发人员能够降低读取vue代码可读性，可以做以下约定
+</p>
+
+<p>
+1、每个页面的加载数据，统一到methods下的initPageData中
+</p>
+<blockquote>
+类似所有asp.net页面的Load（）函数
+</blockquote>
+<p>
+2、所有从数据库中获取数据的函数，根据功能都写成单一函数，并用  get开头
+3、所有需要提交到后台，进行数据操作的函数，都写成单一函数，并用 submit开头
+4、所有v-on:click或者v-on:change都使用on开头，
+</p>
+<blockquote>
+例如： 刷新按钮的click事件  onRefreshBtn_Click
+&lt;a href="#" v-on:click="onRefreshBtn_Click"&gt;刷新&lt;/a&gt;
+客户级别select的change事件   onCustomerLevel_Change (不常用，建议使用数据watch实现功能)
+</blockquote>
+       
+<p>
+5、data里，手动写数据类型dataIn和dataOut
+</p>
+<blockquote>
+dataIn里放入初始化页面，需要获取的json数据，可以分为多个块
+例如：
+//----------------------------
+//输入的参数内容
+dataIn: {
+//所有日志文件List
+files: [
+{
+"FileName": "t20160809.txt",
+"SitePath": "2016\201608\20160809.txt"
+},
+],
+//所选的文件日志内容
+logList: [
+{
+"date": "2016-08-29T12:09:32",
+"loggerType": "DEBUG",
+"loggerClass": "log4net_init",
+"siteName": "ZMM(200站)",
+"businessCode": "1|调试",
+"info": "***********************************************",
+"userId": "无",
+"clientIp": "无",
+"paraIn": "无",
+"paraOut": "无",
+"tableCode": "无"
+},
+],
+},
+dataOut：是所有需要提交到后台处理的数据格式，使用调用““”类名_函数名”形式命名
+例如：这个看结构就知道，是调用 后台的ReadLog4netTxtLog.GetLogFileInfo函数
+//----------------------------
+//输出的参数内容
+dataOut: {
+ReadLog4netTxtLog_GetLogFileInfo: '请选择要加载的日志文件',
+}
+</blockquote>
+                
+
+<p>
+好处：
+</p>
+<blockquote>
+按照这个约定，后台开发人员读vue代码时，
+如果查看页面数据怎么显示的，直接从initPageData函数开始，就知道页面加载了哪些数据库数据
+如果需要调整某一个按钮的事件，直接找 onXXXXX_Click就可以修改代码
+如果怀疑某一个后台函数的json参数传递有问题，直接可以看dataOut里的内容，例如ReadLog4netTxtLog_GetLogFileInfo
+如果前端需要新增数据显示到界面，后台开发人员可以直接在dataIn中先模拟出数据，然后修改dom树，
+显示正常了，直接修改后台函数就可以新增了，前后端分离开发，相互不影响
+</blockquote>
+
+</body>
+</html>

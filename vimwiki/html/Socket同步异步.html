@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Socket同步异步</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<h3 id="toc_0.0.1">Socket同步异步</h3>
+
+<ul>
+<li>
+同步
+    Socket的同步指当连接建立后，服务端和客户端一直等待传输的消息，这时线程一直处于阻塞状态
+
+<li>
+异步
+    Socket的异步指当连接建立后，服务端和客户端接收或发送消息后，不等待，直接通过触发委托方式处理接收的和发送的消息
+
+</ul>
+    
+<p>
+例如：
+</p>
+
+<p>
+同步时，客户端发送数据包给服务端，服务端的接收线程一直循环等待客户端的数据包，直到连接结束
+</p>
+
+<p>
+异步时，客户端发送数据包给服务端，服务端在接收到数据包时，不是立即进行处理，而是出发一个委托，在服务器比较空闲时再处理数据包
+</p>
+
+</body>
+</html>

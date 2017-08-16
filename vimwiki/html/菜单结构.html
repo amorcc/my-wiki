@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>菜单结构</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<p>
+SKU管理	    --&gt;     发布新品	    /Center/S/Product/ProductAdd.aspx                       商品管理        --&gt;     发布新品
+SKU管理	    --&gt;     已上架产品	    /Center/S/Product/ProductList.aspx?status=1             商品管理        --&gt;     商品列表 
+SKU管理	    --&gt;     已下架产品	    /Center/S/Product/ProductList.aspx?status=0             商品管理        --&gt;     商品列表 
+SKU管理	    --&gt;     库存管理	    /Center/S/AmountMng.aspx                                商品管理        --&gt;     库存管理 
+SKU管理	    --&gt;     库存预警	    /Center/S/Product/ProductStoreAlarmList.aspx
+SKU管理	    --&gt;     产品改价	    /Center/S/Product/ProductModifyPrice.aspx               商品管理        --&gt;     价格维护
+SKU管理	    --&gt;     新品申请	    /Center/S/Product/NewProApply.aspx
+SKU管理	    --&gt;     批量改价	    /Center/S/Product/ProductPricesEdit.aspx
+SKU管理	    --&gt;     赠品管理	    /Center/S/product/attachmentmng.aspx                    商品管理        --&gt;     赠品添加
+SKU管理	    --&gt;     预售产品管理	/Center/S/product/ProductPreSellMng.aspx                商品管理        --&gt;     商品预售
+营销活动	--&gt;     活动添加	    Promotion/Activity/Activity.aspx                        营销活动        --&gt;     添加活动
+营销活动	--&gt;     活动列表	    Promotion/Activity/ActivityList.aspx                    
+商务中心	--&gt;     评价管理	    Retailer/CommentMng.aspx                                基本信息        --&gt;     评价管理
+商务中心	--&gt;     缺货登记	    OOS_Sign/OOS_SignMng.aspx                               商品管理        --&gt;     缺货登记
+商务中心	--&gt;     串号查询	    /Center/S/ImeiQuery.aspx                                报表查询        --&gt;     串号查询
+交易管理	--&gt;     交易流水	    Finance/AccountReceivable.aspx
+交易管理	--&gt;     凭证确认	    /Center/S/Finance/ProofList.aspx
+交易管理	--&gt;     关注店铺明细表	Report/RetailerInterestSupplier.aspx   
+交易管理	--&gt;     关注产品明细表	Report/RetailerInterestProduct.aspx  
+交易管理	--&gt;     关注产品汇总表	Report/RetailerInterestProductGroup.aspx  
+订单管理	--&gt;     订单改价	    /Center/S/Order/OrderNoPay.aspx                         订单管理        --&gt;     订单中心
+订单管理	--&gt;     订单操作	    /Center/S/Order/Operate.aspx                            订单管理        --&gt;     订单中心
+订单管理	--&gt;     预售订单查询	/Center/S/Order/PreSellOrderList.aspx               
+订单管理	--&gt;     订单综合查询	/Center/S/Order/OrderList.aspx                          报表查询        --&gt;     订单查询
+订单管理	--&gt;     订单发货	    /Center/S/Order/OrderExpressList.aspx                   订单管理        --&gt;     订单中心
+订单管理	--&gt;     退货/款订单	    /Center/S/Order/RefundfList.aspx                        订单管理        --&gt;     退款订单
+订单管理	--&gt;     订单中心	    /Center/S/Order/SellerCenter.aspx
+店铺管理	--&gt;     基本资料	    /Center/S/ShowSupplier.aspx                             基本信息        --&gt;     注册信息
+店铺管理	--&gt;     修改资料	    /Center/S/Supplier.aspx                                 基本信息        --&gt;     注册信息
+店铺管理	--&gt;     物流管理	    /Center/S/ExpressMng.aspx
+店铺管理	--&gt;     运费设置	    /Center/S/ExpressRuleList.aspx                          基本信息        --&gt;     运费规则
+店铺管理	--&gt;     店铺信息	    /Center/S/SupplierMall.aspx                             基本信息        --&gt;     我的店铺
+店铺管理	--&gt;     产品推荐	    /Center/S/SupplierProductTopN.aspx                      基本信息        --&gt;     我的店铺
+店铺管理	--&gt;     广告管理	    Advertisement/AdvMng.aspx                               基本信息        --&gt;     我的店铺
+系统管理	--&gt;     角色管理	    /Center/S/User/RoleList.aspx                            基本信息        --&gt;     角色配置
+系统管理	--&gt;     用户管理	    /Center/S/User/UserMng.aspx                             基本信息        --&gt;     用户添加
+系统报表	--&gt;     销售明细	    /Center/S/Report/SalesInfo.aspx
+系统报表	--&gt;     提货排名	    /Center/S/Report/SalesInfoGroupArea.aspx
+系统报表	--&gt;     销量排名	    /Center/S/Report/SalesInfoGroupPro.aspx
+客户管理	--&gt;     级别设置	    /Center/S/Customer/CustomerLevelManageNew.aspx          渠道客户        --&gt;     级别设置
+客户管理	--&gt;     客户级别	    /Center/S/Customer/LevelCustomerManage.aspx             渠道客户        --&gt;     客户级别
+客户管理	--&gt;     客户管理	    Retailer/CustomerMng.aspx
+客户管理	--&gt;     额度账期	    /Center/S/Finance/Credit/MyCreditMng.aspx               渠道客户        --&gt;     额度账期
+客户管理	--&gt;     额度使用记录    /Center/S/Finance/Credit/CreditDetail.aspx
+客户管理	--&gt;     信息群发	    /Center/S/Customer/SmsMass.aspx                         渠道客户        --&gt;     信息群发
+代金券管理	--&gt;     我的代金券	    /Center/S/Vouchers/VouchersList.aspx
+代金券管理	--&gt;     代金券活动	    /Center/S/Vouchers/ActivityList.aspx                    营销活动        --&gt;     代金卷
+采购需求	--&gt;     需求通知	    /Center/S/POPlan/POPlanMng.aspx
+采购需求	--&gt;     需求上报	    /Center/S/POPlan/POPlanList.aspx
+</p>
+
+</body>
+</html>

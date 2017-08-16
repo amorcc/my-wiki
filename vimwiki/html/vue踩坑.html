@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>vue踩坑</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+
+<p>
+ 实现5个页面 
+</p>
+<ul>
+<li>
+SKU管理 -- 产品列表   ：  表格类
+
+<li>
+系统管理 -- 用户管理 -- 添加用户  ： 简单添加类
+
+<li>
+订单管理 -- 订单综合查询
+
+<ol>
+<li>
+/Center/S/Order/OrderEditPrice.aspx?id=109051141363252
+
+</ol>
+<li>
+营销活动 -- 活动添加
+
+<li>
+订单管理 -- 产品改价 
+
+</ul>
+
+<h1 id="toc_1">获取和提交数据</h1>
+<ul>
+<li>
+已实现
+
+</ul>
+
+<h1 id="toc_2">分页</h1>
+<ul>
+<li>
+不完美
+
+</ul>
+
+<h1 id="toc_3">字典表和过滤器</h1>
+<ul>
+<li>
+字典表自动绑定到select
+        不完美
+
+<li>
+根据字典表键值获取text
+
+<li>
+金额自动变化为 ： ￥1212.11
+
+</ul>
+
+<h1 id="toc_4">信息完整性验证</h1>
+<blockquote>
+验证不符合规则的话，提示信息
+</blockquote>
+<ul>
+<li>
+手机号
+
+<li>
+E-mail
+
+<li>
+必填
+
+<li>
+int
+
+<li>
+金额
+
+</ul>
+    
+<h1 id="toc_5">弹出层的封装</h1>
+<ul>
+<li>
+弹出的页面 单个vue
+
+<li>
+调用的时候  直接  Dialog('views/S/Product/AddUser.vue');  ???
+
+</ul>
+
+<h1 id="toc_6">上传文件</h1>
+
+<h1 id="toc_7">分页页数改成全局</h1>
+
+<h1 id="toc_8">编辑器</h1>
+
+<h1 id="toc_9">tree控件</h1>
+
+<h1 id="toc_10">分页css冲突</h1>
+
+<h1 id="toc_11">时间选择器</h1>
+
+<h1 id="toc_12">各级别提示状态</h1>
+<ul>
+<li>
+N秒信息提示
+
+<li>
+弹框提示，用户手动关闭  alert('title','hint.png','<b>确认退出吗？</b>','OK|',fucntion(){})  确定|取消    取消    没有
+
+<li>
+1. 获取数据成功提示框
+
+<li>
+2、获取数据失败提示框
+
+<li>
+3、确认取消窗体: 提示提醒、错误、警告
+
+</ul>
+
+</body>
+</html>

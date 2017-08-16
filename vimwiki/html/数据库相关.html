@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>数据库相关</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+
+<h1 id="toc_1">获取有效订单信息</h1>
+<ul>
+<li>
+OrderStatus 订单状态 : 
+
+<ul>
+<li>
+0|已取消,1|待付款,2|已付款,3|已出库,4|已发货,5|已完成,
+
+<li>
+11|已退货,13|部分出库,14|部分发货,15|部分完成,20|已评价
+
+</ul>
+</ul>
+<blockquote>
+SELECT *
+FROM dbo.ProductOrder
+INNER JOIN dbo.retailer ON dbo.ProductOrder.UserSN_R=dbo.retailer.UserSN
+WHERE CONVERT(varchar(20),dbo.productorder.DateAdded,23) = '2016-05-23'
+AND dbo.productorder.OrderStatus=5;
+</blockquote>
+	
+<h1 id="toc_2" class="justcenter">获取有效订单信息买家数量</h1>
+<blockquote>
+SELECT  COUNT(1)
+FROM    ( SELECT DISTINCT
+dbo.ProductOrder.UserSN_R AS 买家
+FROM      dbo.ProductOrder
+INNER JOIN dbo.retailer ON dbo.ProductOrder.UserSN_R = dbo.retailer.UserSN
+WHERE     CONVERT(VARCHAR(20), dbo.productorder.DateAdded, 23) = '2016-05-23'
+AND dbo.productorder.OrderStatus = 5
+) AS a;
+</blockquote>
+            
+<h1 id="toc_3" class="justcenter">获取有效订单信息卖家数量</h1>
+<blockquote>
+SELECT  COUNT(1)
+FROM    ( SELECT DISTINCT
+dbo.ProductOrder.UserSN_S AS 卖家
+FROM      dbo.ProductOrder
+INNER JOIN dbo.retailer ON dbo.ProductOrder.UserSN_R = dbo.retailer.UserSN
+WHERE     CONVERT(VARCHAR(20), dbo.productorder.DateAdded, 23) = '2016-05-23'
+AND dbo.productorder.OrderStatus = 5
+) AS a;
+</blockquote>
+        
+<h1 id="toc_4">订单金额统计</h1>
+<blockquote>
+SELECT  A.OrderCode ,
+CASE WHEN a.Amount IS NULL THEN 0
+ELSE A.Amount
+END AS 实付款 ,
+CONVERT(VARCHAR(20), A.DateAdded, 23) AS CreateDate ,
+B.TotalPrice AS 订单金额 ,
+C.value AS 付款类型 ,
+CASE WHEN B.BalanceAmount IS NULL THEN 0
+ELSE B.BalanceAmount
+END AS 结算金额 ,
+CASE WHEN b.FinalPrice IS NULL THEN 0
+ELSE b.FinalPrice
+END AS 订单最终金额 ,
+CASE WHEN b.TransFee IS NULL THEN 0
+ELSE b.TransFee
+END AS 运费
+FROM    dbo.ProductOrder_PayDetails AS A
+LEFT JOIN dbo.v_ProductOrder AS B ON a.OrderCode = b.OrderCode
+LEFT JOIN dbo.SystemDictionary AS C ON a.PayType = c.Code
+AND c.Name = 'PayType'
+WHERE   PayType IN ( 1, 2, 6, 7, 8 )
+AND CONVERT(VARCHAR(20), A.DateAdded, 23) BETWEEN '2016-01-05'
+AND     '2016-05-26'
+AND A.Amount &gt; 0 
+</blockquote>
+
+</body>
+</html>

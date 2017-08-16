@@ -1,0 +1,13 @@
+
+= 主站架构 =
+* NetChina.Model 
+* NetChina.DalCom 
+* NetChina.Dal 
+    * 引用model和dalcom库
+* NetChina.BllCom
+    * 引用DAL和model
+* NetChina.BllE
+    * 引用BBLCom、DAL、Model、CSSHD.BLL、CSSHD.BLLTRAD、CSSHD.Common、CSSHD.DALOracle
+
+= 添加新表的流程 =
+* NetChina.Model 中添加CCTEST.cs

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>数据库相关函数</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+
+<h1 id="toc_1">CONVERT()</h1>
+<ul>
+<li>
+函数是把日期转换为新数据类型的通用函数 
+
+<li>
+20    :   2016-05-27 09:34:27
+
+<li>
+23    :   2016-05-27
+
+</ul>
+
+<h1 id="toc_2">GETDATE()</h1>
+<ul>
+<li>
+获取当前系统时间
+
+</ul>
+    
+<h1 id="toc_3">DATEDIFF()</h1>
+<ul>
+<li>
+函数返回两个日期之间的天数
+
+</ul>
+    
+<h1 id="toc_4">DATEADD()</h1>
+<ul>
+<li>
+函数在日期中添加或减去指定的时间间隔
+
+<li>
+DATEADD(datepart,number,date)
+
+<li>
+datepart : 日：d,dd; 月：m,mm; 年：yy,yyyy;
+
+<li>
+SELECT OrderId,DATEADD(day,2,OrderDate) AS OrderPayDate FROM Orders
+
+<li>
+
+
+</ul>
+
+<h1 id="toc_5">STUFF()</h1>
+<ul>
+<li>
+STUFF ( character_expression , start , length ,character_expression ) 
+
+<li>
+start     :       一个整数值，指定删除和插入的开始位置。
+
+<li>
+length    :       一个整数，指定要删除的字符数。
+
+<li>
+eg:   SELECT STUFF('abcdef', 2, 3, 'ijklmn');
+
+<li>
+      结果：aijklmnef
+
+</ul>
+
+</body>
+</html>

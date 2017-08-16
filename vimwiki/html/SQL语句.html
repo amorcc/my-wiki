@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>SQL语句</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+
+<h1 id="toc_1">总站首页</h1>
+<p>
+1.礼品中心
+ReadIndexData.GetMasterGiftCenterTable(1, 10);
+</p>
+
+<p>
+2.贺卡中心
+ReadIndexData.GetMasterGreetingCardCenterTable(1, 10);
+</p>
+
+<p>
+3.招聘中心
+ReadIndexData.GetMasterRecruitmentCenterTable(1, 10);
+</p>
+
+<p>
+4.游戏中心
+ReadIndexData.GetMasterGameCenterTable(1, 10);
+</p>
+
+<p>
+5.玩乐吧：由下面每个函数取一行数据组成
+搞笑图片
+ReadIndexData.GetMasterFunnyPicturesTable
+幽默笑话
+ReadIndexData.GetMasterHumorousJokeTable
+线上故事
+ReadIndexData.GetMasterOnlineStoryTable
+脑筋急转
+ReadIndexData.GetMasterBrainteasersTable
+星座运程
+ReadIndexData.GetMasterHoroscopeTable
+谜语集锦
+ReadIndexData.GetMasterRiddleTable
+对对联
+ReadIndexData.GetMasterCoupletTable
+</p>
+
+<p>
+6.文学原创
+ReadIndexData.GetMasterLiteraryOriginalityTable(1, 10);
+</p>
+
+<p>
+7.音乐原创
+ReadIndexData.GetMasterMusicOriginalityTable(1, 10);
+</p>
+
+<p>
+8.短信原创
+ReadIndexData.GetMasterSmsOriginalityTable(1, 10);
+</p>
+
+<p>
+9.图片原创
+ReadIndexData.GetMasterImgOriginalityTable(1, 10);
+</p>
+
+
+
+<h1 id="toc_2">a.chinaook.com左侧的树</h1>
+<blockquote>
+select * from c_columns t where t.columncaption like '%部落人生%'；
+select * from c_columns t where t.parendid='f0c179f2b5';
+select * from c_columns t where t.parendid='51ad752b5e';
+</blockquote>
+    
+<h1 id="toc_3">a.c</h1>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+=== 网络资料 ===
+* http://www.cnblogs.com/tianzhiliang/archive/2010/08/31/1813649.html
+
+
+=== c#相关的类 ===
+* System.Net.Socket.SocketAsyncEventArgs类
+* Stack<T> 类
+    表示任一类型的实例的大小可变的后进先出（LIFO）集合
+* Queue<T> 类
+    表示对象的先进先出集合
+* IDisposable接口
+    定义一种释放资源的方法
+    此接口的主要用途是释放非托管资源。 当不再使用托管对象时，垃圾回收器会自动释放分配给该对象的内存。 但无法预测进行垃圾回收的时间。 另外，垃圾回收器对窗口句柄或打开的文件和流等非托管资源一无所知。
+* SocketAsyncEventArgsPool
+
+=== 注意事项 ===
+* 保证连接数
+* 注意用户断开判断，连续5分钟没有新数据包，则判断该用户掉线
+* 接收发送双线程

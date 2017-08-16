@@ -1,0 +1,128 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>tt批处理</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+
+<h1 id="toc_1">1、echo命令</h1>
+<blockquote>
+打开回显或关闭请求回显功能，或显示消息。如果没有任何参数，echo 命令将显示当前回显设置。
+</blockquote>
+<p>
+语法
+echo [{on　off}] [message]
+Sample：@echo off / echo hello world
+即是说当echo设置off值的时候，那么下面的指令都将只执行而不显示，当再次出现echo on时下面的语句才为可见的（回显），echo通常和@一起使用，@放在echo的前面，即是 @echo，作用是让@后面的句子不显示出来，而@本身也是不显示的，那么通过 @echo off 可达到不显示任何信息的效果。
+在实际应用中我们会把这条命令和重定向符号（也称为管道符号，一般用&gt; &gt;&gt; ^）结合来实现输入一些命令到特定格式的文件中。譬如@echo hello simonsww &gt;&gt; 123.txt,执行完如上命令后，会在当前的目录的123.txt文件中，加入hello simonsww内容，从而达到修改文件内容的作用，此命令的巧妙之处就在于如果文件的扩展名不是txt，一样是达到修改文件的内容，相当于强行添加信息的作用！
+注：通常我们在批处理中显示的文字，比如一些关于某个批处理要提示的文字，一些信息，还一有些关于本处理的。作者信息；说简单一点就是显示，你想要的字符。
+</p>
+
+<h1 id="toc_2">2、Del命令</h1>
+
+<p>
+删除文件
+</p>
+
+<p>
+例:
+</p>
+	
+<p>
+del d:\hongke.txt
+</p>
+
+<p>
+删除d:\hongke.txt
+</p>
+
+<p>
+del命令有几个重要的参数：
+</p>
+
+<p>
+  /P            删除每一个文件之前提示确认。
+  /F            强制删除只读文件。
+  /S            从所有子目录删除指定文件。
+  /Q            安静模式。删除全局通配符时，不要求确认。
+</p>
+
+<p>
+例：
+如果你要删除c盘下所有的hongke.txt，且文件hongke.txt是只读的，该怎么办呢？
+</p>
+
+<p>
+del /f /s  c:\hongke.txt	
+</p>
+
+<p>
+注意，因为要搜索整个c盘，所以可能需要等待一段时间。
+</p>
+
+<h1 id="toc_3">删除垃圾文档的实例</h1>
+<p>
+@echo off
+echo 正在清除系统垃圾文件，请稍后。。。
+del /s /f /q %systemdrive%\*.tmp &gt;nul 2&gt;nul
+del /s /f /q %systemdrive%\*.gid &gt;nul 2&gt;nul
+del /s /f /q %systemdrive%\*.chk &gt;nul 2&gt;nul
+del /s /f /q %systemdrive%\*.old &gt;nul 2&gt;nul
+del /s /f /q "%userprofile%\local settings\temp\<strong>.</strong>" &gt;nul 2&gt;nul
+del /s /f /q "%userprofile%\recent\<strong>.</strong>" &gt;nul 2&gt;nul
+del /s /f /q "%userprofile%\cookies\<strong>.</strong>" &gt;nul 2&gt;nul
+del /s /f /q "%userprofile%\local settings\history\<strong>.</strong>" &gt;nul 2&gt;nul
+del /s /f /q "%windir%\temp\<strong>.</strong>" &gt;nul 2&gt;nul
+del /s /f /q "%windir%\prefetch\<strong>.</strong>" &gt;nul 2&gt;nul
+echo 垃圾文件清理完毕!
+echo. &amp; pause
+</p>
+
+<p>
+注：这是一个用来清除系统垃圾文件的批处理程序。命令其实也是很简单的，主要是用到“del”命令和相关的参数来实现
+有关“del”命令的参数大家可以参考“del /?”来得到详细的帮助。
+另外还有“%systemdrive%、%userprofile%”。那么它们是什么呢，这些其实是系统变量，也就是系统目录的另一种
+表示形式而已。我们可以通过输入“echo %userprofile%”来看看它代表的是系统中的那个目录。那么其它的也是一样
+*.tmp的意思是，这个*号是一个通配符号，它表示的是所有以.tmp为扩展名的文件。大家都明白了吗？
+&gt;nul 2&gt;nul的意思是将命令执行时的信息或者错误全部给屏蔽掉。
+</p>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,66 @@
+
+log4net日志读取页面
+
+页面使用vue开发前端，要求：
+1、js代码不处理dom树，使用数据驱动模式实现
+2、select和table的绑定使用v-for实现
+3、用户选择及输入内容，直接双向绑定到data里的指定数据
+4、用户选择后，通过watch监听数据变化，更新dom树
+5、实现页面数据源的排序和检索，使用vue的filterBy和orderBy
+6、因vue的ajax尚未封装，继续使用myObj.cmd获取数据和提交数据
+
+
+数据源：
+
+1、获取所有日志文件内容--数组
+  myObj.cmd({
+                        cmd: "ReadLog4netTxtLog.GetLogFileList",
+                        para: { "Items": "sdsd" },
+                        callback: function (data) {
+                            if (data != null && data.length > 0) {
+                                me.dataIn.files = data;
+                            }
+                        }
+                    });
+                    
+    示例数据：
+                    [
+                        {
+                            "FileName": "t20160809.txt",
+                            "SitePath": "2016\201608\20160809.txt"
+                        },
+                        {
+                            "FileName": "t20160808.txt",
+                            "SitePath": "2016\201608\20160808.txt"
+                        },
+                    ],
+                    
+2、获取指定日志文件--数组
+     myObj.cmd({
+                        cmd: "ReadLog4netTxtLog.GetLogFileInfo",
+                        para: { "FilePathName": me.dataOut.ReadLog4netTxtLog_GetLogFileInfo },
+                        callback: function (data) {
+                            if (data != null && data.length > 0) {
+                                me.dataIn.logList = data;
+                                me.dataIn.logList.sort();
+                            }
+                        }
+                    });
+
+     示例数据：
+
+                    [
+                        {
+                            "date": "2016-08-29T12:09:32",
+                            "loggerType": "DEBUG",
+                            "loggerClass": "log4net_init",
+                            "siteName": "ZMM(200站)",
+                            "businessCode": "1|调试",
+                            "info": "***********************************************",
+                            "userId": "无",
+                            "clientIp": "无",
+                            "paraIn": "无",
+                            "paraOut": "无",
+                            "tableCode": "无"
+                        },
+                    ]

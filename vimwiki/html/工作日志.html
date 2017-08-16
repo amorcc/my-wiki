@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>工作日志</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+
+<h1 id="toc_1">2016-05-31</h1>
+<p>
+1、多用户多角色的删除未使用角色功能
+2、多用户多角色的删除用户功能
+3、新增注册来源
+</p>
+<ul>
+<li>
+LoginUser表新增RegisterSource字段,  // 注册来源 ： 1-正常注册、2-分站推荐、3-经销商、4-手机端
+
+<li>
+修改v_LoginUser 视图
+
+<li>
+修改[proc_ZOLLoginUser_Reg]存储过程，insert的时候，新增RegisterSource列为3
+
+<li>
+修改[proc_LoginUser_Reg]存储过程，新增参数@registerSource，默认值为1
+
+<li>
+ZOL经销商首次登录注册未测试，
+
+<li>
+同步注册来源信息
+
+</ul>
+    
+
+<p>
+4、新增登录来源
+</p>
+<ul>
+<li>
+LoginLog 表新增LoginSource字段 // 登录来源：1-PC正常登录、2-PC经销商登录、3-手机端登录
+
+<li>
+修改[proc_LoginUser_Login]存储过程，新增参数@LoginSource,默认值1
+
+<li>
+修改[proc_ZOLLoginUser_Login]存储过程，insert的时候，新增LoginSource列为2
+
+</ul>
+
+<p>
+5、修改admin--平台商务--注册用户统计
+6、修改admin--平台商务--买家管理
+</p>
+    
+
+
+<h1 id="toc_2">2016-05-30</h1>
+<p>
+1、admin管理员--卖家管理--基本资料审核--销售区域显示修改成厂商、国代、省代三种
+2、卖家店铺管理--基本资料--销售区域显示修改成厂商、国代、省代三种情况
+3、卖家发布产品时，新增省代的按照区域发布的功能
+4、卖家多角色、多用户
+</p>
+<ul>
+<li>
+dbo.LoginUser 新增一个是否管理员字段 IsSellerAdd ： 1-是，0-否，默认值：0
+
+<li>
+新增一个存储过程
+
+<li>
+新增用户时，怎么同步？
+
+<li>
+新增用户后，100站有了，但是没有同步到200站
+
+<li>
+100和200 LoginUser  Id 不对应
+
+<li>
+
+
+<li>
+<a href="http://localhost:200/Center/S/User/RoleList.aspx">http://localhost:200/Center/S/User/RoleList.aspx</a>
+
+<li>
+<a href="http://localhost:200/Center/S/User/UserMng.aspx">http://localhost:200/Center/S/User/UserMng.aspx</a>
+
+<li>
+
+
+</ul>
+
+<p>
+新增菜单
+</p>
+
+<p>
+-- 卖家管理  多用户管理
+<a href="http://localhost:200/Center/S/User/UserMng.aspx">http://localhost:200/Center/S/User/UserMng.aspx</a>
+</p>
+
+<p>
+-- 卖家管理  多角色管理
+<a href="http://localhost:200/Center/S/User/RoleList.aspx">http://localhost:200/Center/S/User/RoleList.aspx</a>
+</p>
+
+</body>
+</html>

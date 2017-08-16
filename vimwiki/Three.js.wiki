@@ -1,0 +1,96 @@
+
+= WebGl中文网初级教程 =
+
+== Three.js三大组件 ==
+# 在Three.js中，要渲染物体到网页中，需要３个组件：
+    * 场景(Scene)
+        场景是所有物体的容器，要显示什么东西，就将该东西加入到场景中。
+    * 相机(camera)
+        相机决定了场景中哪个角度的景色会显示出来，相当于人的眼睛。
+        场景只有一种，但是相机却可以有很多种，相机有很多种，比如有的相机适合人像，有的相机适合风景。
+    * 渲染器(renderer)
+        渲染器决定了渲染的结果应该画在页面的什么元素上面，并且以怎样的方式来绘制。
+
+== 点和线 ==
+# Three.js中使用一个向量来表示点
+    {{{
+        THREE.Vector3 = function(x,y,z){
+            this.x = x || 0; //当x=null或者undefine时，this.x的值应该取0
+            this.y = y || 0;
+            this.z = z || 0;
+        }
+    }}}
+# 线条的材质使用THREE.LineBasicMaterial类型定义
+    * LineBasicMaterial(parameters) 
+    * parameters是一个定义材质外观的对象，主要属性如下
+        # Color         :   线条的颜色
+        # Linewidth     :   线条的宽度
+        # Linecap       :   线条两端的外观
+        # Linejoin      :   两个线条的连接点处的外观
+        # VertexColors  :   定义线条材质是否使用顶点颜色，boolean
+        # Fog           :   定义材质的颜色是否受全局雾效的影响
+# THREE.Line类定义线条
+    {{{
+        var line = new THREE.Line(geometry, material, THREE.LinePieces);
+    }}}
+    * 第一个参数是几何体geometry，包含2个订点和顶点的颜色
+    * 第二个参数是线条的材质，或者是线条的属性
+    * 第三个参数是一组点的连接方式
+
+== Three.js 光源 ==
+# AmbientLight(环境光)
+    这是一种基础光源，它的颜色会添加到整个场景和所有对象的当前颜色上
+# PointLight(点光源)
+    空间中的一个点，朝所有的方向发射光线
+# SpotLight(聚光灯光源)
+    这种光源有聚光的效果，类似台灯、天花板上的吊灯，或者手电筒
+# DirectionalLight(方向光)
+    也称作是无线光，从这种光源发出的光线可以看作是平行的。例如：太阳光
+# HemisphereLight(半球光)
+    这是一个特殊光源，可以用来创建更加自然的室外光线，模拟反光面和光线微弱的天空
+# AreaLight(面光源)
+    使用这种光源可以指定散发光线的平面，而不是空间的一个点
+# LensFlare(镜头炫光)
+    这不是一种光源，但是通过LensFlare可以为场景中的光源添加眩光效果
+
+== Three.js 材质 ==
+# MeshBasicMaterial 网格基础材质
+    基础材质，可以用它赋予几何体一种简单的颜色，或者显示几何体的线框
+# MeshDepthMaterial 网格深度材质
+    根据网格到相机的距离，这种材质决定如何给网格染色
+# MeshNormalMaterial 网格法向材质
+    这是一种简单的材质，根据物体表面的法向向量计算颜色
+# MeshFaceMaterial 网格面材质
+    这是一个容器，可以在这个容器里为物体的哥哥表面指定不同的颜色
+# MeshLambertMaterial 网格朗伯材质
+    这种材质会考虑光照的影响，可以用来创建颜色暗淡的、不光亮的物体
+# MeshPhongMaterial 网格Phong式材质
+    这种材质也会考虑光照的影响，而且可以用来创建光亮的物体
+# ShaderMaterial 着色器材质
+    这种材质允许使用自定义的着色器程序，直接控制顶点的放置方式，以及像素的着色方式
+# LineBasicMaterial 直线基础材质
+    这种材质可以用于直线几何体，从而创建着色的直线
+# LineDashedMaterial 虚线材质
+    这种材质跟直线基础材质一样，不过可以用来创建出一种虚线效果
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

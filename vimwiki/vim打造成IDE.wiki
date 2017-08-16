@@ -1,0 +1,33 @@
+== 一、配置html环境 ==
+
+解压HTML.zip，然后将里面的所有文件copy到:\Program Files\Vim\vimfiles目录下 首先，你应该把“ filetype plugin on ”写入你的vimrc。 重启vim。 新建一个test.html文件。用gvim打开按 ";html"看看会有什么结果！注意";html"是英文的分号(；)
+
+==  二、配置javascript  ==
+
+=== 1、语法高亮 - javascript.vim ===
+
+http://www.vim.org/scripts/script.php?script_id=1491 该插件安装在~/.vim/syntax/目录下。下载后需要修改一个地方，一般javascript编程，折叠层数不需要太深，我自己设置为1，即： setlocal foldlevel=1。 需要在.vimrc中加入 " 打开javascript折叠 let b:javascript_fold=1 " 打开javascript对dom、html和css的支持 let javascript_enable_domhtmlcss=1
+
+=== 2、变量标记和检查 ===
+
+http://www.vim.org/scripts/script.php?script_id=1238 该插件安装到~/.vim/plugin/目录。在对变量进行检查和跟踪的时候会很有用，同时还可以防止变量名拼写错误。打开／关闭变量标记的默认快捷键是m。也可以使用v选中一段进行标记
+
+=== 3、字典补全－javascript.dict ===
+
+该字典可以放在任意目录，我一般放在~/.vim/dict/目录中。使用字典补全需要在插入模式下，快捷键是Ctrl+X，然后Ctrl+K。有些javascript内置函数名超长，经常记不住，这时候字典就比较有用。字典其实就是一个普通文件，里面是关键词的列表，一行一个，所以你也可以加入一些你在项目中经常使用的函数。 另外需要在.vimrc中加入 "设置字典 ~/.vim/dict/javascript.dict是字典文件的路径 autocmd FileType javascript set dictionary=~/.vim/dict/javascript.dict
+
+=== 4、安裝JQeury 語法顏色 ===
+
+到這裏下載：http://www.vim.org/scripts/script.php?script_id=2416 ，儲存到 syntax底下。 然後在 .vimrc 加入這一行 ：au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+
+=== 5、安裝縮排 ===
+
+http://www.vim.org/scripts/script.php?script_id=1397 今天依然介绍vim这个大杀器的一个插件：xml.vim。 可以在这里下载这个插件，非常小只有50几kb，把它复制到~/.vim/ftpplugin目录下，然后在vim的配置文件 ~/.vimrc 中添加一行： filetype plugin indent on 保存，重新用vim或者Gvim打开一个html文件，或者html.erb文件，在通常模式下，输入gg=G 会发现vim帮我们自动格式化了html代码，所有的缩进都很完美。
+
+== 三、配置NERDTree ==
+从 http://www.vim.org/scripts/script.php?script_id=1658  下载，然后解压，将解压得到的plugin和doc文件夹与~/Vim/Vim73/目录下的同名文件夹合并。然后往_vimrc文件中增加下面配置代码：
+
+" 设置NerdTree
+map <F3> :NERDTreeMirror<CR>
+map <F3> :NERDTreeToggle<CR>
+   按F3即可显示或隐藏NerdTree区域了。

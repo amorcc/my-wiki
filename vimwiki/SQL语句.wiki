@@ -1,0 +1,50 @@
+
+= 总站首页 =
+1.礼品中心
+ReadIndexData.GetMasterGiftCenterTable(1, 10);
+
+2.贺卡中心
+ReadIndexData.GetMasterGreetingCardCenterTable(1, 10);
+
+3.招聘中心
+ReadIndexData.GetMasterRecruitmentCenterTable(1, 10);
+
+4.游戏中心
+ReadIndexData.GetMasterGameCenterTable(1, 10);
+
+5.玩乐吧：由下面每个函数取一行数据组成
+搞笑图片
+ReadIndexData.GetMasterFunnyPicturesTable
+幽默笑话
+ReadIndexData.GetMasterHumorousJokeTable
+线上故事
+ReadIndexData.GetMasterOnlineStoryTable
+脑筋急转
+ReadIndexData.GetMasterBrainteasersTable
+星座运程
+ReadIndexData.GetMasterHoroscopeTable
+谜语集锦
+ReadIndexData.GetMasterRiddleTable
+对对联
+ReadIndexData.GetMasterCoupletTable
+
+6.文学原创
+ReadIndexData.GetMasterLiteraryOriginalityTable(1, 10);
+
+7.音乐原创
+ReadIndexData.GetMasterMusicOriginalityTable(1, 10);
+
+8.短信原创
+ReadIndexData.GetMasterSmsOriginalityTable(1, 10);
+
+9.图片原创
+ReadIndexData.GetMasterImgOriginalityTable(1, 10);
+
+
+
+= a.chinaook.com左侧的树 =
+    select * from c_columns t where t.columncaption like '%部落人生%'；
+    select * from c_columns t where t.parendid='f0c179f2b5';
+    select * from c_columns t where t.parendid='51ad752b5e';
+    
+= a.c = 

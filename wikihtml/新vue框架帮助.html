@@ -1,0 +1,721 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>Coder-cc - 新vue框架帮助</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+<div class="toc">
+<ul>
+<li><a href="#toc_1">修改记录</a>
+<li><a href="#toc_2">vue资料</a>
+<li><a href="#toc_3">vue结构</a>
+<li><a href="#toc_4">新框架</a>
+<li><a href="#toc_5">过滤器</a>
+<li><a href="#toc_6">数据提交及获取</a>
+<li><a href="#toc_7">分页</a>
+<li><a href="#toc_8">上传文件</a>
+<li><a href="#toc_9">html编辑器</a>
+<li><a href="#toc_10">tree控件</a>
+<li><a href="#toc_11">时间选择器</a>
+<li><a href="#toc_12">等待框</a>
+<li><a href="#toc_13">信息完整性验证</a>
+<li><a href="#toc_14">信息提示</a>
+<li><a href="#toc_15">弹窗组件</a>
+<li><a href="#toc_16">url传参数</a>
+<li><a href="#toc_17">注意事项</a>
+<li><a href="#toc_18">约定规则</a>
+</ul>
+</div>
+
+<p>
+更新于 2016-9-6 16：58
+</p>
+
+<h1 id="toc_1">修改记录</h1>
+<p>
+*2016-9-18 cc 修改 
+</p>
+<ol>
+<li>
+修改分页的调用方法
+
+<li>
+新增约定规则
+
+</ol>
+
+<h1 id="toc_2">vue资料</h1>
+<ul>
+<li>
+<a href="http://cn.vuejs.org/guide/index.html">http://cn.vuejs.org/guide/index.html</a>
+
+<li>
+<a href="http://cn.vuejs.org/api/">http://cn.vuejs.org/api/</a>
+
+<li>
+css样式：/ZMM_Web/docs/showCSS.html
+
+<li>
+调试工具： console.log  ||  console.error
+
+</ul>
+
+<h1 id="toc_3">vue结构</h1>
+<pre  class="brush:vue">
+    &lt;template&gt;
+        &lt;div&gt;
+            .....
+        &lt;/div&gt;
+    &lt;/template&gt;
+    &lt;script&gt;
+    //************************************************
+    //ldf  2016-9-6
+    //页面介绍
+    //************************************************
+
+    //引用其他vue组件
+    import modal from './modal.vue';
+    
+    export default{
+        //-------------------------------
+        //组件
+        components: {
+            modal,
+        },
+        //-------------------------------
+        data() {
+        },
+        //-------------------------------
+        //相当于c#的load事件
+        ready :function(){
+            //
+            this.initPageData(1);
+        },
+        //-------------------------------
+        //定义需要的函数
+        methods : {
+            //加载页面函数，这个是自定义的，建议大家都用这样的函数名，方便其他人阅读
+            initPageData:function(pageIndex){
+            },
+        },
+    }
+    &lt;/script&gt;
+</pre>
+
+<h1 id="toc_4">新框架</h1>
+<ul>
+<li>
+修改路由到    \ZMM_Web\src_b2b\scripts\SPA\router\S-routermap.js
+
+<li>
+菜单在        \ZMM_Web\src_b2b\scripts\vues\z_menu.vue
+
+<li>
+页面模版在    \ZMM_Web\src_b2b\html\S\index.html
+
+<li>
+程序入口在    \ZMM_Web\src_b2b\scripts\entry\S\index.js
+
+</ul>
+
+<h1 id="toc_5">过滤器</h1>
+<ul>
+<li>
+字典表过滤器
+        eg：/p/pl   :    views/S/Product/ProductList.vue
+        例如需要把产品状态ProductStatus=1 格式化为   “"已上架"
+        在绑定的时候，直接写成如下就行了
+
+</ul>
+
+<pre>
+    ｛{ item.Status | ProductStatus}}
+    item.Status 是数据库取到的值，是1或者0之类的
+    ProductStatus是字典表的名称
+</pre>
+<ul>
+<li>
+通用过滤器
+
+<ol>
+<li>
+money : 金额
+
+<li>
+date : 年-月-日
+
+<li>
+datetime : 年-月-日 时:分:秒
+
+</ol>
+</ul>
+
+<pre>
+        比如需要把金额100，格式化为  ￥100.00
+        在绑定的时候，直接写成如下就行了
+            ｛{ item.price | money }}
+            item.price 是数据库取到的值，是100，
+            money是通用的金额过滤器，自动把金额过滤为   ￥100.00
+</pre>
+        
+<h1 id="toc_6">数据提交及获取</h1>
+<pre>
+     fetchData({
+            cmd:'VProduct.SelectAll',
+            para : para,
+            callback : function(data){
+                me.dataIn.table = data.Data;
+            }
+        });
+</pre>
+    
+<h1 id="toc_7">分页</h1>
+<blockquote>
+eg：/p/pl   :    views/S/Product/ProductList.vue
+实现分页需要两步：
+</blockquote>
+<ul>
+<li>
+1、在html代码里需要显示分页的区域内加上：
+
+</ul>
+
+<pre>
+&lt;div class="pageBox"&gt;&lt;/div&gt;
+</pre>
+<ul>
+<li>
+2、在获取后台数据库json传回来的时候，初始化以下分页：
+
+</ul>
+ 
+<pre>
+    initPage(me.$el, me.totalPages, me.totalRows, me.initPageData, pageIndex);
+</pre>
+<blockquote>
+例如：
+/p/pl页面：
+</blockquote>
+<pre>
+        ready : function(){
+            this.initPageData();
+        },
+        methods : {
+            initPageData : function(pageIndex){
+                   var para = this.dataOut.search;
+                   para.PageIndex = pageIndex;
+                   para.PageSize = this.pageSize || webConfig.pager.pageSize;
+    
+                   var me = this;
+                   fetchData({
+                       cmd:'VProduct.SelectAll',
+                       para : para,
+                       callback : function(data){
+                           me.totalPages = data.TotalPages;
+                           me.totalRows = data.TotalRows;
+                           me.dataIn.table = data.Data;
+                           
+                           initPage(me.$el, data.TotalPages, data.TotalRows, me.initPageData , pageIndex);
+                       }
+                   });
+               },//initpagedata
+            }
+</pre>
+    
+<h1 id="toc_8">上传文件</h1>
+<ul>
+<li>
+页面合适位置加入如下代码就可以实现上传：
+<pre>
+      &lt;div class="upload_box"&gt;
+          &lt;div class="upload_menu"&gt;上传图片&lt;/div&gt;
+          &lt;form id="form3"&gt;
+          	&lt;input id="HeadImage" name="HeadImage" type="text" class="cselectorImageUpload" /&gt;
+          &lt;/form&gt;
+      &lt;/div&gt;
+</pre>
+
+<ul>
+<li>
+获取上传后的地址
+<pre>
+         var uploadImageUrl = $('#HeadImage').val();
+</pre>
+
+</ul>
+</ul>
+
+<h1 id="toc_9">html编辑器</h1>
+<blockquote>
+初始化时需要做的 
+</blockquote>
+<ul>
+<li>
+页面合适位置加入如下代码：
+<pre>
+          &lt;div class="upload_box"&gt;
+              &lt;div class="upload_menu"&gt;上传图片&lt;/div&gt;
+              &lt;form id="form3"&gt;
+              	&lt;input id="HeadImage" name="HeadImage" type="text" class="cselectorImageUpload" /&gt;
+              &lt;/form&gt;
+          &lt;/div&gt;
+</pre>
+
+<li>
+script里新增变量 var ue;
+
+<li>
+ready事件里新增初始化代码： ue =  UE.getEditor('myEditor');
+
+<li>
+destroyed里新增销毁代码：ue.destroy();
+
+</ul>
+<li>
+获取html的内容
+<pre>
+        var content = UE.getEditor('myEditor').getContent();
+</pre>
+
+        
+<h1 id="toc_10">tree控件</h1>
+<blockquote>
+全jquery控件
+</blockquote>
+<ul>
+<li>
+页面合适位置加入代码：
+<pre>
+            &lt;ul id="tree"&gt;
+            &lt;/ul&gt;
+</pre>
+
+<li>
+加载时这样调用
+<pre>
+            $("#tree").empty();
+            $("#tree").append("&lt;li&gt;&lt;span class=\"treenode\" &gt;树节点&lt;/span&gt;&lt;ul id='1001'&gt;&lt;li&gt;&lt;span class='treenode' pid='1001'&gt;二级节点&lt;/span&gt;&lt;/li&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;");
+
+            $("#tree").treeview({
+                collapsed: true,
+                animated: "medium",
+                control: "#sidetreecontrol",
+                persist: "location"
+            }); 
+
+            $('.treenode').on('click', function(){
+                alert('');
+            });
+</pre>
+
+</ul>
+<h1 id="toc_11">时间选择器</h1>
+<blockquote>
+直接用v-model绑定数据即可
+</blockquote>
+<pre>
+    &lt;input type="text" readonly placeholder="开始时间" onClick="WdatePicker()"&gt;
+</pre>
+<blockquote>
+开始时间大于结束时间的例子：
+</blockquote>
+<pre>
+            &lt;!-- 活动时间 --&gt;
+            &lt;div class="item"&gt;
+              &lt;span class="title"&gt;
+                                活动时间：
+                            &lt;/span&gt;
+              &lt;div class="content"&gt;
+                &lt;span class="date-field"&gt;
+                                    &lt;input v-model="dataIn.startDate" style="width:160px;" id="startDate" type="text" readonly placeholder="开始时间" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" /&gt;
+                                    &lt;i class="fa fa-calendar icon"&gt;&lt;/i&gt;
+                                &lt;/span&gt;
+                &lt;span class="date-field"&gt;
+                                    &lt;input v-model="dataIn.endDate" type="text"
+                                           style="width:160px;" readonly placeholder="结束时间"
+                                           onclick="WdatePicker({ minDate: '#F{$dp.$D(\'startDate\')}',dateFmt:'yyyy-MM-dd HH:mm:ss'})" /&gt;
+                                    &lt;i class="fa fa-calendar icon"&gt;&lt;/i&gt;
+                                &lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;!-- 展示开始 --&gt;
+            &lt;div class="item"&gt;
+              &lt;span class="title"&gt;
+                                展示开始：
+                            &lt;/span&gt;
+              &lt;div class="content"&gt;
+                &lt;span class="date-field"&gt;
+                                    &lt;input v-model="dataIn.showDate" type="text" style="width:160px;" readonly placeholder="结束时间" onclick="WdatePicker({ maxDate: '#F{$dp.$D(\'startDate\')}',dateFmt:'yyyy-MM-dd HH:mm:ss'})" /&gt;
+                                    &lt;i class="fa fa-calendar icon"&gt;&lt;/i&gt;
+                                &lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;       
+</pre>
+
+<h1 id="toc_12">等待框</h1>
+
+<h1 id="toc_13">信息完整性验证</h1>
+<ul>
+<li>
+phone
+
+<li>
+integer
+
+<li>
+integer1      :正负整数
+
+<li>
+percent : 百分比
+
+<li>
+money
+
+<li>
+money1    : 正负金额
+
+<li>
+required
+
+<li>
+在input控件里新增 data-validate="phone"属性
+<pre>
+          &lt;input type="text" data-validate="phone" placeholder="请输入手机号"&gt;
+</pre>
+
+<li>
+弹窗提示，不出文字,  data-validate="phone showtips"
+
+<li>
+手动验证：validatorManu.isMoney(value)
+
+<li>
+在提交前
+<pre>
+            if (!zmm_validator(this.$el.querySelector('.modal-body'))) {
+               return false;
+             }
+</pre>
+
+</ul>
+
+<h1 id="toc_14">信息提示</h1>
+<ul>
+<li>
+成功的信息提示
+<pre>
+            showTips('只能上传Excel文件，必须是(xls)文件格式！', 'ok');
+</pre>
+
+<li>
+失败的信息提示
+<pre>
+          showTips('只能上传Excel文件，必须是(xls)文件格式！', 'error');
+</pre>
+
+<li>
+确认删除类的窗体
+<pre>
+             dialog({
+                    title: '提示',
+                    content: '您确认要改价吗？',
+                    ok: function() {
+                        //确认后开始处理程序
+                    },
+                    cancel:function(){
+                    },
+                }).showModal();
+</pre>
+
+</ul>
+
+<h1 id="toc_15">弹窗组件</h1>
+<ul>
+<li>
+写法
+<pre>
+        &lt;template&gt;
+          &lt;div&gt;
+            &lt;div class="popup " v-if="show"&gt;
+              &lt;div class="content"&gt;
+                &lt;h2 class="title"&gt;&lt;a href="javascript:;" class="close" title="关闭"  @click="onCancel"&gt;&amp;times;&lt;/a&gt;订单改价&lt;/h2&gt;
+                &lt;div class="body"&gt;
+                  &lt;div class="content" style="width:700px"&gt;
+        		.............内容页................
+         	  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="footer"&gt;
+                  &lt;button class="btn btn-primary" @click="onOk"&gt;确定&lt;/button&gt;
+                  &lt;button class="btn btn-cancel" @click="onCancel"&gt;取消&lt;/button&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/template&gt;
+        &lt;script&gt;
+        export default {
+          data() {
+              return {
+                orderCode: '',
+                dataIn: {}, //dataIn
+              } //return
+            }, //data()
+            props: {
+              paras: {},
+              show: {
+                type: Boolean,
+                twoWay: true,
+                default: false
+              }
+            },
+            ready: function() {},
+            methods: {
+              //----------------------------------------
+              //初始化页面
+              initPageData: function() {
+                //加载页面信息
+        
+               
+              },
+              onOk() {
+                
+                          //提交数据成功后出发以下回调
+                          this.$dispatch('on-after-modify', /*传参*/ {});
+                          this.show = false;
+                   
+                }
+        
+                //提交数据成功后出发以下回调
+                //关闭此框
+                //this.show = false;
+              },
+              onCancel() {
+                //取消修改触发回调
+                this.$dispatch('on-after-cancel-modify', /*传参*/ 'cancel了！')
+        
+                //关闭
+                this.show = false;
+              }
+            },
+            watch: {
+              show(newValue, oldValue) {
+                if (newValue == true) {
+                  this.orderCode = this.paras.id;
+                  this.initPageData();
+                }
+              }
+            }
+        }
+&lt;/script&gt;
+</pre>
+
+</ul>
+
+<h1 id="toc_16">url传参数</h1>
+<ul>
+<li>
+在路由表中配置参数，eg:
+<pre>
+            //------------------------------------------
+            //订单管理 --&gt; 录入串号
+            '/o/InputImei/:id': {
+              name: 'S_Order_InputImei',
+              component(resolve) {
+                require(['../views/S/Order/OrderInputImei.vue'], resolve)
+              }
+            },
+</pre>
+
+<li>
+在页面中获取
+<pre>
+             var id = this.$route.params.id;
+</pre>
+
+</ul>
+
+
+<h1 id="toc_17">注意事项</h1>
+<ul>
+<li>
+新页面全部创建成.vue页面
+
+<li>
+vue文件的&lt;template&gt;&lt;/template&gt;里需要使用div包住所有dom内容，不需要写其他属性
+<pre>
+        &lt;template&gt;
+            &lt;div&gt;
+                ......
+            &lt;/div&gt;
+        &lt;/template&gt;
+</pre>
+
+</ul>
+
+<h1 id="toc_18">约定规则</h1>
+<ul>
+<li>
+在&lt;script&gt;标签的前面添加注释，写上作者、日期、页面内容简介、修改记录等，eg：
+<pre>
+        &lt;script&gt;
+        //************************************************
+        //cc  2016-9-14
+        //订单改价窗体
+        //************************************************
+        &lt;/script&gt;
+</pre>
+
+<li>
+初始化页面的函数都固定函数名称initPageData
+
+<li>
+初始化事件统一使用ready:function(){}
+
+<li>
+按钮事件等统一命名为  onFuncName_Click 或者  onFuncName_Change等
+
+<ul>
+<li>
+onSearch_Click
+
+<li>
+onSearch_Change
+
+<li>
+onOk_Click
+
+</ul>
+<li>
+函数参数全部使用驼峰命名法，参数名称前加小写i区分，eg：
+<pre>
+        initPageData : function(iPageIndex = 1){
+        }
+</pre>
+
+<li>
+函数定义前，注释规则
+<pre>
+        //----------------------------------------
+        //加载卖家信息
+        //参数：
+        //      iSupplierUserSN : 卖家的UserSN
+        loadSupplierInfo : function(iSupplierUserSN){
+        },
+</pre>
+
+<li>
+复杂的是否显示某一个按钮的v-if写成函数，方便修改，传参的时候，将行数据全部传进来,eg:
+<pre>
+        //----------------------------------------
+        //是否显示退款申请按钮
+        //参数：
+        //      iRowItem : 当前行的绑定数据
+        isShowRefundApplyBtn : function(iRowItem){
+            if(iRowItem.OrderStatus == 1 &amp;&amp; iRowItem.CStarus == 0){
+                return true;
+            }
+            
+            return false;
+        }
+</pre>
+
+<li>
+ &lt;template&gt;&lt;/template&gt;标签内必须要有一个根节点，如：
+<pre>
+	&lt;template&gt;
+		&lt;div&gt;
+			.......
+		&lt;/div&gt;
+	&lt;/template&gt;
+</pre>
+   不能有多个并列层级的节点，如：
+<pre>
+	&lt;template&gt;
+		&lt;div&gt;
+			.......
+		&lt;/div&gt;
+		&lt;div&gt;
+			.......
+		&lt;/div&gt;
+	&lt;/template&gt;
+</pre>
+    不必要多层节点嵌套，如：
+<pre>
+	&lt;template&gt;
+		&lt;div&gt;
+		    &lt;div&gt;
+			.......
+                    &lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/template&gt;	
+</pre>
+
+</ul>
+
+<ul>
+<li>
+需要对外暴露的参数，写到props里边，且最好定义好参数的类型：
+<pre>
+	export default {
+		props:{
+			paras:Object,
+			paras1:{
+				type:Object,
+				default:{
+					a:1
+				}
+			}
+		}
+	}
+</pre>
+	如下定义方式不规范，组件初始化的时候，如果paras参数类型传入错误，vue框架不会给出提示，且其他人查看此vue组件的时候，不能清楚的了解参数类型：
+<pre>
+	export default {
+		props:{
+			paras:'',
+			paras1:''
+		}
+	}	
+</pre>
+
+</ul>
+
+        </div>
+    </body>
+</html>

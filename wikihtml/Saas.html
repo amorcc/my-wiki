@@ -1,0 +1,511 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>Coder-cc - Saas</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+
+<h1 id="toc_1">方案一 (个人推荐)</h1>
+<p>
+1.(预计7个工作日)UC按照新的架构，完美实现功能
+2.(预计两周)B2b暂时不实现webapi，保持现有结构，过滤存储过程，对权限+品类+区域进行过滤
+3.完成上面两步之后，开始B2b的真正通过webapi实现SaaS，分步骤有节奏的往上更新
+</p>
+<ul>
+<li>
+商品中心（3周），按照新架构，全面实现商品中心的新架构，然后切换到B2b站。
+                因需要修改很多webapi的内容，第一个分离出来的webapi时间稍长一些
+
+<li>
+订单中心（2周），按照新架构实现，然后切换
+
+<li>
+支付中心（2周），
+
+<li>
+其他 
+
+</ul>
+
+<h1 id="toc_2">方案二</h1>
+<p>
+1.(预计7个工作日)UC按照新的架构，完美实现功能
+2.(预计1个半月到2个月)将现有的DAL_B2b业务全部搬到webapi当作业务中心层，其他层不实现
+</p>
+<ul>
+<li>
+修改存储过程实现权限+品类+区域过滤
+
+<li>
+取消session，使用token进行全站登录
+
+<li>
+取消asp.net和asp的页面实现方式，
+
+</ul>
+<p>
+3.逐个拆分业务中心层，按照新架构，实现订单中心、商品中心等。。
+</p>
+
+<h1 id="toc_3">方案三</h1>
+<p>
+1.(预计7个工作日)UC按照新的架构，完美实现功能
+2.(预计3个月以上)全面按照新架构，实现B2b的webapi    
+</p>
+<ul>
+<li>
+修改B2b的c#架构
+
+<li>
+实现业务中心+业务单元+dal+model层
+
+<li>
+前端取消session，使用token
+
+<li>
+前端使用多个webapi获取数据，修改老前端框架
+
+</ul>
+<p>
+基本等于重新做一遍B2b。
+</p>
+    
+<h1 id="toc_4">Z买卖Saas实现技术架构思路</h1>
+<p>
+目标：
+</p>
+<ol>
+<li>
+用户中心SaaS化，独立的webapi
+
+<li>
+现有B2b业务SaaS化，独立的webapi
+
+<li>
+一站登录，通用多产品线
+
+<li>
+以后不存在PC接口和wap站接口两个概念，都是一个接口
+
+</ol>
+
+
+<p>
+新用户中心需要确认的问题：
+</p>
+<ol>
+<li>
+svn是否合并成一个，通过建分支的方式维护老系统                                   合并
+
+<ul>
+<li>
+新版用户中心涉及内容太多，开发周期太长，可能需要维护两个版本
+
+<li>
+用户中心开发期间的新需求通过分支进行合并
+
+<li>
+用户中心开发期间的老系统BUG修复通过分支进行合并
+
+</ul>
+<li>
+新用户中心的项目架构                                                            重整
+
+<ul>
+<li>
+建议减少项目数量，该合并的合并，便于版本维护和开发速度
+
+</ul>
+<li>
+写demo实现c#代码直接调用webapi并获取数据
+
+<li>
+写demo实现本产品调用其他产品接口的队列
+
+<li>
+规划哨兵系统的日志表结构
+
+<ul>
+<li>
+用户登录日志：登入+登出
+
+<li>
+用户新增日志
+
+<li>
+用户权限变更日志：区域码，品类码，菜单权限，操作权限
+
+</ul>
+<li>
+哨兵系统的webapi接口确定
+
+<li>
+用户中心webapi接口确定
+
+<ul>
+<li>
+登录接口
+
+<li>
+获取权限信息接口
+
+<li>
+新增用户接口
+
+<li>
+新增权限接口
+
+<li>
+修改权限接口
+
+<li>
+克隆权限接口
+
+</ul>
+<li>
+修改jquery调用接口的myObj.cmd命令
+
+<li>
+修改vue调用接口的cmd命令
+
+<li>
+表数据上，怎么加区域码、品类码
+
+<li>
+操作权限怎么在前端和后台体现
+
+<li>
+现有的B2b站页面怎么修改？前端怎么配合
+
+</ol>
+
+<p>
+疑问
+</p>
+<ol>
+<li>
+是否拆分现有的B2B_DAL，按照用户中心、订单中心等写接口？
+
+<li>
+用户中心是否采用三层架构
+
+<li>
+如果按照产品中心、订单中心这样拆分接口，是每个中心一个接口，还是写到一起？
+
+</ol>
+
+<p>
+UC任务拆解
+</p>
+<ol>
+<li>
+现有B2b总共116个类，673个函数(接口)
+
+<li>
+在现有接口的基础上直接修改（新增UC+修改所有数据读取及写入方式）
+
+<ol>
+<li>
+UC数据库及表结构调整（涉及现有的100站和200站loginuser+role+menu）
+
+<li>
+UC权限、角色等业务实现
+
+<li>
+UC前端实现
+
+<li>
+B2b卖家中心现有业务不涉及loginUser接口修改
+
+<li>
+B2b卖家中心涉及loginUser表的业务接口重写（预计不会太多）
+
+<li>
+B2b平台现有业务不涉及loginUser表的接口修改
+
+<li>
+B2b平台涉及loginUser表的接口重写（预计不会太多）
+
+<li>
+B2b卖家广告设置接口重写
+
+<li>
+B2b买家广告接口重写
+
+</ol>
+<li>
+新架构的基础上修改
+
+</ol>
+
+
+<p>
+UC
+</p>
+<ol>
+<li>
+新增用户接口
+
+<ul>
+<li>
+新增用户时，还像以前那样，先去创建一个角色，然后为新增的用户选择一个角色？还是直接可用勾选菜单权限、品类权限、区域权限？
+
+<li>
+一个用户登录UC后，只能查看和管理他所创建的用户信息？
+
+<li>
+一个B用户，他即有B2b的店铺，又有进销存，B用户的公司名称+营业执照等信息，是放到UC里保存，还是放到B2b的数据库里保存
+
+<li>
+UC管理的信息有哪些？
+
+<ul>
+<li>
+用户名
+
+<li>
+密码
+
+<li>
+区域权限
+
+<li>
+品类权限
+
+<li>
+菜单和操作权限
+
+<li>
+用户状态
+
+</ul>
+</ul>
+<li>
+用户列表接口
+
+<li>
+修改用户信息接口
+
+<li>
+修改密码接口
+
+<li>
+忘记密码接口
+
+<li>
+用户登录接口
+
+<li>
+用户退出接口
+
+<li>
+菜单注册接口
+
+<li>
+操作权限注册接口
+
+<li>
+菜单列表接口
+
+<li>
+区域权限设置接口
+
+<li>
+品类权限设置接口
+
+<li>
+获取指定用户菜单和操作权限接口
+
+<li>
+获取指定用户区域权限接口
+
+<li>
+获取指定用户品类权限接口
+
+<li>
+克隆角色接口
+
+</ol>
+
+<p>
+买家的接口
+</p>
+<ol>
+<li>
+首页
+
+<ul>
+<li>
+广告相关
+
+<ul>
+<li>
+图片轮播广告
+
+<li>
+中间广告
+
+<li>
+热销品牌
+
+<li>
+底部广告
+
+<li>
+商铺
+
+<li>
+左下
+
+<li>
+右下
+
+</ul>
+<li>
+产品
+
+<ul>
+<li>
+今日推荐
+
+<li>
+手机专区
+
+<li>
+DIY专区
+
+</ul>
+<li>
+新闻
+
+<li>
+新入住店铺
+
+<li>
+销售排行
+
+<li>
+品类信息
+
+<li>
+热门搜索
+
+<li>
+店铺信息
+
+</ul>
+<li>
+产品列表页面 ProductList.aspx
+
+<ul>
+<li>
+品牌
+
+<li>
+商品搜索列表
+
+<ul>
+<li>
+VProduct.Search
+
+</ul>
+</ul>
+<li>
+促销活动页面 Promotion.aspx
+
+<ul>
+<li>
+PromotionActivity.PromotionProductShowAll
+
+</ul>
+<li>
+购物车页面 MyCartList.aspx
+
+<ul>
+<li>
+购物车列表
+
+<li>
+购物车商品+
+
+<li>
+购物车商品-
+
+<li>
+购物车商品删除
+
+</ul>
+<li>
+订单预览页
+
+<ul>
+<li>
+代金券信息
+
+<li>
+订单预览信息
+
+<li>
+订单生成
+
+</ul>
+<li>
+
+
+</ol>
+<p>
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+</p>
+
+        </div>
+    </body>
+</html>

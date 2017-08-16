@@ -1,0 +1,12 @@
+
+1、showTopMsg('每次最多发布10个产品', 3000, "error");
+
+2、myobj.alert('每次最多发布10个产品');
+
+3、 myObj.cmd({
+                "cmd": "Menu.BeforeSetPower", "para": { "id": myObj.getQueryStr().id, "sn": $("#SiteSN").val() },
+                "callback": function (data) {
+                
+                }
+
+    });

@@ -1,0 +1,140 @@
+
+http://php.ncong.com/mysql/pdo/pdo_huoqu.html
+
+PDO的数据获取方法与其他数据库扩展都非常类似，只要成功执行SELECT查询，都会有结果集
+对象产生。不管是使用PDO对象中的query()方法，还是使用prepare()和execute()等方法结
+合的预处理语句，执行SELECT查询都会得到相同的结果集对象PDOStatement。都需要通过
+PDOStatement类对象中的方法将数据遍历出来。下面介绍PDOStatement类中常见的几个获取
+结果集数据的方法。
+　1、fetch()方法
+PDOStatement类中的fetch()方法可以将结果集中当前的记录以某种方式返回，并将结果集指
+针移至下一行，当到达结果集末尾时返回FALSE。该方法的原型如下：
+mixed PDOStatement::fetch ([ int $fetch_style [, int $cursor_orientation = PDO::FETCH_ORI_NEXT [, int $cursor_offset = 0 ]]] )
+第一个参数fetch_style是可选项，获取一行数据记录中，各列的引用方式取决于这个参数如
+何设置。可以使用的设置有以下6种。
+PDO::FETCH_ASSOC          从结果集中获取以列名为索引的关联数组。
+PDO::FETCH_NUM             从结果集中获取一个以列在行中的数值偏移量为索引的值数组。
+PDO::FETCH_BOTH            这是默认值，包含上面两种数组。
+PDO::FETCH_OBJ               从结果集当前行的记录中获取其属性对应各个列名的一个对象。
+PDO::FETCH_BOUND        使用fetch()返回TRUE，并将获取的列值赋给在bindParm()方法中指                                                      定的相应变量。
+PDO::FETCH_LAZY            创建关联数组和索引数组，以及包含列属性的一个对象，从而可以在这                                                     三种接口中任选一种。
+第二个参数cursor_orientation是可选项，用来确定当对象是一个可滚动的游标时应当获取哪一行。
+第三个参数cursor_offset也是可选项，需要提供一个整数值，表示要获取的行相对于当前游标位置的偏移。
+在下面的示例中，使用PDO对象中的query()方法执行SELECT查询，获取联系人信息表contactinfo中的信息，并返回PDOStatement类对象作为结果集。然后通过fetch()方法结合while循环遍历数据，并以HTML表格的形式输出。代码如下所示：
+<?php 
+    try {
+        $dbh = new PDO('mysql:dbname=testdb;host=localhost', $username, $passwd);
+    }catch (PDOException $e){
+        echo '数据库连接失败：'.$e->getMessage();
+        exit;
+    }
+ 
+    echo '<table border="1" align="center" width=90%>';
+    echo '<caption><h1>联系人信息表</h1></caption>';
+    echo '<tr bgcolor="#cccccc">';
+    echo '<th>UID</th><th>姓名</th><th>联系地址</th><th>联系电话</th><th>电子邮件</th></tr>';
+ 
+    //使用query方式执行SELECT语句，建议使用prepare()和execute()形式执行语句
+    $stmt = $dbh->query("select uid,name,address,phone,email FROM contactinfo");
+ 
+    //以PDO::FETCH_NUM形式获取索引并遍历
+    while (list($uid,$name,$address,$phone,$email)=$stmt->fetch(PDO::FETCH_NUM)){
+        echo '<tr>';
+        echo '<td>'.$uid.'</td>';
+        echo '<td>'.$name.'</td>';
+        echo '<td>'.$address.'</td>';
+        echo '<td>'.$phone.'</td>';
+        echo '<td>'.$email.'</td>';
+        echo '</tr>';
+    }
+ 
+    echo '</table>';
+?>
+2、fetchAll()方法
+fetchAll()方法与上一个方法fetch()类似，但是该方法只需要调用一次就可以获取结果集中
+的所有行，并赋给返回的数组(二维)。该方法的原型如下：
+　　array PDOStatement::fetchAll ([ int $fetch_style [, mixed $fetch_argument [, array $ctor_args = array() ]]] )
+fetchAll()方法的应用示例如下所示：
+<?php 
+    try {
+        $dbh = new PDO('mysql:dbname=testdb;host=localhost', $username, $passwd);
+    }catch (PDOException $e){
+        echo '数据库连接失败：'.$e->getMessage();
+        exit;
+    }
+ 
+    echo '<table border="1" align="center" width=90%>';
+    echo '<caption><h1>联系人信息表</h1></caption>';
+    echo '<tr bgcolor="#cccccc">';
+    echo '<th>UID</th><th>姓名</th><th>联系地址</th><th>联系电话</th><th>电子邮件</th></tr>';
+ 
+    //使用query方式执行SELECT语句，建议使用prepare()和execute()形式执行语句
+    $stmt = $dbh->prepare("select uid,name,address,phone,email FROM contactinfo");
+    $stmt->execute();
+    $allrows = $stmt->fetchAll(PDO::FETCH_ASSOC);       //以关联下标从结果集中获取所有数据
+ 
+    //以PDO::FETCH_NUM形式获取索引并遍历
+   foreach($allrows as $row){
+        echo '<tr>';
+        echo '<td>'.$row['uid'].'</td>';
+        echo '<td>'.$row['name'].'</td>';
+        echo '<td>'.$row['$address'].'</td>';
+        echo '<td>'.$row['phone'].'</td>';
+        echo '<td>'.$row['email'].'</td>';
+        echo '</tr>';
+    }
+ 
+    echo '</table>';
+    //以下是在fetchAll()方法中使用两个特别参数的演示示例
+    $stmt->execute();
+    $row = $stmt->fetchAll(PDO::FETCH_COLUMN,1);   //从结果集中获取第二列的所有值
+    echo '所有联系人的姓名：';
+    print_r($row);
+?>
+　3、setFetchMode()方法
+PDOStatement对象中的fetch()和fetchAll()两个方法，获取结果数据的引用方式默认都是
+一样的，既按列在行中的数值偏移量(从0开始)索引的值数组，因为它们的默认模式都被设置
+为PDO::FETCH_BOTH值。如果计划使用其他模式来改变这个默认设置，可以在fetch()或
+fetchAll()方法中提供需要的模式参数。但如果多次使用这两个方法，在每次调用时都需要
+设置新的模式来改变默认的模式。这时就可以使用PDOStatement类对象中的setFetchMode()
+方法，在脚本页面的顶部设置一次模式，以后所有fetch()和fetchAll()方法的调用都将生成
+相应的结果集，减少了多次在调用fetch()方法时的参数录入。
+4、bindColumn()方法
+使用该方法可以将一个列和一个指定的变量名绑定，这样在每次使用fetch()方法获取各行记
+录时，会自动将相应的列值赋给该变量，但必须是在fetch()方法的第一个参数设置为
+PDO::FETCH_BOTH值时。bindColumn()方法的原型如下所示：
+　bool PDOStatement::bindColumn ( mixed $column , mixed &$param [, int $type [, int $maxlen [, mixed $driverdata ]]] )
+第一个参数column为必选项，可以使用整数的列偏移位置索引(索引值从1开始)，或是列的名
+称字符串。第二个参数param也是必选项，需要传递一个引用，所以必须提供一个相应的变量
+名。第三个参数type是可选项，通过设置变量的类型来限制变量值，该参数支持的值和介绍
+bindparam()方法时提供的一样。该方法的应用示例如下所示：
+<?php 
+    try {
+        $dbh = new PDO('mysql:dbname=testdb;host=localhost', $username, $passwd);
+        $dbh = setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    }catch (PDOException $e){
+        echo '数据库连接失败：'.$e->getMessage();
+        exit;
+    }
+ 
+     $query="select uid,name,,phone,email FROM contactinfo WHERE departmentId=d01'";
+ 
+   try {
+    $stmt = $dbh->prepare($query);
+    $stmt->execute();
+    $stmt->bindColumn(1,$uid);
+    $stmt->bindColumn(2,$name);
+    $stmt->bindColumn('phone',$phone);
+    $stmt->bindColumn('email',$email);
+ 
+    while ($stmt->fetch(PDO::FETCH_BOUND)){
+        echo $uid."\t".$name."\t".$phone."\t".$email."\n";
+    }
+   }catch (PDOException $e){
+    echo $e->getMessage();
+   }
+?>
+5、获取数据列属性信息
+在项目开发中，除了尅通过上面的几种方式获取数据表中的记录信息外，还可以使用
+PDOStatement类对象的columnCount()方法获取数据表中字段的数量，并且可以通过
+PDOStatement类对象的getColumnMeta()方法获取具体列的属性信息。

@@ -1,0 +1,14 @@
+
+
+1、英才天下
+    
+    E:\mobileweb\csshdweb\web\NcWeb\NetChina\YingcaiWeb
+
+    注意:需要自动生成根目录下的index.shtml文件
+    
+    已经配置成功
+    
+2、美乐购物
+    
+    E:\web\ShopWeb
+    

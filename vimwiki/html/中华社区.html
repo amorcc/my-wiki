@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>中华社区</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<h1 id="toc_1">涉及表结构</h1>
+<p>
+论坛版块表  BBSSPACE.FORUMPLATE
+</p>
+<blockquote>
+中华社区的主要板块
+select t.*, t.rowid 
+from BBSSPACE.FORUMPLATE t 
+where t.spid=9 and  t.parentid is null and t.orders&lt;&gt;0
+order by t.orders
+</blockquote>
+<p>
+主题表      BBSSPACE.FORUMTHEME
+</p>
+<h1 id="toc_2">中华社区的所有栏目信息</h1>
+<blockquote>
+select COLUMNID,PARENDID,PATHID,COLUMNCAPTION,PAGEURL
+from ADMINSPACE.COLUMNS a
+where  PATHID LIKE '%COL7da50b85d3d14271ba0cf9b927f7e21a%' AND PARENDID is not null 
+and a.columncaption like '%主题管理%'
+order by  ORDERS ASC;
+</blockquote>
+<blockquote>
+select  COLUMNID,PARENDID,PATHID,COLUMNCAPTION,PAGEURL
+from ADMINSPACE.COLUMNS a
+where  a.parendid ='COL0798b0dfa18d41518a246d21666d7ab7' AND PARENDID is not null 
+order by  ORDERS ASC;
+</blockquote>
+    
+<h1 id="toc_3">同行方舟论坛</h1>
+<p>
+1. 首页论坛：       
+</p>
+<blockquote>
+对应同行方舟站点的同行论坛
+通过后台添加贴子标题和贴子路径获取
+</blockquote>
+<p>
+2. 首页沙龙论坛：   
+</p>
+<blockquote>
+对应同行方舟站点的沙龙论坛
+通过后台添加贴子标题和贴子路径获取
+</blockquote>
+<p>
+3. 主站论坛：       
+</p>
+<blockquote>
+中华社区 同行 显示
+</blockquote>
+<p>
+4. 沙龙论坛：
+5. 子站论坛：
+</p>
+
+<h1 id="toc_4">热帖推荐</h1>
+
+<h1 id="toc_5">社区公告</h1>
+<p>
+spid=9 lmid=2
+</p>
+<h1 id="toc_6">24小时排行</h1>
+<blockquote>
+E:\mobileweb\csshdweb\web\NcWeb\NetChina.BllE\Bbs\BLLForumMain.cs
+/// &lt;summary&gt;
+/// 获取排行榜数据
+/// &lt;/summary&gt;
+/// &lt;param name="category"&gt;排行榜分类，日排行，周排行，月排行&lt;/param&gt;
+/// &lt;param name="spid"&gt;版块id&lt;/param&gt;
+/// &lt;param name="number"&gt;显示条数&lt;/param&gt;
+/// &lt;param name="titleLength"&gt;标题截取字数&lt;/param&gt;
+/// &lt;returns&gt;返回显示的内容&lt;/returns&gt;
+public string GetBillBoard(string category, int spid, string number, int titleLength)
+{
+BD_FORUMMAIN dao = new BD_FORUMMAIN();
+DataTable dt = new DataTable();
+string sql = "";   // 执行的sql语句
+string str = "";    // 拼接返回的字符串  
+switch (category)
+{
+case "today":
+sql = "select * from (select t.forumthemeid,t.caption,t.todayclick click from bbsspace.forumtheme t where t.isdelete!=1 and spid=" + spid + " and t.today=to_char(sysdate,'yyyy-mm-dd') order by t.todayclick desc,t.pubtime desc) where rownum&gt;=0 and rownum&lt;=" + number + "";
+break;
+case "week":
+sql = "select * from (select t.forumthemeid,t.caption,t.currentweekclick click from bbsspace.forumtheme t where t.isdelete!=1 and spid=" + spid + " and t.currentweek=to_char(sysdate,'yyyy')||'-'||to_char(sysdate,'IW') order by t.currentweekclick desc,t.pubtime desc) where rownum&gt;=0 and rownum&lt;=" + number + "";
+break;
+case "month":
+sql = "select * from (select t.forumthemeid,t.caption,t.currentmonthclick click from bbsspace.forumtheme t where t.isdelete!=1 and spid=" + spid + " and t.currentmonth=to_char(sysdate,'yyyy-mm') order by t.currentmonthclick desc,t.pubtime desc) where rownum&gt;=0 and rownum&lt;=" + number + "";
+break;
+case "hot":
+sql = "select * from (select t.spid,t.forumthemeid,t.issite,t.caption,t.sitelevel from bbsspace.forumtheme t where t.isdelete!=1 order by t.accesscount desc,t.pubtime desc) where issite=0 and rownum&gt;=0 and rownum&lt;=" + number + "";
+break;
+default:
+sql = "select * from (select t.forumthemeid,t.issite,t.caption,t.sitelevel from bbsspace.forumtheme t where t.isdelete!=1 and spid=" + spid + " and t.forumplateid='" + category + "' order by t.accesscount desc,t.pubtime desc) where rownum&gt;=0 and rownum&lt;=" + number + "";
+break;
+}
+dt = dao.Query(sql);
+}
+</blockquote>
+
+<h1 id="toc_7">一周排行</h1>
+<p>
+同上
+</p>
+<h1 id="toc_8">一月排行</h1>
+<p>
+同上
+</p>
+<h1 id="toc_9">精彩贴图</h1>
+<blockquote>
+select * from bbsspace.view_theme_main where types=4 and rownum&lt;=16
+</blockquote>
+<h1 id="toc_10">社会</h1>
+<blockquote>
+select * from 
+(
+select parentid,forumplateid,platecaption,forumthemeid,caption 
+from userspace.view_theme 
+where parentid='PLATE51338c775c184d42a6019a146ff6d0d6' and spid=9 
+order by istop desc,pubtime desc
+) where rownum&gt;=0 and rownum&lt;=7
+</blockquote>
+<h1 id="toc_11">财经</h1>
+<blockquote>
+PLATEbdc3cfef0c0d440dad8d323016582056
+</blockquote>
+<h1 id="toc_12">房产</h1>
+<blockquote>
+PLATEff51885d61b44aeebc8de3b8dfa76cd6
+</blockquote>
+<h1 id="toc_13">汽车</h1>
+<blockquote>
+PLATE8d2c689e86d643718f4d8c3e928e1b65
+</blockquote>
+<h1 id="toc_14">军体</h1>
+<blockquote>
+PLATE82b579fab5a14b2daef7d543010c9948
+</blockquote>
+<h1 id="toc_15">娱乐</h1>
+<blockquote>
+PLATE10a31a7fea0b41768bc26a73c297ea33
+</blockquote>
+<h1 id="toc_16">时尚</h1>
+<blockquote>
+PLATE027c37a6af984c73a5916f5a656be055
+</blockquote>
+<h1 id="toc_17">女人</h1>
+<blockquote>
+PLATEf56da81498224b7a9e00b5eac2ae25a6
+</blockquote>
+<h1 id="toc_18">情感</h1>
+<blockquote>
+PLATEc5436f3b45674968aeab41accac6eccd
+</blockquote>
+<h1 id="toc_19">健康</h1>
+<blockquote>
+PLATE17245660ec8f44feafcb364d5f138cb7
+</blockquote>
+<h1 id="toc_20">饮食</h1>
+<blockquote>
+PLATE6d0c13b77fa04dc0b335934f111f0cd3
+</blockquote>
+<h1 id="toc_21">教育</h1>
+<blockquote>
+PLATEf90b24fb0ee04a44ad8decda224d563d
+</blockquote>
+<h1 id="toc_22">科技</h1>
+<blockquote>
+PLATEc567d2757b7040caa7addeb03ce94087
+</blockquote>
+<h1 id="toc_23">职场</h1>
+<blockquote>
+PLATE858aa17cd8ce43728a4c2e3fbc0ad56f
+</blockquote>
+<h1 id="toc_24">旅游</h1>
+<blockquote>
+PLATE896750e32a4f4a3eb27772af508de3d3
+</blockquote>
+<h1 id="toc_25">杂谈</h1>
+<blockquote>
+PLATE42ec68782c68423fb568fefa1a64c853
+</blockquote>
+<h1 id="toc_26">恋爱</h1>
+<blockquote>
+forumplateid = ComEnum.GetEnumValue(EnuForumPlateTypes.恋爱主站论坛)
+spid = ComEnum.GetEnumValue(EnuSPID.恋爱之家)
+select * from 
+(
+select forumthemeid,caption 
+from userspace.view_main_theme 
+where forumplateid='5' and spid=3 
+order by istop desc,pubtime desc
+) 
+where rownum&gt;=0 and rownum&lt;=7;
+</blockquote>
+<h1 id="toc_27">交友</h1>
+<h1 id="toc_28">家庭</h1>
+<h1 id="toc_29">校友</h1>
+<h1 id="toc_30">老乡</h1>
+<h1 id="toc_31">圈友</h1>
+<h1 id="toc_32">同行</h1>
+<h1 id="toc_33">沙龙</h1>
+<h1 id="toc_34">时代</h1>
+
+</body>
+</html>

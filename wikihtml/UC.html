@@ -1,0 +1,713 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>Coder-cc - UC</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+<h1 id="toc_1">遗漏的存储过程</h1>
+<ol>
+<li>
+/mng/                 LoginUser.GetLastLoginIpAndDate
+
+<li>
+/Login.aspx           Advtisement.SelectAdvisement
+
+</ol>
+<h1 id="toc_2">需要修改的前端内容汇总(随时新增未知内容)</h1>
+<blockquote>
+优先级    后台        前端        内容
+</blockquote>
+<ol>
+<li>
+ 1        ok          ok          登录
+
+<li>
+ 2        ok          ok          退出登录
+
+<li>
+ 3        ok          ok          注册流程
+
+<li>
+ 4        ok          ok          找回密码流程
+
+<li>
+ 5        ok          ok          修改密码流程
+
+<li>
+ 5.1      ok                      新卖家中心的菜单动态生成
+
+<li>
+ 6        ok                      卖家新增用户管理页面
+
+<li>
+ 7        ok          ok          老卖家中心菜单由UC传递
+
+<li>
+ 8        ok                      新卖家中心菜单由UC传递
+
+<li>
+ 9        ok                      卖家订单中心第三级操作权限的限制
+
+<li>
+ 10       ok                      平台新增用户管理页面：只管理平台管理员权限，eg：省长、省运营中心、运营等的帐号
+
+<li>
+ 11                               平台的菜单由UC传递
+
+<li>
+ 12                               买家新增用户管理页面
+
+<li>
+ 13                               买家的个人中心菜单由UC传递，生成动态菜单
+
+<li>
+ 14       ok                      登录页的广告后台设置页面+前端展示页面
+
+<li>
+ 15       ok                      登录后的所有页面广告根据登录人注册地分省市县显示  ？？？ 
+
+<li>
+                                  ？？？？规则怎么定？现在买家都精确到县了，那么什么时候才能显示市和省的广告？
+
+<li>
+ 16       ok                      新老订单中心、订单操作、订单改价、订单发货、核销加操作权限
+
+<li>
+ 17                               黑白名单
+
+<li>
+                                  邀请注册
+
+</ol>
+    
+<h1 id="toc_3">200站去掉表后报错的内容</h1>
+<ol>
+<li>
+ok        proc_Advtisement_GetList                    Advtisement.SelectAdvisement
+
+<li>
+ok        proc_AdvContent_SelectTop                   
+
+<li>
+ok        v_ProductSearch
+
+<li>
+ok        proc_LoginUser_CompanyInfo                  UserAuth.Login
+
+<li>
+ok        proc_System_MngIndex                        Supplier.MngMain
+
+<li>
+ok        proc_Supplier_CustLevel_SelectAll           SupplierCustLevel.SelectWithRetailer
+
+<li>
+no        v_product                                   VProduct.SelectAll
+
+<li>
+ok        proc_ProductStore_AlarmList                 VProduct.StoreAlarmList
+
+<li>
+no        proc_ProductBasic_TheSecond                 ZOL.B2b.DAL.DALFactory&lt;ZOL.B2b.DAL.ProductBasic&gt;.Instance.TheSecond()
+
+<li>
+ok        V_Supplier_NewProApply                      VSupplierNewProApply.SelectAll
+    2016-11-29 
+
+<li>
+ok        proc_ProductPrice_SelectForUpdate           VProduct.PriceForUpdate
+
+<li>
+ok        proc_ProductPrice_Update                    VProduct.PriceUpdate
+
+<li>
+ok        proc_ProductMatrixPrice_Insert              VProduct.PriceUpdate
+
+<li>
+ok        proc_RetailerCenter_GetData                 Retailer.CenterIndex
+
+<li>
+ok        proc_ProductOrder_List                      ProductOrder.List
+
+<li>
+ok        proc_GoodsDistribution_SelectForRetailer    GoodsDistribution.ListForRetailer
+
+<li>
+ok        proc_MyCredit_SelectAll                     MyCredit.SelectAll
+
+<li>
+ok        proc_MyCredit_History_SelectAll             MyCredit_History.SelectAll
+
+<li>
+ok        proc_MyCreditDetail_ReturnList              MyCredit_Detail.RetrunList
+
+<li>
+ok        proc_VouchersList_SelectByCom               VouchersList.SelectByCompany
+
+<li>
+ok        proc_MyFinance_Rebate_Retalier_GetList      MyFinance_Rebate.GetRetalierFinanceList 
+
+<li>
+ok        proc_MyFinance_Rebate_Retalier_GetAmount    MyFinance_Rebate.GetRetalierFinanceAmountBySupplier
+
+<li>
+no        V_Retailer_Interest_Supplier                VRetailerInterestSupplier.SelectAll
+
+<li>
+ok        v_OOS_Sign                                  VOOS_Sign.RetailerSelectAll
+
+<li>
+no        proc_Supplier_Promotion_GetTopN             Supplier.PromotionGetTopN
+
+<li>
+no        proc_Supplier_MainPage_MyProducts           Supplier.GetSupplierPro
+
+<li>
+ok        VProduct.Details1
+
+<li>
+ok        ProductOrder.PreView
+
+<li>
+ok        ProductOrder.PreView_GetMySecondaryPay
+
+<li>
+no        proc_StoreOut_ExpressConfirm                StoreOut.ExpressConfirm
+
+<li>
+ok        proc_PromotionActivity_SelectByPro          VProduct.Details1
+
+<li>
+ok        ProductOrder.BeforPay_MorePayType_Details
+
+<li>
+ok        ProductOrder.Detail
+
+<li>
+ok        ProductOrder.Pay 线下支付确认支付时错误
+
+<li>
+ok        proc_Finance_Proof_Search                   Proof.SelectAll
+
+<li>
+ok        Proof.Insert
+
+<li>
+ok        proc_LoginUserInfo_SelectByOrder 额度支付发短信出错
+
+<li>
+no        ProductOrder.Cancel
+
+<li>
+no        PromotionActivity.PromotionProductShowAll 促销活动
+
+</ol>
+<h1 id="toc_4">卖家后台</h1>
+<ol>
+<li>
+no        proc_ProductOrder_StoreOut_Query            ProductOrder.OutputQuery 订单改价
+
+</ol>
+    
+
+<h1 id="toc_5">200站需要删除的表</h1>
+<ol>
+<li>
+ProductBasic
+
+<li>
+Area
+
+<li>
+LoginUser
+
+<li>
+SMS
+
+<li>
+SMS_Queue
+
+<li>
+SupplierArea  ??
+
+<li>
+SupplierCategory  ??
+
+<li>
+SupplierUserArea
+
+<li>
+User_Role
+
+<li>
+
+
+</ol>
+     
+<h1 id="toc_6">用户管理接口</h1>
+<ol>
+<li>
+列表
+
+<ul>
+<li>
+cmd   :   UserAuth.GetUserList
+
+<li>
+paras :   username,pageindex,pagesize
+
+</ul>
+<li>
+新增用户页面初始化
+
+<ul>
+<li>
+cmd   :   UserAuth.GetSupplierSysUserInfo
+
+<li>
+paras :   
+
+</ul>
+<li>
+新增用户
+
+<ul>
+<li>
+cmd   :   UserAuth.AddUser
+
+<li>
+paras :   phonenum,password,email,tier,status,areacodes,categoryids,menuids
+
+</ul>
+<li>
+修改用户获取用户信息
+
+<ul>
+<li>
+cmd   :   UserAuth.GetUserInfo
+
+<li>
+paras :   userid
+
+</ul>
+<li>
+修改用户
+
+<ul>
+<li>
+cmd   :   UserAuth.ModifyUser
+
+<li>
+paras :   userid,phonenum,email,tier,status,areacodes,categoryids,menuids
+
+</ul>
+<li>
+克隆用户
+
+<ul>
+<li>
+cmd   :   UserAuth.CloneUser
+
+<li>
+paras :   cloneuserid,newphonenum,newpassword,newemail,status
+
+</ul>
+<li>
+删除用户
+
+<ul>
+<li>
+cmd   :   UserAuth.DeleteUser
+
+<li>
+paras :   userid
+
+</ul>
+</ol>
+
+<h1 id="toc_7">广告</h1>
+<ol>
+<li>
+店铺的广告
+
+<ul>
+<li>
+店铺首页_轮播广告大图_1900*420
+
+</ul>
+<li>
+商品陈列
+
+<ul>
+<li>
+今日推荐
+
+<li>
+手机专区
+
+<li>
+电脑DIY
+
+<li>
+WAP首页平板推荐
+
+<li>
+智能数码
+
+</ul>
+<li>
+平台设置的广告
+
+<ul>
+<li>
+平台首页
+
+<li>
+店铺首页
+
+<li>
+登录首页
+
+<li>
+平台首页--&gt;首页-轮播广告大图
+
+<li>
+平台首页--&gt;首页-中部广告
+
+<li>
+平台首页--&gt;首页-推荐店铺-顶1
+
+<li>
+平台首页--&gt;首页-推荐店铺-左下
+
+<li>
+平台首页--&gt;首页-推荐店铺-右下
+
+<li>
+平台首页--&gt;首页-热销品牌
+
+<li>
+平台首页--&gt;首页-底部广告
+
+<li>
+平台首页--&gt;WAP首页轮播图
+
+<li>
+平台首页--&gt;WAP首页活动推荐大图
+
+<li>
+平台首页--&gt;WAP首页横插1
+
+<li>
+平台首页--&gt;WAP首页横插2
+
+<li>
+平台首页--&gt;WAP首页横插3
+
+<li>
+平台首页--&gt;WAP首页品牌推荐
+
+<li>
+平台首页--&gt;WAP首页活动推荐小图
+
+<li>
+店铺首页--&gt;店铺首页-轮播广告大图
+
+<li>
+店铺首页--&gt;WAP端店铺首页广告
+
+<li>
+登录首页--&gt;登录页-广告大图
+
+<li>
+登录首页--&gt;登录底部广告3个
+
+</ul>
+</ol>
+
+<h1 id="toc_8">进度</h1>
+<ol>
+<li>
+【已完成】UC数据库库表设计  达飞
+
+<li>
+【已完成】100站的登录和权限等信息数据同步到UC数据库 达飞
+
+<li>
+【已完成】UC数据库新增品类信息和区域信息 达飞
+
+<li>
+【已完成】UC解决方案架构 陈伟
+
+<li>
+【已完成】UC登录信息验证 陈伟代码   达飞存储过程
+
+<li>
+【已完成】UC权限信息获取  陈伟代码  达飞存储过程
+
+<li>
+【已完成】UC登录验证接口
+
+<li>
+【已完成】B2b新的到UC验证的登录接口  陈伟
+
+<li>
+【已完成】B2b新的登录试下   陈伟
+
+<li>
+【已完成】100站的广告接口重新搞 永江
+
+<li>
+【已完成】B2b新登录页面 永江
+
+<li>
+【已完成】注册流程重新做
+
+<li>
+【已完成】UC退出登录接口  陈伟
+
+<li>
+加区域和品类数据权限
+    	老版：订单中心+订单改价+订单操作+预售订单查询+订单综合查询+订单综合查询导出+订单发货+退货订单+
+    	【正在进行】新版：订单中心+预售订单查询+订单综合查询+订单综合查询导出+退换货  达飞
+    	【已完成】新版：统计数据4个+首页统计
+
+<li>
+遍历所有存储过程，找出roleId的，改成新的权限
+
+<li>
+遍历所有存储过程直接读取loginuser,menu,role,品类,区域表这些全部使用传入数据
+
+<li>
+新菜单动态加载 ： 永江
+
+<li>
+【已完成】老菜单动态对应
+
+<li>
+UC用户管理：列表+新增+修改+删除  陈伟,永江
+
+<ul>
+<li>
+【已完成】B2b新增用户的列表接口   陈伟
+
+<li>
+【已完成】B2b获取某一个用户的基础信息、各类权限信息接口完成  陈伟
+
+<li>
+【已完成】B2b新增用户的接口 陈伟
+
+<li>
+【已完成】B2b用户管理页面重新做，从UC获取数据信息
+
+</ul>
+<li>
+重新设计所有站点的广告
+
+<li>
+【已完成】忘记密码
+
+<li>
+【已完成】修改密码
+
+<li>
+【已完成】注册的图片验证码
+
+<li>
+【已完成】修改现有的所有未登录跳转页面+去掉100站登录相关的代码  陈伟
+
+<li>
+【已完成】修改登录页的广告相关命令不判断登录信息  陈伟
+
+<li>
+【已完成】登录连续三次密码输入错误，出图片验证码 永江
+
+<li>
+统一发送短信到UC里面去实现
+
+<ul>
+<li>
+服务修改   达飞
+
+<li>
+UC接口    陈伟
+
+</ul>
+<li>
+黑白名单
+
+<li>
+登录后回写User表的最后登录信息  达飞
+
+<li>
+zol经销商登录
+
+<li>
+禁用用户时，需要禁用200站的supplier
+
+<li>
+订单表冗余area和category
+
+<li>
+订单表：公开价、客户价、下单价（生成订单时的价格）、成交价（改价后的价格）、下单运费、成交运费
+
+</ol>
+
+
+<h1 id="toc_9">问题</h1>
+<ol>
+<li>
+存不存在同一个用户，又是买家又是卖家？
+
+<li>
+B2b怎么调用属于自己的UC用户管理页面
+
+</ol>
+
+
+<h1 id="toc_10">计划</h1>
+<ol>
+<li>
+UC的架构设计和完善
+
+<li>
+UC的数据库库表结构设计
+
+<li>
+现有B2b的用户信息同步到UC的脚本
+
+<li>
+UC的功能模块
+
+<ul>
+<li>
+用户管理
+
+<ul>
+<li>
+新增用户
+
+<li>
+删除用户
+
+<li>
+用户状态修改
+
+<li>
+密码重置
+
+<li>
+修改用户
+
+</ul>
+<li>
+业务模块注册
+
+<ul>
+<li>
+新增站点
+
+<li>
+新增菜单
+
+<li>
+新增操作权限（隶属菜单）
+
+</ul>
+<li>
+收费模块授权
+
+<ul>
+<li>
+
+
+</ul>
+<li>
+品类信息管理
+
+<li>
+区域信息管理
+
+<li>
+验证及授权（无需页面，只有接口）
+
+<ul>
+<li>
+登录
+
+<li>
+退出
+
+<li>
+指定userId和site，获取用户信息+权限信息
+
+</ul>
+</ul>
+<li>
+B2b的修改
+
+<ul>
+<li>
+订单中心加上区域、菜单权限、操作权限、品类权限的过滤
+
+<li>
+数据分析加上区域、菜单权限、操作权限、品类权限的过滤
+
+<li>
+页面加菜单权限和操作权限的过滤（前端）
+
+</ul>
+<li>
+PSI配合内容，由PSI主导，B2b配合，预计有如下接口
+
+<ul>
+<li>
+商品信息接口
+
+<li>
+订单信息接口
+
+<li>
+录串、发货操作的接口
+
+</ul>
+</ol>
+
+        </div>
+    </body>
+</html>

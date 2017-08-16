@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Bundle插件安装</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+
+<h1 id="toc_1">参考资料</h1>
+<p>
+<a href="http://blog.csdn.net/zhuxiaoyang2000/article/details/8636472">http://blog.csdn.net/zhuxiaoyang2000/article/details/8636472</a>
+</p>
+
+<p>
+VIM是编辑器之神，这个就不用说了，越使用越会体会到VIM的强大与便利。但是它的强大建立在众多插件组合之上，而Vim本身缺乏对插件的有效管理，安装插件并配置_vimrc文件非常不便。gmarik受到Ruby的bunler的启发，开发了vundle这个vim插件，可以将插件分到不同的目录管理，更厉害的是可以很简单的添加需要安装的插件，然后通过指令简单的安装和更新，下面就介绍VIM和Vundle的安装。
+</p>
+
+<p>
+1.安装Git。
+</p>
+
+<p>
+Vundle基于Git架构，每一个插件都是一个项目的Repository，通过Vundle可以用简单的指令，一键安装/更新/删除所有插件。
+</p>
+
+<p>
+下载msysgit并安装（具体可见<a href="http://drupalchina.cn/content/windows-xi-tong-xia-gitan-zhuang-tu-jie），并将Git">http://drupalchina.cn/content/windows-xi-tong-xia-gitan-zhuang-tu-jie），并将Git</a> 的安装路径加入环境变量Path，如
+</p>
+
+<p>
+[cpp] view plaincopy
+D:\Program Files\Git\cmd  
+然后运行cmd，输入
+[cpp] view plaincopy
+git --version  
+如果能显示Git版本信息，说明安装成功。
+2. 配置Curl脚本。
+</p>
+
+<p>
+在Windows下还需要建立一个Curl脚本用于Vundle的远程链接。在Git的路径下新建一个空文本文件，改名为curl.cmd，编辑内容为
+</p>
+
+<p>
+[cpp] view plaincopy
+@rem Do not use "echo off" to not affect any child calls.  
+@setlocal  
+</p>
+  
+<p>
+@rem Get the abolute path to the parent directory, which is assumed to be the  
+@rem Git installation root.  
+@for /F "delims=" %%I in ("%~dp0..") do @set git_install_root=%%~fI  
+@set PATH=%git_install_root%\bin;%git_install_root%\mingw\bin;%PATH%  
+</p>
+  
+<p>
+@if not exist "%HOME%" @set HOME=%HOMEDRIVE%%HOMEPATH%  
+@if not exist "%HOME%" @set HOME=%USERPROFILE%  
+</p>
+  
+<p>
+@curl.exe %*  
+保存后运行cmd，输入
+[cpp] view plaincopy
+curl --version  
+如果可以看到版本信息说明配置成功。
+3. 安装Vundle。
+</p>
+
+<p>
+Git安装完成后，从官网Clone Vundle到Vim的安装路径下，如
+</p>
+
+<p>
+[cpp] view plaincopy
+git clone <a href="https://github.com/gmarik/vundle">https://github.com/gmarik/vundle</a> D:\Vim\vimfiles\bundle\vundle  
+此时Vim的目录结构应该如下所示
+D:Vim
+</p>
+
+<p>
++---vim73
+</p>
+
+<p>
++---vimfiles
+</p>
+<blockquote>
++---bundle
+</blockquote>
+<blockquote>
++---vundle
+</blockquote>
+<blockquote>
++---autoload
+</blockquote>
+
+<p>
+4. 配置Vundle。
+</p>
+
+<p>
+按照Vundle官方给出的配置，所有通过Vundle安装的插件会被安装到Windows的用户目录下，这里做了修改，直接安装到Vim目录下方便管理。
+</p>
+
+<p>
+编辑_vimrc文件，加入
+</p>
+
+<p>
+[cpp] view plaincopy
+filetype off  
+" 此处规定Vundle的路径  
+set rtp+=$VIM/vimfiles/bundle/vundle/  
+call vundle#rc('$VIM/vimfiles/bundle/')  
+Bundle 'gmarik/vundle'  
+filetype plugin indent on  
+</p>
+  
+<p>
+" original repos on github<br>Bundle 'mattn/zencoding-vim'  
+Bundle 'drmingdrmer/xptemplate'  
+</p>
+   
+<p>
+" vim-scripts repos  
+Bundle 'L9'  
+Bundle 'FuzzyFinder'  
+Bundle 'bufexplorer.zip'  
+Bundle 'taglist.vim'  
+Bundle 'Mark'  
+Bundle 'The-NERD-tree'  
+Bundle 'matrix.vim'  
+Bundle 'closetag.vim'  
+Bundle 'The-NERD-Commenter'  
+Bundle 'matchit.zip'  
+Bundle 'AutoComplPop'  
+Bundle 'jsbeautify'  
+Bundle 'YankRing.vim'  
+</p>
+   
+<p>
+filetype plugin indent on     " required!   
+5.安装插件
+安装插件具体可看<a href="http://yp.oss.org.cn/blog/show_resource.php?resource_id=1561。">http://yp.oss.org.cn/blog/show_resource.php?resource_id=1561。</a>
+</p>
+
+<p>
+后面的链接是我的VIM配置文件：<a href="https://github.com/cgnerds/vim。">https://github.com/cgnerds/vim。</a>
+</p>
+
+<p>
+参考链接：
+</p>
+
+<p>
+1 AlloVince的VIM配置方案：<a href="http://yp.oss.org.cn/blog/show_resource.php?resource_id=1561">http://yp.oss.org.cn/blog/show_resource.php?resource_id=1561</a>
+</p>
+
+<p>
+2 使用Vundle来管理Vim插件：<a href="http://www.cnblogs.com/qiangji/archive/2011/07/31/Vundle.html">http://www.cnblogs.com/qiangji/archive/2011/07/31/Vundle.html</a>
+</p>
+
+<p>
+3. VIM之Vundle：<a href="http://blog.csdn.net/codebistu/article/details/8257138">http://blog.csdn.net/codebistu/article/details/8257138</a>
+</p>
+
+<p>
+4. 值得参考的VIM配置文件
+</p>
+
+<p>
+<a href="https://github.com/asins/vim/blob/master/_vimrc">https://github.com/asins/vim/blob/master/_vimrc</a>
+</p>
+
+<p>
+<a href="https://github.com/AlloVince/vim-of-allovince/blob/master/_vimrc">https://github.com/AlloVince/vim-of-allovince/blob/master/_vimrc</a>
+</p>
+
+</body>
+</html>

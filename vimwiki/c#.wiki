@@ -1,0 +1,9 @@
+
+= vs快捷键 =
+alt+shift+F10       using引用添加
+
+= 正则表达式软件 =
+* RegexBuddy   
+    全英，功能全
+* Regex Match Tracer 2.1
+    汉化，功能弱

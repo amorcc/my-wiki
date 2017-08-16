@@ -1,0 +1,37 @@
+
+= 店铺的版本 =
+目前店铺版本有旺铺基础版和旺铺专业版，1钻以下专业版免费，否则50一个月
+
+= 店铺招牌 =
+1、招牌如果想把导航去掉，直接设置招牌的高度为150px就可以了
+2、淘宝店铺首页宣传招牌图片  950*150
+示例：http://weilaidianqi.taobao.com/?spm=2013.1.1000126.2.MYXNDq&v=1
+<div style="width:950px;height:150px;"> 
+    <table width="950" height="150" border="0" cellpadding="0" cellspacing="0"> 
+        <tbody> 
+            <tr> 
+                <td rowspan="2" width="485" height="118">&nbsp;</td> 
+                <td colspan="8" width="950" height="118"> 
+                    <a href="http://item.taobao.com/item.htm?spm=a1z10.1.w5001-9412228321.2.vdn4LD&amp;id=41272161429&amp;scene=taobao_shop" style="border:none;" target="_blank" data-spm-wangpu-module-id="5001-9412228321" data-spm-anchor-id="a1z10.1.w5001-9412228321.2"> 
+                        <img src="http://img01.taobaocdn.com/imgextra/i1/169284981/TB21S2lbXXXXXcFXXXXXXXXXXXX_!!169284981.png" width="950" height="108" style="border:none;"> 
+                    </a>
+                </td>
+                <td rowspan="2" width="485" height="118">&nbsp;</td> 
+            </tr> 
+            <tr> 
+                <td width="58" height="32" style="text-align:center;font-size:16px;"> 
+                    <a href="http://weilaidianqi.taobao.com/?spm=a1z10.1.w5001-9412228321.3.vdn4LD&amp;scene=taobao_shop" style="color:#FFF;text-decoration:none;" target="_blank" data-spm-wangpu-module-id="5001-9412228321" data-spm-anchor-id="a1z10.1.w5001-9412228321.3">
+                        首页
+                    </a> 
+                </td> 
+                <td width="128" height="32" style="text-align:center;font-size:16px;color:#FFF;"> 
+                    <a href="http://weilaidianqi.taobao.com/category-860328315.htm?spm=a1z10.1.w5001-9412228321.4.vdn4LD&amp;search=y&amp;catName=%BF%D5%C6%F8%BE%BB%BB%AF%C6%F7&amp;scene=taobao_shop" style="color:#FFF;text-decoration:none;" target="_blank" data-spm-wangpu-module-id="5001-9412228321" data-spm-anchor-id="a1z10.1.w5001-9412228321.4">
+                        空气净化器
+                    </a> 
+                </td> 
+                <td width="128" height="32" style="text-align:center;font-size:16px;color:#FFF;"> 
+                    <a href="http://weilaidianqi.taobao.com/category-929921495.htm?spm=a1z10.1.w5001-9412228321.5.vdn4LD&amp;search=y&amp;catName=%B6%B6%B6%B6%CB%A6%D6%AC%BB%FA&amp;scene=taobao_shop" style="color:#FFF;text-decoration:none;" target="_blank" data-spm-wangpu-module-id="5001-9412228321" data-spm-anchor-id="a1z10.1.w5001-9412228321.5">
+                        抖抖甩脂机
+                    </a> 
+                </td> 
+                <td width="128" height="32" style="text-align:center;font-size:16px;color:#FFF;"> <a href="http://weilaidianqi.taobao.com/p/rd821346.htm?spm=a1z10.1.w5001-9412228321.6.vdn4LD&amp;scene=taobao_shop" style="color:#FFF;text-decoration:none;" target="_blank" data-spm-wangpu-module-id="5001-9412228321" data-spm-anchor-id="a1z10.1.w5001-9412228321.6">质检报告</a> </td> <td width="128" height="32" style="text-align:center;font-size:16px;color:#FFF;"> <a href="http://weilaidianqi.taobao.com/p/rd071963.htm?spm=a1z10.1.w5001-9412228321.7.vdn4LD&amp;scene=taobao_shop" style="color:#FFF;text-decoration:none;" target="_blank" data-spm-wangpu-module-id="5001-9412228321" data-spm-anchor-id="a1z10.1.w5001-9412228321.7">品牌故事</a> </td> <td width="128" height="32" style="text-align:center;font-size:16px;color:#FFF;"> <a href="http://weilaidianqi.taobao.com/p/rd164385.htm?spm=a1z10.1.w5001-9412228321.8.vdn4LD&amp;scene=taobao_shop" style="color:#FFF;text-decoration:none;" target="_blank" data-spm-wangpu-module-id="5001-9412228321" data-spm-anchor-id="a1z10.1.w5001-9412228321.8">进出口证书</a> </td> <td width="128" height="32" style="text-align:center;font-size:16px;color:#FFF;"> <a href="http://weilaidianqi.taobao.com/ugo.htm?spm=a1z10.1.w5001-9412228321.9.vdn4LD&amp;scene=taobao_shop" style="color:#FFF;text-decoration:none;" target="_blank" data-spm-wangpu-module-id="5001-9412228321" data-spm-anchor-id="a1z10.1.w5001-9412228321.9">店铺活动</a> </td> <td width="124" height="32" style="text-align:center;font-size:16px;color:#FFF;">&nbsp;</td> </tr> </tbody> </table> </div>

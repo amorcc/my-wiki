@@ -1,0 +1,95 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>ttvim打造成IDE</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+<h2 id="toc_0.1">一、配置html环境</h2>
+
+<p>
+解压HTML.zip，然后将里面的所有文件copy到:\Program Files\Vim\vimfiles目录下 首先，你应该把“ filetype plugin on ”写入你的vimrc。 重启vim。 新建一个test.html文件。用gvim打开按 ";html"看看会有什么结果！注意";html"是英文的分号(；)
+</p>
+
+<h2 id="toc_0.2">二、配置javascript</h2>
+
+<h3 id="toc_0.2.1">1、语法高亮 - javascript.vim</h3>
+
+<p>
+<a href="http://www.vim.org/scripts/script.php?script_id=1491">http://www.vim.org/scripts/script.php?script_id=1491</a> 该插件安装在~/.vim/syntax/目录下。下载后需要修改一个地方，一般javascript编程，折叠层数不需要太深，我自己设置为1，即： setlocal foldlevel=1。 需要在.vimrc中加入 " 打开javascript折叠 let b:javascript_fold=1 " 打开javascript对dom、html和css的支持 let javascript_enable_domhtmlcss=1
+</p>
+
+<h3 id="toc_0.2.2">2、变量标记和检查</h3>
+
+<p>
+<a href="http://www.vim.org/scripts/script.php?script_id=1238">http://www.vim.org/scripts/script.php?script_id=1238</a> 该插件安装到~/.vim/plugin/目录。在对变量进行检查和跟踪的时候会很有用，同时还可以防止变量名拼写错误。打开／关闭变量标记的默认快捷键是m。也可以使用v选中一段进行标记
+</p>
+
+<h3 id="toc_0.2.3">3、字典补全－javascript.dict</h3>
+
+<p>
+该字典可以放在任意目录，我一般放在~/.vim/dict/目录中。使用字典补全需要在插入模式下，快捷键是Ctrl+X，然后Ctrl+K。有些javascript内置函数名超长，经常记不住，这时候字典就比较有用。字典其实就是一个普通文件，里面是关键词的列表，一行一个，所以你也可以加入一些你在项目中经常使用的函数。 另外需要在.vimrc中加入 "设置字典 ~/.vim/dict/javascript.dict是字典文件的路径 autocmd FileType javascript set dictionary=~/.vim/dict/javascript.dict
+</p>
+
+<h3 id="toc_0.2.4">4、安裝JQeury 語法顏色</h3>
+
+<p>
+到這裏下載：<a href="http://www.vim.org/scripts/script.php?script_id=2416">http://www.vim.org/scripts/script.php?script_id=2416</a> ，儲存到 syntax底下。 然後在 .vimrc 加入這一行 ：au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+</p>
+
+<h3 id="toc_0.2.5">5、安裝縮排</h3>
+
+<p>
+<a href="http://www.vim.org/scripts/script.php?script_id=1397">http://www.vim.org/scripts/script.php?script_id=1397</a> 今天依然介绍vim这个大杀器的一个插件：xml.vim。 可以在这里下载这个插件，非常小只有50几kb，把它复制到~/.vim/ftpplugin目录下，然后在vim的配置文件 ~/.vimrc 中添加一行： filetype plugin indent on 保存，重新用vim或者Gvim打开一个html文件，或者html.erb文件，在通常模式下，输入gg=G 会发现vim帮我们自动格式化了html代码，所有的缩进都很完美。
+</p>
+
+<h2 id="toc_0.3">三、配置NERDTree</h2>
+<p>
+从 <a href="http://www.vim.org/scripts/script.php?script_id=1658">http://www.vim.org/scripts/script.php?script_id=1658</a>  下载，然后解压，将解压得到的plugin和doc文件夹与~/Vim/Vim73/目录下的同名文件夹合并。然后往_vimrc文件中增加下面配置代码：
+</p>
+
+<p>
+" 设置NerdTree
+map &lt;F3&gt; :NERDTreeMirror&lt;CR&gt;
+map &lt;F3&gt; :NERDTreeToggle&lt;CR&gt;
+   按F3即可显示或隐藏NerdTree区域了。
+</p>
+
+        </div>
+    </body>
+</html>

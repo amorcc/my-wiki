@@ -1,0 +1,150 @@
+
+-------------------------------------------------------------
+正式的小权限用户名密码
+用户名：zmm002user 密码DBF21737-AC9D-4FA8-A60F-4DF22496DF87
+
+10.23.2.13
+
+
+http://mail.zol.com.cn/mailbox.php
+chen.wei@zol.com.cn
+amorcc2564130@
+
+= Log [[工作日志]] =
+
+= [[页面框架]] =
+
+= [[数据库相关]] =
+
+[[=ZOL_PRE000B2b表结构=]]
+
+= SQL SERVER [[数据库相关函数]] =
+
+= [[流程]] =
+
+1、无线zolhahaha    密码：buzhidao
+
+2、测试系统
+
+    http://218.28.139.68:100/Login.aspx
+    卖家：13721435577
+    买家：13700888185
+    管理员：admin
+    
+    
+    密码：111111
+    
+    
+3、测试数据库地址及用户
+4、svn账户
+5、代码
+6、架构了解 
+
+= json to datetime =
+json to datetime :  var start = DateTime.Parse(Common.GetJsonValue(jsonPara, "StartDate"));
+
+= sql server 参数 =
+var paras = new[]
+                    {
+                        new SqlParameter("@StartDate", start),
+                        new SqlParameter("@sysUserID", UserInfo.LoginUser.Id)
+                    };
+
+= 返回dateset存储过程 =
+
+DataSet ds = SqlHelper.ExecuteDataset(this.sqlCon, CommandType.StoredProcedure, "proc_Rpt_ProductOrderAmount", paras);
+
+= 执行存储过程带时间参数=
+return_value = [dbo].[proc_OrderAnalysis]
+		@BeginDate = N'2016-01-01',
+		@EndDate = N'2016-06-01'
+
+SELECT	'Return Value' = @return_value
+
+GO
+
+= DataTable to json = 
+     DataTable dt = ds.Tables[0];
+     var lst = new JArray();
+
+     foreach (DataRow dr in ds.Tables[0].Rows)
+     {
+         lst.Add(new JObject(){
+                                     {"Title",dr["Title"].ToString()},
+                                      {"OrderCount",dr["OrderCount"].ToString()},
+                                      {"CustCount",dr["CustCount"].ToString()}
+                                        });
+
+
+     }
+     var tmpJObject = JObject.Parse("{}");
+     tmpJObject.SetProperty("Data", lst);
+     Payload.Data = tmpJObject;
+     return JsonConvert.SerializeObject(Payload);
+
+= 合并单元格 =
+   $(document).ready(function () {
+            ReSearch();
+
+        });
+        function ReSearch() {
+            $("#lst tr.uls").remove();
+            myObj.cmd({
+                "cmd": "cctest.GetPickUpGoodsReport",
+                "para": { "StartDate": $("#StartDate").val() + "-01" },
+                "callback": function (data) {
+                    $("#lst").append(myObj.render(data.Data, "<tr class=\"uls\"><td class=\"time\">#OrderTime#</td><td>#SellerCount#</td><td>#BuyerCount#</td><td>#OrderCount#</td><td>#OrderAmount#</td><td>#SettlementAmount#</td></tr>"));
+                }
+            });
+        }
+
+        function hebing() {
+            var rowlength = $('#lst tbody tr').length - 1;
+            var rowspanArray = new Array(rowlength);
+
+            for (var i = 0; i < rowlength; i++) {
+                rowspanArray[i] = 1;
+            }
+
+            var lastTime = '';
+            var lastIndex = 0;
+
+            //alert(rowlength);
+            $.each($('#lst tbody tr'), function (n, value) {
+                if (n == 0) {
+                    lastTime = '';
+                }
+                else if (n == 1) {
+                    var time = $(this).find('.time').html();
+                    lastTime = time;
+                }
+                else {
+                    var time = $(this).find('.time').html();
+
+                    if (lastTime == time) {
+                        rowspanArray[lastIndex]++;
+                        rowspanArray[n - 1] = 0;
+                    }
+                    else {
+                        lastIndex = n - 1;
+
+                        lastTime = time;
+                    }
+                }
+
+            });
+
+
+            //alert(rowspanArray);
+
+            $.each($('#lst tbody tr'), function (n, value) {
+                if (n > 0) {
+                    if (rowspanArray[n - 1] == 0) {
+                        $(this).find('.time').remove();
+                    }
+                    else if (rowspanArray[n - 1] > 1) {
+                        $(this).find('.time').attr('rowspan', rowspanArray[n - 1]);
+                    }
+                }
+            });
+        }

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>主站数据库架构</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+
+<h1 id="toc_1">主站架构</h1>
+<ul>
+<li>
+NetChina.Model 
+
+<li>
+NetChina.DalCom 
+
+<li>
+NetChina.Dal 
+
+<ul>
+<li>
+引用model和dalcom库
+
+</ul>
+<li>
+NetChina.BllCom
+
+<ul>
+<li>
+引用DAL和model
+
+</ul>
+<li>
+NetChina.BllE
+
+<ul>
+<li>
+引用BBLCom、DAL、Model、CSSHD.BLL、CSSHD.BLLTRAD、CSSHD.Common、CSSHD.DALOracle
+
+</ul>
+</ul>
+
+<h1 id="toc_2">添加新表的流程</h1>
+<ul>
+<li>
+NetChina.Model 中添加CCTEST.cs
+
+</ul>
+
+</body>
+</html>

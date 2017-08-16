@@ -1,0 +1,117 @@
+<!DOCTYPE HTML >
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="style.css">
+        <script src="/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="Stylesheet" type="text/css">
+        <link href="/bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link href="/bootstrap/css/wiki.css" rel="Stylesheet" type="text/css">
+        <script src="/bootstrap/js/wiki.js"></script>
+        <title>ttMSDN的SocketAsyncEventArgs类实现异步Socket样例代码流程</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Coder-cc</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">我的知识库</a></li>
+                        <li><a href="#">学习</a></li>
+                        <li><a href="#">我的项目</a></li>
+                        <li><a href="#">我的想法</a></li>
+                        <li><a href="#">我的工作</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container content-body">
+            
+<h3 id="toc_0.0.1">MSDN的SocketAsyncEventArgs类实现异步Socket样例代码流程</h3>
+
+<ol>
+<li>
+构造函数
+
+<ul>
+<li>
+初始化缓冲区BufferManage
+
+<li>
+设置最大并发量（通过Semaphore类实现）
+
+<li>
+初始化ScoketAsyncEventArgs的缓冲池
+
+</ul>
+<li>
+Init函数
+
+<ul>
+<li>
+创建缓冲池，在内存中创建指定大小的内存空间用于缓冲
+
+<li>
+创建一个预先用来处理客户端连接的SocketAsyncEvnetArgs
+
+<li>
+将创建的预先SocketAsyncEnentArgs放入到pool中
+
+</ul>
+<li>
+Start函数
+
+<ul>
+<li>
+创建主Socket侦听
+
+</ul>
+<li>
+StartAccept函数
+
+<ul>
+<li>
+创建一个接收SocketAsyncEventArgs,并初始化
+
+</ul>
+</ol>
+
+<p>
+若有客户端连接
+</p>
+<ol>
+<li>
+触发Completed事件
+
+<li>
+调用ProcessAccept函数
+
+<ul>
+<li>
+从线程池中pop一个SocketAsyncEventArgs
+
+<li>
+调用StartAccept函数
+
+</ul>
+</ol>
+<p>
+#
+</p>
+
+        </div>
+    </body>
+</html>

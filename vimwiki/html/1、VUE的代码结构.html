@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>1、VUE的代码结构</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+
+<p>
+var vu = new Vue({
+</p>
+<blockquote>
+//el:为实例提供挂载元素，值可以是css选择符，或者html元素
+el: '#app',
+//--------------------------------
+//Vue数据对象
+data:{
+i: 1        
+},
+</blockquote>
+<blockquote>
+//--------------------------------
+created:function(){
+//运行顺序：1
+//在实例创建之后同步调用。此时实例已经结束解析选项，
+//这意味着已建立：数据绑定，计算属性，方法，watcher/事件回调。
+//但是还没有开始 DOM 编译，$el 还不存在。
+},
+beforeCompiled:function(){
+//运行顺序：2
+//在编译开始前调用。
+},
+complited:function(){
+//运行顺序：3
+//在编译结束后调用。此时所有的指令已生效，因而数据的变化将触发 DOM 更新。
+//但是不担保 $el 已插入文档。
+}
+ready:function(){
+//运行顺序：4
+//在编译结束和 $el 第一次插入文档之后调用，如在第一次 attached 钩子之后调用。
+//注意必须是由 Vue 插入（如 vm.$appendTo() 等方法或指令更新）才触发 ready 钩子。
+},
+beforeDestroy:function(){
+//运行顺序：5
+//在开始销毁实例时调用。此时实例仍然有功能。
+},所有的子实例也已经被销毁。
+},
+</blockquote>
+<blockquote>
+//--------------------------------
+//实例方法。实例可以直接访问这些方法，也可以用在指令表达式内。方法的 this 自动绑定到实例。
+methods:{
+plus = function(){
+i++;
+}
+},
+</blockquote>
+<blockquote>
+//--------------------------------
+//一个对象，键是观察表达式，值是对应回调。值也可以是方法名，或者是对象，包含选项。在实例化时为每个键调用 $watch() 。
+watch:{
+'a': function (val, oldVal) {
+console.log('new: %s, old: %s', val, oldVal)
+}
+},
+</blockquote>
+<blockquote>
+//--------------------------------
+//computed : 实力结算属性。getter和setter的this自动绑定到实例
+computed:{
+// 仅读取，值只须为函数
+aDouble: function () {
+return this.a * 2
+},
+// 读取和设置
+aPlus: {
+get: function () {
+return this.a + 1
+},
+set: function (v) {
+this.a = v - 1
+}
+}
+}
+</blockquote>
+<p>
+});
+</p>
+
+</body>
+</html>

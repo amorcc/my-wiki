@@ -1,0 +1,703 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>数据库设计</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+
+
+<h1 id="toc_1">新增订单的10个订单详细要求的列表内容</h1>
+
+<h2 id="toc_1.1" class="justcenter">设计制作</h2>
+<ul>
+<li>
+成品名称
+
+<ul>
+<li>
+设计修改
+
+<li>
+名片设计
+
+<li>
+广告设计
+
+<li>
+彩页/画册
+
+<li>
+CAD绘图
+
+<li>
+CAD改图
+
+<li>
+标志设计
+
+<li>
+3D设计
+
+</ul>
+<li>
+类别
+
+<ul>
+<li>
+简单
+
+<li>
+一般
+
+<li>
+复杂
+
+<li>
+创意
+
+</ul>
+<li>
+计量单位(通用)
+
+<ul>
+<li>
+本
+
+<li>
+图纸张
+
+<li>
+套
+
+<li>
+份
+
+<li>
+个
+
+<li>
+平方米
+
+<li>
+盒
+
+<li>
+条
+
+<li>
+枚
+
+<li>
+P
+
+<li>
+页
+
+<li>
+米
+
+<li>
+块
+
+<li>
+平方厘米
+
+<li>
+厘米
+
+<li>
+公斤
+
+<li>
+雕刻
+
+<li>
+印
+
+<li>
+令
+
+<li>
+蝴蝶面
+
+<li>
+张
+
+</ul>
+</ul>
+
+<h2 id="toc_1.2" class="justcenter">数码打印</h2>
+<ul>
+<li>
+项目规格
+
+<ul>
+<li>
+A3/A3+
+
+<li>
+A4
+
+<li>
+A3++
+
+<li>
+(364mm*571mm)
+
+<li>
+(364mm*660mm)
+
+<li>
+中标通知书
+
+<li>
+大宝效果图
+
+</ul>
+<li>
+机器型号
+
+<ul>
+<li>
+农业大宝
+
+<li>
+农业7500
+
+<li>
+经一大宝
+
+<li>
+经一6500
+
+<li>
+原盛大宝
+
+<li>
+原盛6500
+
+</ul>
+</ul>
+
+
+<h1 id="toc_2" class="justcenter">新增订单的10个订单详细要求</h1>
+<h1 id="toc_3" class="justcenter">数码打印</h1>
+<ul>
+<li>
+表名：  OR_Digital_Print
+
+<li>
+列：
+
+<ul>
+<li>
+项目名称
+
+<li>
+机器型号
+
+<li>
+规格
+
+<li>
+纸品	
+
+<li>
+单位	
+
+<li>
+P数	
+
+<li>
+份数	
+
+<li>
+拼版数	
+
+<li>
+计价数量	
+
+<li>
+单位	
+
+<li>
+金额	
+
+<li>
+折扣	
+
+<li>
+折扣价
+
+</ul>
+<li>
+SQL语句 
+            DROP TABLE IF EXISTS <code>OR_Digital_Print</code>;
+
+</ul>
+<blockquote>
+CREATE TABLE <code>OR_Digital_Print</code> (
+<code>DigitalPrintingID</code> varchar(40) NOT NULL COMMENT '订单要求-数码打印ID',
+<code>ProjectSpecification</code> varchar(100) default NULL COMMENT '项目规格',
+<code>MachineModel</code> varchar(100) default NULL COMMENT '机器型号',
+<code>PaperProduct</code> varchar(100) default NULL COMMENT '纸品名称',
+<code>MeasurementUnit</code> varchar(100) default NULL COMMENT '计量单位',
+<code>EachNumber</code> varchar(100) default NULL COMMENT '每份数',
+<code>CopiesNumber</code> varchar(100) default NULL COMMENT '份数',
+<code>ValuationQuantity</code> varchar(100) default NULL COMMENT '计价数量',
+<code>UnitPrice</code> varchar(100) default NULL COMMENT '单价',
+<code>Discount</code> varchar(100) default NULL COMMENT '折扣',
+<code>CustomerRequirements</code> varchar(1000) default NULL COMMENT '客户要求备注',
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+</blockquote>
+    
+<h1 id="toc_4" class="justcenter">胶板印刷</h1>
+<ul>
+<li>
+表名：  OR_Offset_Printing
+
+<li>
+列：
+
+<ul>
+<li>
+项目名称	
+
+<li>
+规格	
+
+<li>
+印数	
+
+<li>
+纸品名称	
+
+<li>
+计量单位	
+
+<li>
+计价数量	
+
+<li>
+单价	
+
+<li>
+折扣	
+
+</ul>
+<li>
+SQL语句
+        DROP TABLE IF EXISTS <code>OR_Offset_Printing</code>;
+
+</ul>
+<blockquote>
+CREATE TABLE <code>OR_Offset_Printing</code> (
+<code>OffsetPrintingID</code> varchar(40) NOT NULL COMMENT '订单要求-胶板印刷ID',
+<code>ProjectName</code> varchar(100) default NULL COMMENT '项目名称',
+<code>Specification</code> varchar(100) default NULL COMMENT '规格',
+<code>PrintNumber</code> varchar(100) default NULL COMMENT '印数',
+<code>PaperName</code> varchar(100) default NULL COMMENT '纸品名称',
+<code>MeasurementUnit</code> varchar(100) default NULL COMMENT '计量单位',
+<code>ValuationQuantity</code> varchar(100) default NULL COMMENT '计价数量',
+<code>UnitPrice</code> varchar(100) default NULL COMMENT '单价',
+<code>Discount</code> varchar(100) default NULL COMMENT '折扣',
+<code>CustomerRequirements</code> varchar(1000) default NULL COMMENT '客户要求备注',
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+</blockquote>
+        
+        
+<h1 id="toc_5" class="justcenter">办公文印</h1>
+<ul>
+<li>
+表名：  OR_Office_Paper_Printing
+
+<li>
+列：
+
+<ul>
+<li>
+项目名称	
+
+<li>
+机器型号	
+
+<li>
+规格	
+
+<li>
+纸张名称	
+
+<li>
+计量单位	 
+
+<li>
+每份数 	 
+
+<li>
+份 数 	
+
+<li>
+计价数量	
+
+<li>
+单价	
+
+<li>
+折扣	
+
+</ul>
+<li>
+SQL语句 
+            DROP TABLE IF EXISTS <code>OR_Office_Paper_Printing</code>;
+
+</ul>
+<blockquote>
+CREATE TABLE <code>OR_Office_Paper_Printing</code> (
+<code>OfficePaperPrintingID</code> varchar(40) NOT NULL COMMENT '订单要求-办公文印ID',
+<code>ProjectName</code> varchar(100) default NULL COMMENT '项目名称',
+<code>MachineModel</code> varchar(100) default NULL COMMENT '机器型号',
+<code>Specification</code>varchar(100) default NULL COMMENT '规格',
+<code>PaperProduct</code> varchar(100) default NULL COMMENT '纸品名称',
+<code>MeasurementUnit</code> varchar(100) default NULL COMMENT '计量单位',
+<code>EachNumber</code> varchar(100) default NULL COMMENT '每份数',
+<code>CopiesNumber</code> varchar(100) default NULL COMMENT '份数',
+<code>ValuationQuantity</code> varchar(100) default NULL COMMENT '计价数量',
+<code>UnitPrice</code> varchar(100) default NULL COMMENT '单价',
+<code>Discount</code> varchar(100) default NULL COMMENT '折扣',
+<code>CustomerRequirements</code> varchar(1000) default NULL COMMENT '客户要求备注'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+</blockquote>
+    
+<h1 id="toc_6" class="justcenter">写真喷绘</h1>
+<ul>
+<li>
+表名：  OR_Photo_Printing
+
+<li>
+列：
+
+<ul>
+<li>
+项目名称	
+
+<li>
+规格	
+
+<li>
+计量单位	 
+
+<li>
+每份数 	 
+
+<li>
+份 数 	 
+
+<li>
+倍 数 	
+
+<li>
+计价数量	
+
+<li>
+倍前单价	
+
+<li>
+单价	
+
+<li>
+折扣
+
+</ul>
+<li>
+SQL语句 
+            DROP TABLE IF EXISTS <code>OR_Photo_Printing</code>;
+
+</ul>
+<blockquote>
+CREATE TABLE <code>OR_Photo_Printing</code> (
+<code>PhotoPrintingID</code> varchar(40) NOT NULL COMMENT '订单要求-写真喷绘ID',
+<code>ProjectName</code> varchar(100) default NULL COMMENT '项目名称',
+<code>Specification</code>varchar(100) default NULL COMMENT '规格',
+<code>MeasurementUnit</code> varchar(100) default NULL COMMENT '计量单位',
+<code>EachNumber</code> varchar(100) default NULL COMMENT '每份数',
+<code>CopiesNumber</code> varchar(100) default NULL COMMENT '份数',
+<code>TimesNumber</code> varchar(100) default NULL COMMENT '倍数',
+<code>ValuationQuantity</code> varchar(100) default NULL COMMENT '计价数量',
+<code>TimesBeforeUnitPrice</code> varchar(100) default NULL COMMENT '倍前单价',
+<code>UnitPrice</code> varchar(100) default NULL COMMENT '单价',
+<code>Discount</code> varchar(100) default NULL COMMENT '折扣',
+<code>CustomerRequirements</code> varchar(1000) default NULL COMMENT '客户要求备注'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+</blockquote>
+    
+<h1 id="toc_7" class="justcenter">工程图文</h1>
+<ul>
+<li>
+表名：  OR_Engineering_Graphics
+
+<li>
+列：
+
+<ul>
+<li>
+项目名称	
+
+<li>
+规格尺寸	
+
+<li>
+机器型号	
+
+<li>
+计量单位	 
+
+<li>
+每份数 	 
+
+<li>
+份 数 	 
+
+<li>
+倍 数 	
+
+<li>
+计价数量	
+
+<li>
+倍后单价	
+
+<li>
+单价	
+
+<li>
+折扣	
+
+</ul>
+<li>
+SQL语句 
+            DROP TABLE IF EXISTS <code>OR_Engineering_Graphics</code>;
+
+</ul>
+<blockquote>
+CREATE TABLE <code>OR_Engineering_Graphics</code> (
+<code>EngineeringGraphicsID</code> varchar(40) NOT NULL COMMENT '订单要求-工程图文ID',
+<code>ProjectName</code> varchar(100) default NULL COMMENT '项目名称',
+<code>Specification</code>varchar(100) default NULL COMMENT '规格尺寸',
+<code>MachineModel</code> varchar(100) default NULL COMMENT '机器型号',
+<code>MeasurementUnit</code> varchar(100) default NULL COMMENT '计量单位',
+<code>EachNumber</code> varchar(100) default NULL COMMENT '每份数',
+<code>CopiesNumber</code> varchar(100) default NULL COMMENT '份数',
+<code>TimesNumber</code> varchar(100) default NULL COMMENT '倍数',
+<code>ValuationQuantity</code> varchar(100) default NULL COMMENT '计价数量',
+<code>TimesBeforeUnitPrice</code> varchar(100) default NULL COMMENT '倍前单价',
+<code>UnitPrice</code> varchar(100) default NULL COMMENT '单价',
+<code>Discount</code> varchar(100) default NULL COMMENT '折扣',
+<code>CustomerRequirements</code> varchar(1000) default NULL COMMENT '客户要求备注'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+</blockquote>
+            
+    
+<h1 id="toc_8" class="justcenter">后期加工</h1>
+<ul>
+<li>
+表名：  OR_Post_Processing
+
+<li>
+列：
+
+<ul>
+<li>
+项目名称	
+
+<li>
+种类	
+
+<li>
+规格	
+
+<li>
+封面归属	
+
+<li>
+计量单位	
+
+<li>
+计价数量	
+
+<li>
+单价	
+
+<li>
+折扣
+
+</ul>
+<li>
+SQL语句 
+            DROP TABLE IF EXISTS <code>OR_Post_Processing</code>;
+
+</ul>
+<blockquote>
+CREATE TABLE <code>OR_Post_Processing</code> (
+<code>EngineeringGraphicsID</code> varchar(40) NOT NULL COMMENT '订单要求-后期加工ID',
+<code>ProjectName</code> varchar(100) default NULL COMMENT '项目名称',
+<code>Type</code> varchar(100) default NULL COMMENT '种类',
+<code>Specification</code>varchar(100) default NULL COMMENT '规格',
+<code>MeasurementUnit</code> varchar(100) default NULL COMMENT '计量单位',
+<code>ValuationQuantity</code> varchar(100) default NULL COMMENT '计价数量',
+<code>UnitPrice</code> varchar(100) default NULL COMMENT '单价',
+<code>Discount</code> varchar(100) default NULL COMMENT '折扣',
+<code>CustomerRequirements</code> varchar(1000) default NULL COMMENT '客户要求备注'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+</blockquote>
+    
+<h1 id="toc_9" class="justcenter">零售</h1>
+<ul>
+<li>
+表名：  OR_Retail
+
+<li>
+列：
+
+<ul>
+<li>
+品名	
+
+<li>
+规格	
+
+<li>
+计量单位	
+
+<li>
+计价数量	
+
+<li>
+单价
+
+<li>
+折扣
+
+</ul>
+<li>
+SQL语句 
+            DROP TABLE IF EXISTS <code>OR_Retail</code>;
+
+</ul>
+<blockquote>
+CREATE TABLE <code>OR_Retail</code> (
+<code>RetailID</code> varchar(40) NOT NULL COMMENT '订单要求-零售ID',
+<code>ProductName</code> varchar(100) default NULL COMMENT '品名',
+<code>Specification</code>varchar(100) default NULL COMMENT '规格',
+<code>MeasurementUnit</code> varchar(100) default NULL COMMENT '计量单位',
+<code>ValuationQuantity</code> varchar(100) default NULL COMMENT '计价数量',
+<code>UnitPrice</code> varchar(100) default NULL COMMENT '单价',
+<code>Discount</code> varchar(100) default NULL COMMENT '折扣',
+<code>CustomerRequirements</code> varchar(1000) default NULL COMMENT '客户要求备注'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+</blockquote>
+    
+<h1 id="toc_10" class="justcenter">加工</h1>
+<ul>
+<li>
+表名：  OR_Processing
+
+<li>
+列：
+
+<ul>
+<li>
+项目名称	
+
+<li>
+类别	
+
+<li>
+规格	
+
+<li>
+计量单位	
+
+<li>
+计价数量	
+
+<li>
+单价
+
+<li>
+折扣	
+
+</ul>
+<li>
+SQL语句 
+            DROP TABLE IF EXISTS <code>OR_Processing</code>;
+
+</ul>
+<blockquote>
+CREATE TABLE <code>OR_Processing</code> (
+<code>ProcessingID</code> varchar(40) NOT NULL COMMENT '订单要求-加工ID',
+<code>ProjectName</code> varchar(100) default NULL COMMENT '项目名称',
+<code>Type</code> varchar(100) default NULL COMMENT '类别',
+<code>Specification</code>varchar(100) default NULL COMMENT '规格',
+<code>MeasurementUnit</code> varchar(100) default NULL COMMENT '计量单位',
+<code>ValuationQuantity</code> varchar(100) default NULL COMMENT '计价数量',
+<code>UnitPrice</code> varchar(100) default NULL COMMENT '单价',
+<code>Discount</code> varchar(100) default NULL COMMENT '折扣',
+<code>CustomerRequirements</code> varchar(1000) default NULL COMMENT '客户要求备注'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+</blockquote>
+    
+<h1 id="toc_11" class="justcenter">其它</h1>
+<ul>
+<li>
+表名：  OR_Other
+
+<li>
+列：
+
+<ul>
+<li>
+项目名称	
+
+<li>
+机器名称	
+
+<li>
+规格	
+
+<li>
+计量单位	
+
+<li>
+计价数量	
+
+<li>
+单价	
+
+<li>
+折扣
+
+</ul>
+<li>
+SQL语句 
+            DROP TABLE IF EXISTS <code>OR_Other</code>;
+
+</ul>
+<blockquote>
+CREATE TABLE <code>OR_Other</code> (
+<code>OtherID</code> varchar(40) NOT NULL COMMENT '订单要求-其它ID',
+<code>ProjectName</code> varchar(100) default NULL COMMENT '项目名称',
+<code>MachineModel</code> varchar(100) default NULL COMMENT '机器型号',
+<code>Specification</code>varchar(100) default NULL COMMENT '规格',
+<code>MeasurementUnit</code> varchar(100) default NULL COMMENT '计量单位',
+<code>ValuationQuantity</code> varchar(100) default NULL COMMENT '计价数量',
+<code>UnitPrice</code> varchar(100) default NULL COMMENT '单价',
+<code>Discount</code> varchar(100) default NULL COMMENT '折扣',
+<code>CustomerRequirements</code> varchar(1000) default NULL COMMENT '客户要求备注'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+</blockquote>
+
+</body>
+</html>
